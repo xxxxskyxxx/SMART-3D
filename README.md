@@ -61,7 +61,11 @@
 
 사용한 오픈소스: [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md) (three.js, three-bvh-csg, three-mesh-bvh, Electron — MIT)
 
-3ds Max는 Autodesk, Inc.의 상표이며, SMART 3D는 Autodesk와 관계없는 독립 제품입니다. Google, Gemini, Veo, Higgsfield는 각 소유자의 상표입니다.
+3ds Max는 Autodesk, Inc.의 상표이며, SMART 3D는 Autodesk와 관계없는 독립 제품입니다. Google, Gemini, Veo, Higgsfield, Claude(Anthropic)는 각 소유자의 상표입니다.
+
+## 만든 이야기
+
+SMART 3D는 제가 3D 모델링 작업과 AI 렌더링에 직접 쓰려고, AI 코딩 도구인 Claude(Anthropic)와 함께 만든 개인 프로젝트입니다. 기획과 테스트는 제가 하고, 코드는 Claude와 대화하며 만들었습니다. SMART 3D는 Anthropic과 관계없는 독립 프로그램입니다.
 
 ## 만든 사람
 
