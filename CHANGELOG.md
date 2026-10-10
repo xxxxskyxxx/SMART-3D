@@ -20,6 +20,10 @@
 - **FloorGen** — works on closed splines (outline = floor)
 - Lathe modifier removed from the menus (old scenes still open)
 - Camera create — the tool ends after one camera; switching to Geometry / Shapes or another panel cancels it
+- **On Surface** modifier — lay an object onto a picked surface along X / Y / Z or the surface normal: All points · Keep volume · Select only with Falloff, Edge Blend
+- **R Clone** modifier — radial copies around X / Y / Z (pivot or a picked object), count, angle, radius, Weld
+- **Add Objects** (Create ▸ Geometry) — keep your own objects in a list; drag in the view to size them (100% = original), click or right-click = 100%
+- Create: Shift = square (Box · Plane · Rectangle, cube on the Box height) / flat side down (NGon) · Ctrl = turn toward the mouse (Angle Snap steps)
 - Object name shown on mouse hover
 - Selection Lock moved to Shift+Space
 
@@ -41,6 +45,10 @@
 - **FloorGen** — 닫힌 스플라인에도 적용 (윤곽 = 바닥)
 - Lathe 모디파이어 메뉴에서 제거 (예전 장면은 그대로 열림)
 - Camera 만들기 — 하나 만들면 도구가 끝나고, Geometry/Shapes나 다른 패널로 가면 자동 취소
+- **On Surface** 모디파이어 — 고른 표면에 X/Y/Z 또는 표면 노말 방향으로 붙이기: 모든 점 · 부피 유지 · 선택 영역만(Falloff), Edge Blend
+- **R Clone** 모디파이어 — X/Y/Z 축(Pivot 또는 고른 물체) 기준 회전 복사, 개수 · 각도 · 반지름 · Weld
+- **Add Objects** (Create ▸ Geometry) — 내 물체를 목록에 모아 두고 뷰에서 드래그로 크기 조절(100% = 원래 크기), 클릭·우클릭 = 100%
+- Create: Shift = 정사각(Box·Plane·Rectangle, Box 높이에서 정육면체) / 평평한 면이 아래(NGon) · Ctrl = 마우스 방향으로 회전(Angle Snap 단위)
 - 물체 위에 마우스를 올리면 이름 표시
 - Selection Lock 단축키가 Shift+Space로 바뀜
 
