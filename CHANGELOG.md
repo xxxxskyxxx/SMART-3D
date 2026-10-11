@@ -24,6 +24,8 @@
 - **R Clone** modifier — radial copies around X / Y / Z (pivot or a picked object), count, angle, radius, Weld
 - **Add Objects** (Create ▸ Geometry) — keep your own objects in a list; drag in the view to size them (100% = original), click or right-click = 100%
 - Create: Shift = square (Box · Plane · Rectangle, cube on the Box height) / flat side down (NGon) · Ctrl = turn toward the mouse (Angle Snap steps)
+- Modify Poly **Vertex Loop** — select a vertex, then Ctrl+double-click the vertex right next to it
+- **Command panel icons** — vertical icon tabs on the left of the panel (Create · Modify · Hierarchy · Display · SMART Utils) and quick icons at the bottom: RTransform · Object Edge Align · Rnd Color · Drop Z0; panel slightly narrower
 - Object name shown on mouse hover
 - Selection Lock moved to Shift+Space
 
@@ -49,6 +51,8 @@
 - **R Clone** 모디파이어 — X/Y/Z 축(Pivot 또는 고른 물체) 기준 회전 복사, 개수 · 각도 · 반지름 · Weld
 - **Add Objects** (Create ▸ Geometry) — 내 물체를 목록에 모아 두고 뷰에서 드래그로 크기 조절(100% = 원래 크기), 클릭·우클릭 = 100%
 - Create: Shift = 정사각(Box·Plane·Rectangle, Box 높이에서 정육면체) / 평평한 면이 아래(NGon) · Ctrl = 마우스 방향으로 회전(Angle Snap 단위)
+- Modify Poly **점 루프 선택** — 점 하나를 고르고 바로 옆 점을 Ctrl+더블클릭
+- **명령 패널 아이콘** — 패널 왼쪽 세로 아이콘 탭(Create · Modify · Hierarchy · Display · SMART Utils), 아래쪽 바로 실행 아이콘: RTransform · Object Edge Align · Rnd Color · Drop Z0 / 패널 폭 약간 줄임
 - 물체 위에 마우스를 올리면 이름 표시
 - Selection Lock 단축키가 Shift+Space로 바뀜
 
