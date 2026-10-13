@@ -1,5 +1,99 @@
 # Changelog
 
+## v1.2 — 2026-10
+
+### English
+- Modify Poly **Vertex Loop** — select a vertex, then Ctrl+double-click the vertex right next to it
+- **Command panel icons** — vertical icon tabs on the left of the panel (Create · Modify · Hierarchy · Display · SMART Utils) and quick icons at the bottom: RTransform · Object Edge Align · Rnd Color · Drop Z0; panel slightly narrower
+- **PBR materials** — Material Editor presets (Matte · Glossy · Metal · Glass · Light), Roughness · IOR · Specular, metal types with measured reflectance (Gold · Silver · Copper · Aluminum · Chrome · Iron · Brass · Titanium), Opacity · Transmission · Thickness · thin glass, emission (Light), Roughness · Normal · Bump · Opacity maps; kept in GLB export / import
+- **GI Render** (Render ▸ GI Render…, F9) — progressive GPU path tracing of the current view: soft shadows, bounced light, reflections, refraction; exposure · bounces · sky light · Safe Frame · PNG save
+- **Lights** (Create ▸ Lights) — Rect · Disk · Sphere · Spot with IES files; materials with Light (emission) light the scene too
+- Material Editor: rendered previews (checker floor, hidden lights — reflection, roughness, IOR refraction), texture buttons beside Diffuse · Roughness · Bump · Normal · Opacity (🔗 = linked, click to replace / remove), Bump strength
+- **Mapping** modifier — Box · **Box Blur** (soft seams, also in the GI render) · Plane (Bend · Segments · Lattice) · Cylinder · Sphere · Spline (ribbon / tube along a picked spline); the material uses its UVs automatically
+- GI: Rect · Disk lights can be shown to the camera and / or in reflections; material **GI saturation** tones down colour bleeding
+- GI **AI denoise** — Intel Open Image Denoise (WebGPU) cleans the render while keeping shapes, edges and textures (auto at Max Samples, ◐ raw / denoised compare); edge-preserving filter fallback without WebGPU
+- GI **Live** — orbiting the view or changing materials, lights, sky or objects updates the render right away; Exposure is instant
+- Material Editor: Color Correct · Mapping sections fold (closed by default)
+- GI: **Background colour** option (objects keep their lighting, background in the exact colour) · **transparent shadows** for glass / see-through materials (Material ▸ Transparent shadow) · Rect / Disk lights shown to the camera are visible from the back too
+- Lights: created on the grid at the mouse, then the height is set with the mouse (like a Box) · Rect / Disk **Spread** angle gathers the light into a beam · glass Transmission no longer rebuilds the panel while adjusting
+- GI: **HDRI** environment (.hdr / .exr) with Exposure (EV) · Gamma · Rotation; options regrouped (Render · Environment · Camera / Background)
+- Material Editor: Remove / Apply buttons next to the sample sphere; a default-named material takes the object's name when applied
+- Material Editor: **🗂 Texture set at once** — pick Diffuse · Normal · Roughness · Bump (Height) · Opacity images together and each goes to its slot by file name · GI saturation is automatic (colourful Diffuse texture → 0.4)
+- GI Render button on the toolbar (next to AI) · the render picture no longer overlaps the options
+- GI: **Normal and Bump maps now show in the render** (tangents are generated, Bump is baked into the normal map) · ▶ Render always starts clean (GPU memory freed) · fixed a black render after closing and reopening the window or after a lost GPU context · invalid samples (NaN) no longer turn the whole picture black
+- Roughness map: the Roughness value locks to the map; click the map icon to adjust it with **Gamma · Exposure · Invert** · Gloss / Glossiness maps are inverted automatically
+- **Hide in Render** (View Menu / Display panel) — the object still casts shadows, lights the scene and shows in reflections and refraction, but the GI render camera does not see it
+- Material **Gradient Diffuse** — two colours, vertical or horizontal, in the viewport, the sample sphere and the GI render (off = the Diffuse colour)
+- Material Light (emission) uses the Diffuse colour · texture · gradient (no separate light colour) and sits right under Preset
+- Material Editor: materials of the selected objects are marked with a red line under their slot
+- Mapping modifier: **Gizmo** sub-object (stack ▸ Gizmo / key 1 / ✥ Edit Gizmo) — move · rotate · scale the mapping with the viewport gizmo (position / rotate fields removed)
+- GI: Bounces now count after the first hit, so glossy reflections show even at Bounces 1 · spinner ▼ arrows work (and step 0.05 on 0–1 values)
+- GI: fixed mesh-pattern artifacts after switching a gradient material from Metal to Matte / Glossy (live) · a fully rough surface (Roughness → 1) now reads as matte (specular sheen fades out above 0.7)
+- GI: **Environment light off** option — without an HDRI the built-in sky lights the scene; switch it off to light with lights and emissive materials only
+- GI Render window resizes from its bottom-right **or top-right** corner — the picture grows, the options stay at the bottom with their width
+- Spot (IES) lights get a **Target** — move the target and the light always points at it (Select Target / Free Light / Target 만들기)
+- Gradient Diffuse works on flat objects (a Plane runs along Y) and follows a Mapping modifier's U / V
+- Mapping / Lattice gizmo wires show only while the modifier is open in Modify
+- **Diffuse texture adjustment** — click the Diffuse map icon for **Hue · Tint (colour + strength)** · Saturation · Gamma · Exposure (viewport, sample sphere and GI render; GI saturation follows it) · adjusted Diffuse / Roughness maps now show in the viewport and on the sample sphere for any image size
+- Material **AO (Ambient Occlusion)** on the Diffuse — Radius · Strength: corners, gaps and contact areas darken (viewport per vertex, GI render per pixel; re-baked after objects move)
+- Material Editor: selecting an object in the scene opens its material right away (slot scrolled into view) · the sample-sphere list can be resized taller / shorter from its bottom edge (remembered)
+- **Ctrl+A** in a sub-object level (Modify Poly / Modify Spline) selects every vertex / edge / border / polygon / element of that level; outside a level it selects all objects as before
+- **FloorGen patterns** — Straight · **Herringbone** · **Chevron**, picked from icons; each shows only its own options (Row / Random Offset for Straight, Chevron Angle for Chevron); any closed outline is clipped exactly
+- Modify Poly **Extrude** keeps a constant thickness at corners (like Shell): with several polygons selected every face moves out exactly the Extrude height, corners no longer shrink along the diagonal
+- **Shift+Rotate / Shift+Scale copy** — the same copy options as Shift+Move (fill between / repeat, or just one copy); rotated copies follow the arc around the rotation axis
+- **Shade Selected** (right-click ▸ Display, and the display-style menu) — in Wireframe the selected objects stay shaded
+- **Physically based glass** — clear surfaces with Fresnel; the Diffuse colour is absorbed inside the object (Beer–Lambert), so thick parts look deeper and edges stay clear · Thickness = colour density · the Glass preset starts clear white · more refraction steps inside glass (no more dark interiors)
+- **Thin glass** is now a real thin film (window pane, soap bubble) — light goes straight through with surface reflections only · new **Iridescence** option and **Soap Bubble** preset
+- GI: lights set to *Visible in render* now show over a flat Background colour too, and glass shows the background colour through it correctly
+- Help (F1 / Help ▸ 기능 가이드) and the picture guides updated for v1.2: toolbar GI button, Material Editor (texture set, map adjustments, AO, glass), GI Render · HDRI · Lights, FloorGen patterns, Ctrl+A / Extrude / Shade Selected, scene file contents
+- New app icon (metal cube)
+
+### 한국어
+- Modify Poly **점 루프 선택** — 점 하나를 고르고 바로 옆 점을 Ctrl+더블클릭
+- **명령 패널 아이콘** — 패널 왼쪽 세로 아이콘 탭(Create · Modify · Hierarchy · Display · SMART Utils), 아래쪽 바로 실행 아이콘: RTransform · Object Edge Align · Rnd Color · Drop Z0 / 패널 폭 약간 줄임
+- **PBR 재질** — 재질 편집기 Preset(무광 · 광택 · 금속 · 유리 · 발광), Roughness · IOR · Specular, 실제 반사값 기반 금속 종류(Gold · Silver · Copper · Aluminum · Chrome · Iron · Brass · Titanium), Opacity · 빛 투과 · Thickness · 얇은 유리, 발광(Light), Roughness · Normal · Bump · Opacity 맵 / GLB 내보내기·가져오기에도 유지
+- **GI 렌더** (Render ▸ GI Render…, F9) — 지금 뷰를 GPU 패스트레이싱으로 점점 선명하게: 부드러운 그림자 · 간접광 · 반사 · 굴절 / Exposure · Bounces · 하늘 조명 · Safe Frame · PNG 저장
+- **조명** (Create ▸ Lights) — Rect · Disk · Sphere · Spot(IES 파일), Light(발광) 재질도 조명으로
+- 재질 편집기: 실제 렌더 미리보기(체크 바닥 · 숨은 조명 — 반사 · 거칠기 · IOR 굴절), Diffuse · Roughness · Bump · Normal · Opacity 옆 텍스처 버튼(🔗 = 연결됨, 클릭해서 교체/제거), Bump 세기
+- **Mapping** 모디파이어 — Box · **Box Blur**(경계 부드럽게, GI 렌더도) · Plane(Bend · Segments · Lattice) · Cylinder · Sphere · Spline(고른 스플라인을 따라 띠 / 관), 재질이 UV를 자동으로 사용
+- GI: Rect · Disk 조명을 카메라 / 반사에 보이게 따로 설정, 재질 **GI 채도**로 색 번짐 줄이기
+- GI **AI 디노이즈** — Intel Open Image Denoise(WebGPU)가 형태·모서리·텍스처는 지키고 노이즈만 지워요 (Max Samples에서 자동, ◐ 원본/디노이즈 비교). WebGPU가 없으면 모서리 보존 필터
+- GI **실시간 반영(Live)** — 뷰를 돌리거나 재질·조명·하늘·물체를 바꾸면 렌더가 바로 따라와요. Exposure는 즉시
+- 재질 편집기: Color Correct · Mapping 접기/펴기 (기본 접힘)
+- GI: **배경색** 옵션 (물체 조명은 그대로, 배경만 정확한 색) · 유리·반투명 재질의 **투명 그림자** (재질 ▸ 투명 그림자) · 렌더에 보이는 Rect·Disk 조명은 뒷면도 보임
+- 조명: 바닥의 마우스 위치에 만들고 마우스로 높이 지정 (Box처럼) · Rect·Disk **Spread** 각도로 빛을 모으기 · 유리 빛 투과 조절 시 패널이 바뀌던 문제 수정
+- GI: **HDRI** 환경(.hdr / .exr) + Exposure(EV) · Gamma · Rotation, 옵션을 렌더 · 환경 · 카메라/배경으로 정리
+- 재질 편집기: 재질 제거 / 선택에 적용 버튼을 샘플구 옆으로, 기본 이름 재질은 적용한 물체 이름으로
+- 재질 편집기: **🗂 텍스처 세트 한번에** — Diffuse · Normal · Roughness · Bump(Height) · Opacity 이미지를 함께 고르면 파일 이름으로 알맞은 칸에 연결 · GI 채도 자동 (채도 높은 Diffuse 텍스처 → 0.4)
+- 툴바에 GI Render 버튼 (AI 옆) · GI 창의 렌더 그림이 옵션을 덮던 문제 수정
+- GI: **Normal · Bump 맵이 렌더에 보임** (탄젠트 자동 생성, Bump는 노멀맵으로 합성) · ▶ 렌더는 항상 메모리를 비우고 새로 시작 · 창을 닫았다 다시 열거나 GPU 컨텍스트를 잃은 뒤 검게 나오던 문제 수정 · 잘못된 샘플(NaN)이 그림 전체를 검게 만들지 않음
+- Roughness 맵: 연결하면 Roughness 수치는 잠기고, 맵 아이콘을 눌러 **Gamma · Exposure · 반전**으로 조절 · Gloss(Glossiness) 맵은 자동 반전
+- **Render에 숨기기** (View Menu / Display 패널) — 그림자 · 빛 · 반사 · 굴절에는 그대로 남고 GI 렌더 화면에서만 안 보임
+- 재질 **그라데이션 Diffuse** — 두 색 · 세로 / 가로, 뷰포트 · 샘플구 · GI 렌더 모두 (끄면 Diffuse 색)
+- 재질 Light(발광)는 Diffuse 색 · 텍스처 · 그라데이션을 그대로 사용 (따로 정하는 빛 색 없음), Preset 바로 아래로
+- 재질 편집기: 선택한 물체의 재질 칸 아래에 빨간 줄 표시
+- Mapping 모디파이어: **Gizmo** 하위 객체 (스택 ▸ Gizmo / 숫자키 1 / ✥ Gizmo 편집) — 뷰포트 기즈모로 매핑 이동 · 회전 · 크기 (위치 · Rotate 입력칸 삭제)
+- GI: Bounces를 첫 충돌 이후부터 세서 Bounces 1에서도 광택 반사가 보임 · 수치 칸의 ▼ 화살표가 동작 (0~1 값은 0.05 단위)
+- GI: 그라데이션 재질을 금속 → 무광/광택으로 바꿀 때 메쉬 무늬가 보이던 문제 수정 · Roughness가 1에 가까우면 반사광이 줄어 완전 무광으로 보임 (0.7부터 서서히)
+- GI: **환경광 끄기** 옵션 — HDRI가 없으면 기본 하늘이 장면을 비추는데, 끄면 조명과 발광 재질만으로 렌더
+- GI 렌더 창을 오른쪽 아래 **또는 오른쪽 위** 모서리로 크기 조절 — 렌더 그림만 커지고 옵션은 아래에 같은 폭으로 유지
+- Spot(IES) 조명에 **Target** — 타깃을 옮기면 조명이 항상 그쪽을 바라봄 (Select Target / Free Light / Target 만들기)
+- 그라데이션 Diffuse가 평평한 물체(Plane은 Y 방향)와 Mapping 모디파이어의 U / V를 따라 적용
+- Mapping · Lattice 기즈모 선은 Modify에서 그 모디파이어를 열었을 때만 표시
+- **Diffuse 텍스처 조절** — Diffuse 맵 아이콘에서 **Hue · Tint(색 + 강도)** · Saturation · Gamma · Exposure (뷰포트 · 샘플구 · GI 렌더에 적용, 자동 GI 채도도 따라감) · 큰 이미지에서도 조절된 Diffuse / Roughness 맵이 뷰포트와 샘플구에 바로 보임
+- 재질 **AO (Ambient Occlusion)** — Diffuse에 적용, Radius · Strength: 모서리 · 틈 · 맞닿은 곳이 어두워짐 (뷰포트는 꼭짓점 단위, GI 렌더는 픽셀 단위 · 물체를 옮기면 다시 계산)
+- 재질 편집기: 장면에서 물체를 선택하면 그 재질이 바로 열림(샘플 위치로 스크롤) · 샘플구 목록 영역을 아래 모서리로 늘리고 줄일 수 있음(기억됨)
+- 서브 레벨(Modify Poly / Modify Spline)에서 **Ctrl+A** = 그 레벨의 점 · 엣지 · 보더 · 면 · 엘리먼트 모두 선택, 레벨이 아니면 지금처럼 장면의 물체 모두 선택
+- **FloorGen 패턴** — 일자 · **헤링본** · **쉐브런**을 아이콘으로 선택, 고른 패턴의 옵션만 표시 (일자: Row / Random Offset, 쉐브런: Chevron Angle) · 어떤 닫힌 외곽선이든 정확히 잘라 깔림
+- Modify Poly **Extrude**가 모서리에서도 같은 두께 (Shell처럼): 여러 면을 선택해도 모든 면이 정확히 Extrude 높이만큼 나와서 모서리만 얇아지지 않음
+- **Shift+회전 / Shift+크기 복사** — Shift+이동과 같은 복사 옵션(사이에 채우기 / 같은 간격으로 더, 또는 1개만) · 회전 복사는 회전축을 따라 원형으로 배치
+- **Shade Selected** (우클릭 ▸ Display, 화면 표시 메뉴) — Wireframe 모드에서도 선택한 물체는 면(쉐이딩)으로 표시
+- **물리 기반 유리** — 면은 맑게(Fresnel 반사), Diffuse 색은 물체 속에서 흡수(Beer–Lambert): 두꺼운 곳은 진하고 가장자리는 맑게 · Thickness = 색 농도 · 유리 Preset은 맑은 흰색으로 시작 · 유리 속 굴절 횟수 증가 (속이 검게 보이던 문제 해결)
+- **얇은 유리**가 진짜 얇은 막(창유리 · 비눗방울)으로 — 빛이 휘지 않고 곧게 지나며 면 반사만 · **무지개 막(Iridescence)** 옵션과 **비눗방울** Preset 추가
+- GI: *렌더에 보이기* 조명이 배경색 모드에서도 보이고, 유리 너머로 배경색이 제대로 비침
+- 도움말(기능 가이드)과 그림 도움말을 v1.2에 맞게 업데이트: 툴바 GI 버튼, 재질 편집기(텍스처 세트 · 맵 조절 · AO · 유리), GI 렌더 · HDRI · 조명, FloorGen 패턴, Ctrl+A · Extrude · Shade Selected, 장면 파일 내용
+- 새 앱 아이콘 (금속 큐브)
+
 ## v1.1 — 2026-10
 
 ### English
@@ -24,8 +118,6 @@
 - **R Clone** modifier — radial copies around X / Y / Z (pivot or a picked object), count, angle, radius, Weld
 - **Add Objects** (Create ▸ Geometry) — keep your own objects in a list; drag in the view to size them (100% = original), click or right-click = 100%
 - Create: Shift = square (Box · Plane · Rectangle, cube on the Box height) / flat side down (NGon) · Ctrl = turn toward the mouse (Angle Snap steps)
-- Modify Poly **Vertex Loop** — select a vertex, then Ctrl+double-click the vertex right next to it
-- **Command panel icons** — vertical icon tabs on the left of the panel (Create · Modify · Hierarchy · Display · SMART Utils) and quick icons at the bottom: RTransform · Object Edge Align · Rnd Color · Drop Z0; panel slightly narrower
 - Object name shown on mouse hover
 - Selection Lock moved to Shift+Space
 
@@ -51,8 +143,6 @@
 - **R Clone** 모디파이어 — X/Y/Z 축(Pivot 또는 고른 물체) 기준 회전 복사, 개수 · 각도 · 반지름 · Weld
 - **Add Objects** (Create ▸ Geometry) — 내 물체를 목록에 모아 두고 뷰에서 드래그로 크기 조절(100% = 원래 크기), 클릭·우클릭 = 100%
 - Create: Shift = 정사각(Box·Plane·Rectangle, Box 높이에서 정육면체) / 평평한 면이 아래(NGon) · Ctrl = 마우스 방향으로 회전(Angle Snap 단위)
-- Modify Poly **점 루프 선택** — 점 하나를 고르고 바로 옆 점을 Ctrl+더블클릭
-- **명령 패널 아이콘** — 패널 왼쪽 세로 아이콘 탭(Create · Modify · Hierarchy · Display · SMART Utils), 아래쪽 바로 실행 아이콘: RTransform · Object Edge Align · Rnd Color · Drop Z0 / 패널 폭 약간 줄임
 - 물체 위에 마우스를 올리면 이름 표시
 - Selection Lock 단축키가 Shift+Space로 바뀜
 
