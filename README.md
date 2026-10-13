@@ -13,18 +13,20 @@ Free to use as a **Windows program (SMART3D.exe)** that runs without installatio
 
 | File | Language | Description |
 |---|---|---|
-| `SMART3D_EN_v1.1.exe` | English | Windows executable — double-click to run (no installation) |
-| `SMART3D_KO_v1.1.exe` | Korean | Windows executable (Korean UI) |
-| `SMART-3D_EN_v1.1_html.zip` | English | HTML version for Chrome / Edge + help |
-| `SMART-3D_KO_v1.1_html.zip` | Korean | HTML version (Korean UI) + help |
+| `SMART3D_EN_v1.2.exe` | English | Windows executable — double-click to run (no installation) |
+| `SMART3D_KO_v1.2.exe` | Korean | Windows executable (Korean UI) |
+| `SMART-3D_EN_v1.2_html.zip` | English | HTML version for Chrome / Edge + help |
+| `SMART-3D_KO_v1.2_html.zip` | Korean | HTML version (Korean UI) + help |
 
 > **First run:** if Windows shows “Windows protected your PC”, click **More info → Run anyway**. (It appears because this independent program is not code-signed.)
 
 ## Features
 
-- **Modeling** — primitives and splines, Modify Poly / Modify Spline editing (Extrude, Inset, Bevel, Chamfer, Bridge…), modifier stack (Multi Select, Projection Spline, Pattern surface tiling (tri · quad · hex), Shell, Noise…), Boolean, Mirror, SMART Utils ▸ Drop Surface
-- **Copy** — Shift+drag, then set a count: fill between original and copy / more at the same spacing
-- **Materials** — Material Editor (M), textures, Random mapping per element, Color correct
+- **Modeling** — primitives and splines, Modify Poly / Modify Spline editing (Extrude, Inset, Bevel, Chamfer, Bridge…), modifier stack (Multi Select, Projection Spline, Pattern surface tiling (tri · quad · hex), Shell, Noise, FloorGen — straight / herringbone / chevron floor boards…), Boolean, Mirror, SMART Utils ▸ Drop Surface · Extrude keeps a constant thickness at corners · Ctrl+A selects all in a sub-object level
+- **Copy** — Shift+drag with Move, Rotate or Scale, then set a count: fill between original and copy / more at the same spacing (rotated copies make circular arrays)
+- **Materials** — Material Editor (M): PBR presets (matte · glossy · metal · glass · soap bubble · light), measured metal types, physically based glass (colour absorbed by thickness) and thin film / iridescence, **AO**, gradient Diffuse, Roughness / Bump / Normal / Opacity maps with texture-set loading, Diffuse adjustments (Hue · Tint · Saturation · Gamma · Exposure), rendered previews, Random mapping, Color correct
+- **Mapping modifier** — Box · Box Blur (soft seams) · Plane (Bend · Lattice) · Cylinder · Sphere · Spline
+- **GI Render** (F9) — GPU path tracing: soft shadows, bounced light, reflections, refraction, with **AI denoise** (Intel Open Image Denoise, WebGPU) and **Live** updates · HDRI environment · background colour · **Lights**: Rect · Disk · Sphere · Spot with IES and a spot Target · Hide in Render
 - **Cameras** — Interior / Exterior / Product presets, 2-point perspective (vertical correction), Safe Frame ratios
 - **Animation** — timeline, ● REC auto key, keys for move · rotate · scale · parameters · cameras, box-select / move / copy keys, RAM preview
 - **Import · Export** — pick a format in File ▸ Import… / Export…: GLB (with animation) · FBX · OBJ · STL · PLY, video (MP4/WebM) · PNG sequence
@@ -45,12 +47,12 @@ Free to use as a **Windows program (SMART3D.exe)** that runs without installatio
 ## Requirements
 
 - **exe**: Windows 10 / 11 (64-bit)
-- **HTML**: current Chrome or Edge (WebGL 2)
+- **HTML**: current Chrome or Edge (WebGL 2; WebGPU for the AI denoise)
 - AI features need an internet connection and your own account / API key for each service.
 
 ## About the AI services
 
-- API keys and login tokens are **stored only on your PC** and are never sent to the SMART 3D developer.
+- API keys and login tokens are stored on your PC and sent only to the service you select, to authenticate requests — never to the SMART 3D developer. The GI render needs no key or account.
 - Generation costs (credits) and terms of use are those of each service (Google, Higgsfield).
 - A Higgsfield API key (open.higgsfield.ai) and a Higgsfield account login (higgsfield.ai) are different services. Account login works **in the exe only**.
 

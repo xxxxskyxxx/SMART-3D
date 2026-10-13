@@ -13,18 +13,20 @@
 
 | 파일 | 언어 | 설명 |
 |---|---|---|
-| `SMART3D_KO_v1.1.exe` | 한국어 | Windows 실행 파일 — 더블클릭으로 바로 실행 (설치 필요 없음) |
-| `SMART3D_EN_v1.1.exe` | English | Windows executable (English UI) |
-| `SMART-3D_KO_v1.1_html.zip` | 한국어 | 브라우저(Chrome·Edge)에서 여는 HTML 버전 + 도움말 |
-| `SMART-3D_EN_v1.1_html.zip` | English | HTML version (English UI) + help |
+| `SMART3D_KO_v1.2.exe` | 한국어 | Windows 실행 파일 — 더블클릭으로 바로 실행 (설치 필요 없음) |
+| `SMART3D_EN_v1.2.exe` | English | Windows executable (English UI) |
+| `SMART-3D_KO_v1.2_html.zip` | 한국어 | 브라우저(Chrome·Edge)에서 여는 HTML 버전 + 도움말 |
+| `SMART-3D_EN_v1.2_html.zip` | English | HTML version (English UI) + help |
 
 > **처음 실행할 때** Windows가 “PC 보호” 창을 띄우면 **추가 정보 → 실행**을 누르세요. (코드 서명 인증서가 없는 개인 배포 프로그램이라 나오는 안내입니다.)
 
 ## 주요 기능
 
-- **모델링** — 기본 도형·스플라인, Modify Poly / Modify Spline 편집(Extrude, Inset, Bevel, Chamfer, Bridge 등), 모디파이어 스택(Multi Select, Projection Spline, Pattern 표면 타일링(삼각·사각·육각), Shell, Noise …), Boolean, Mirror, SMART Utils ▸ Drop Surface
-- **복사** — Shift+드래그 후 개수 지정: 원본과 복사본 사이 채우기 / 같은 간격으로 더 만들기
-- **재질** — 재질 편집기(M), 텍스처, 요소별 Random 매핑, Color correct
+- **모델링** — 기본 도형·스플라인, Modify Poly / Modify Spline 편집(Extrude, Inset, Bevel, Chamfer, Bridge 등), 모디파이어 스택(Multi Select, Projection Spline, Pattern 표면 타일링(삼각·사각·육각), Shell, Noise, FloorGen — 일자 / 헤링본 / 쉐브런 바닥재 …), Boolean, Mirror, SMART Utils ▸ Drop Surface · Extrude 모서리 두께 일정 · 서브 레벨 Ctrl+A 모두 선택
+- **복사** — 이동 · 회전 · 크기에서 Shift+드래그 후 개수 지정: 원본과 복사본 사이 채우기 / 같은 간격으로 더 만들기 (회전 복사 = 원형 배열)
+- **재질** — 재질 편집기(M): PBR 프리셋(무광 · 광택 · 금속 · 유리 · 비눗방울 · 발광), 실제 반사값 금속 종류, 물리 기반 유리(두께만큼 색이 진해짐) · 얇은 막 · 무지개 막, **AO**, 그라데이션 Diffuse, Roughness / Bump / Normal / Opacity 맵과 텍스처 세트 한번에, Diffuse 조절(Hue · Tint · 채도 · Gamma · Exposure), 실제 렌더 미리보기, Random 매핑, Color correct
+- **Mapping 모디파이어** — Box · Box Blur(경계 부드럽게) · Plane(Bend · Lattice) · Cylinder · Sphere · Spline
+- **GI 렌더**(F9) — GPU 패스트레이싱: 부드러운 그림자 · 간접광 · 반사 · 굴절, **AI 디노이즈**(Intel Open Image Denoise, WebGPU) · **Live** 즉시 반영 · HDRI 환경 · 배경색 · **조명**: Rect · Disk · Sphere · Spot(IES, Target) · Render에 숨기기
 - **카메라** — 실내·실외·제품 프리셋, 2점 투시(수직 보정), Safe Frame 비율
 - **애니메이션** — 타임라인, ● REC 자동 키, 이동·회전·크기·파라미터·카메라 키, 키 드래그 다중 선택·이동·복사, RAM 미리보기
 - **가져오기 · 내보내기** — File ▸ Import… / Export… 창에서 형식 선택: GLB(애니메이션 포함) · FBX · OBJ · STL · PLY, 영상(MP4/WebM) · PNG 시퀀스
@@ -45,12 +47,12 @@
 ## 시스템 요구 사항
 
 - **exe**: Windows 10 / 11 (64비트)
-- **HTML**: 최신 Chrome 또는 Edge (WebGL 2)
+- **HTML**: 최신 Chrome 또는 Edge (WebGL 2, AI 디노이즈는 WebGPU)
 - AI 기능은 인터넷 연결과 각 서비스의 본인 계정·API 키가 필요합니다.
 
 ## AI 서비스 이용 안내
 
-- API 키와 로그인 정보는 **사용자 PC에만 저장**되며 SMART 3D 개발자에게 전송되지 않습니다.
+- API 키와 로그인 정보는 사용자 PC에 저장되고, 요청 인증을 위해 고른 서비스로만 전송되며 SMART 3D 개발자에게는 전송되지 않습니다. GI 렌더는 키나 계정 없이 쓸 수 있어요.
 - 생성 비용(크레딧)과 이용 조건은 각 서비스(Google, Higgsfield)의 약관을 따릅니다.
 - Higgsfield API 키(open.higgsfield.ai)와 Higgsfield 계정 로그인(higgsfield.ai)은 서로 다른 서비스입니다. 계정 로그인은 **exe 버전에서만** 됩니다.
 
