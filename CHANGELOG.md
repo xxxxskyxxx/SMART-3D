@@ -38,6 +38,10 @@
 - Material **AO (Ambient Occlusion)** on the Diffuse — Radius · Strength: corners, gaps and contact areas darken (viewport per vertex, GI render per pixel; re-baked after objects move)
 - Material Editor: selecting an object in the scene opens its material right away (slot scrolled into view) · the sample-sphere list can be resized taller / shorter from its bottom edge (remembered)
 - **Ctrl+A** in a sub-object level (Modify Poly / Modify Spline) selects every vertex / edge / border / polygon / element of that level; outside a level it selects all objects as before
+- **Sun light** (Create ▸ Lights ▸ Sun) — press on the ground below the sun and drag to the Target it shines on · Intensity · Color (Midday · Afternoon · Sunset) · **Sun Size** (soft shadow edges in the GI render) · N / E / S / W **compass** on the Target (North °)
+- Sun **by time** — pick a city (Korea, Japan, China, US, Europe … 27 cities), a date and a **Korea time (KST)**: the sun moves to the real altitude / azimuth seen from the Target, with the city's local time shown (Now · Local noon; off at night)
+- **Right-click cancels a running command** — during a Move · Rotate · Scale drag (Shift clone / extrude undone too), a create drag, a live drag (Chamfer …) or a selection box; Esc cancels a transform drag too
+- Status bar shows the unit: **Grid = 10 cm** (1 unit = 1 cm; also m / mm for large / small grids)
 - **FloorGen patterns** — Straight · **Herringbone** · **Chevron**, picked from icons; each shows only its own options (Row / Random Offset for Straight, Chevron Angle for Chevron); any closed outline is clipped exactly
 - Modify Poly **Extrude** keeps a constant thickness at corners (like Shell): with several polygons selected every face moves out exactly the Extrude height, corners no longer shrink along the diagonal
 - **Shift+Rotate / Shift+Scale copy** — the same copy options as Shift+Move (fill between / repeat, or just one copy); rotated copies follow the arc around the rotation axis
@@ -84,6 +88,10 @@
 - 재질 **AO (Ambient Occlusion)** — Diffuse에 적용, Radius · Strength: 모서리 · 틈 · 맞닿은 곳이 어두워짐 (뷰포트는 꼭짓점 단위, GI 렌더는 픽셀 단위 · 물체를 옮기면 다시 계산)
 - 재질 편집기: 장면에서 물체를 선택하면 그 재질이 바로 열림(샘플 위치로 스크롤) · 샘플구 목록 영역을 아래 모서리로 늘리고 줄일 수 있음(기억됨)
 - 서브 레벨(Modify Poly / Modify Spline)에서 **Ctrl+A** = 그 레벨의 점 · 엣지 · 보더 · 면 · 엘리먼트 모두 선택, 레벨이 아니면 지금처럼 장면의 물체 모두 선택
+- **Sun 조명** (Create ▸ Lights ▸ Sun) — 바닥에서 태양 아래 지점을 누르고 비출 Target까지 드래그 · Intensity · Color(한낮 · 오후 · 노을) · **Sun Size**(GI 렌더에서 부드러운 그림자) · Target에 동서남북 **나침반**(North °)
+- Sun **시간 위치** — 나라·도시(한국 · 일본 · 중국 · 미국 · 유럽 등 27곳) · 날짜 · **한국 시간(KST)**을 고르면 Target에서 본 실제 태양 고도 · 방위로 옮기고 현지 시간도 보여 줘요 (지금 · 현지 정오, 밤이면 꺼짐)
+- **명령 실행 중 우클릭 = 취소** — 이동 · 회전 · 크기 드래그(Shift 복사 · 돌출도 되돌림), 만들기 드래그, 라이브 드래그(Chamfer 등), 선택 박스 중에 / 변형 드래그 중 Esc도 취소
+- 상태 표시줄에 단위 표시: **Grid = 10 cm** (1 단위 = 1 cm, 큰 격자는 m · 작은 격자는 mm도 함께)
 - **FloorGen 패턴** — 일자 · **헤링본** · **쉐브런**을 아이콘으로 선택, 고른 패턴의 옵션만 표시 (일자: Row / Random Offset, 쉐브런: Chevron Angle) · 어떤 닫힌 외곽선이든 정확히 잘라 깔림
 - Modify Poly **Extrude**가 모서리에서도 같은 두께 (Shell처럼): 여러 면을 선택해도 모든 면이 정확히 Extrude 높이만큼 나와서 모서리만 얇아지지 않음
 - **Shift+회전 / Shift+크기 복사** — Shift+이동과 같은 복사 옵션(사이에 채우기 / 같은 간격으로 더, 또는 1개만) · 회전 복사는 회전축을 따라 원형으로 배치
