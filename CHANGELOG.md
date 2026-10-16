@@ -47,6 +47,7 @@
 - Path3D (3D object, no Stretch): copies are placed by the object's **pivot** (Use Pivot is now the default and follows Edit Pivot); the side that touches the path spans a chord with both ends on the spline, so **Spacing is measured where the copies touch the path — exact on curves too**
 - **Edit Pivot + Snap**: dragging a gizmo axis slides the pivot along that axis onto the vertex / edge centre under the mouse, including the object's own points
 - A spline with Path3D keeps showing its path in **red** under the result (hidden in AI Render captures)
+- Path3D on a shape with **several splines** (e.g. under a Clone modifier): every spline gets its own copies / sweep, from its first point to its last, following its own shape
 - **FloorGen patterns** — Straight · **Herringbone** · **Chevron**, picked from icons; each shows only its own options (Row / Random Offset for Straight, Chevron Angle for Chevron); any closed outline is clipped exactly
 - Modify Poly **Extrude** keeps a constant thickness at corners (like Shell): with several polygons selected every face moves out exactly the Extrude height, corners no longer shrink along the diagonal
 - **Shift+Rotate / Shift+Scale copy** — the same copy options as Shift+Move (fill between / repeat, or just one copy); rotated copies follow the arc around the rotation axis
@@ -102,6 +103,7 @@
 - Path3D(3D 물체, Stretch 끔): 물체의 **피벗 기준**으로 배치(Use Pivot 기본 켜짐, Edit Pivot 반영) — 선에 닿는 변의 양 끝이 선 위에 놓여 **곡선에서도 닿는 부분끼리 Spacing 간격이 정확**해요
 - **Edit Pivot + Snap**: 기즈모 축을 잡고 끌면 마우스 아래의 점 · 엣지 중앙으로 그 축 방향만 움직여 붙어요 (물체 자신의 점도 대상)
 - Path3D가 적용된 스플라인도 경로 선이 결과 아래에 **빨간색**으로 계속 보여요 (AI Render 캡처에서는 숨김)
+- Path3D에 **여러 개의 스플라인**(Clone 모디파이어 등): 스플라인마다 첫 점에서 끝 점까지 그 형태를 따라 각각 배치 · 스윕돼요
 - **FloorGen 패턴** — 일자 · **헤링본** · **쉐브런**을 아이콘으로 선택, 고른 패턴의 옵션만 표시 (일자: Row / Random Offset, 쉐브런: Chevron Angle) · 어떤 닫힌 외곽선이든 정확히 잘라 깔림
 - Modify Poly **Extrude**가 모서리에서도 같은 두께 (Shell처럼): 여러 면을 선택해도 모든 면이 정확히 Extrude 높이만큼 나와서 모서리만 얇아지지 않음
 - **Shift+회전 / Shift+크기 복사** — Shift+이동과 같은 복사 옵션(사이에 채우기 / 같은 간격으로 더, 또는 1개만) · 회전 복사는 회전축을 따라 원형으로 배치
