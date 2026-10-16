@@ -48,6 +48,7 @@
 - **Edit Pivot + Snap**: dragging a gizmo axis slides the pivot along that axis onto the vertex / edge centre under the mouse, including the object's own points
 - A spline with Path3D keeps showing its path in **red** under the result (hidden in AI Render captures)
 - Path3D on a shape with **several splines** (e.g. under a Clone modifier): every spline gets its own copies / sweep, from its first point to its last, following its own shape
+- Path3D **Rotate °** (with 0 · 90 · 180 · 270 buttons): turns every copy / the sweep section around the path axis — e.g. make the copies face down
 - **FloorGen patterns** — Straight · **Herringbone** · **Chevron**, picked from icons; each shows only its own options (Row / Random Offset for Straight, Chevron Angle for Chevron); any closed outline is clipped exactly
 - Modify Poly **Extrude** keeps a constant thickness at corners (like Shell): with several polygons selected every face moves out exactly the Extrude height, corners no longer shrink along the diagonal
 - **Shift+Rotate / Shift+Scale copy** — the same copy options as Shift+Move (fill between / repeat, or just one copy); rotated copies follow the arc around the rotation axis
@@ -104,6 +105,7 @@
 - **Edit Pivot + Snap**: 기즈모 축을 잡고 끌면 마우스 아래의 점 · 엣지 중앙으로 그 축 방향만 움직여 붙어요 (물체 자신의 점도 대상)
 - Path3D가 적용된 스플라인도 경로 선이 결과 아래에 **빨간색**으로 계속 보여요 (AI Render 캡처에서는 숨김)
 - Path3D에 **여러 개의 스플라인**(Clone 모디파이어 등): 스플라인마다 첫 점에서 끝 점까지 그 형태를 따라 각각 배치 · 스윕돼요
+- Path3D **Rotate °**(0 · 90 · 180 · 270 버튼): 경로 축을 기준으로 모든 복사본 · 스윕 단면을 돌려요 — 예: 아래를 바라보게
 - **FloorGen 패턴** — 일자 · **헤링본** · **쉐브런**을 아이콘으로 선택, 고른 패턴의 옵션만 표시 (일자: Row / Random Offset, 쉐브런: Chevron Angle) · 어떤 닫힌 외곽선이든 정확히 잘라 깔림
 - Modify Poly **Extrude**가 모서리에서도 같은 두께 (Shell처럼): 여러 면을 선택해도 모든 면이 정확히 Extrude 높이만큼 나와서 모서리만 얇아지지 않음
 - **Shift+회전 / Shift+크기 복사** — Shift+이동과 같은 복사 옵션(사이에 채우기 / 같은 간격으로 더, 또는 1개만) · 회전 복사는 회전축을 따라 원형으로 배치
