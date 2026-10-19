@@ -8,6 +8,14 @@
 - **Build on surfaces (AutoGrid)** — creating a 3D object, 2D shape or Line with the mouse over an object's surface aligns it to that face's normal; a 2×2 grid icon aligned to the object's axes shows the face grid and grid Snap snaps to its cells; empty space uses the view grid as before (Create panel ▸ On Surface)
 - AI Render nodes: each result node stays linked to the generator that made it; right-click empty canvas = ＋ node menu (no search box)
 - AI Render nodes: double-click a node = it and everything linked below it selected; left drag on empty canvas = box select; wheel (middle) drag = pan
+- GI Render: objects render in **Wireframe** display too (before, only the selected ones showed — an empty scene when nothing was selected); light and emissive materials now pass through **many layers of glass** (several panes / stacked glass no longer turn black); an object set to **Hide in Render** right behind glass stays hidden through the glass (a hidden front mirror behind a glass pane turned the whole view black)
+- Material: **Multi material** — sample ball right-click ▸ Make Multi material (use the current one as #1? how many?) → a numbered list; Modify Poly polygons / elements get a **Material ID** (Set ID · Select ID) and that number's material goes on them — viewport, GI render, GLB · FBX · OBJ; Shell gets an **Edge (thickness) Material ID** (a glass Multi makes #2 a darker, less glossy glass edge automatically — no extra preset button)
+- Material: sub-materials made inside a Multi (＋ add, new, the Multi's own) stay inside the Multi's list instead of filling the sample balls; deleting a Multi takes its own sub-materials with it
+- Right-click menus open above every window (the sample ball menu was behind the Material Editor)
+- Material: **My Materials** — sample ball right-click ▸ Add to My Materials (named, with textures, kept on this computer); the My Materials button beside Reset All shows them as sample balls, double-click adds one to the scene
+- Material: **IOR up to 20** — raise it above real glass (1.5) for a stronger surface reflection; the emission section is now **Light** (preset Light = Strength 1)
+- Material: **AO** moved to a button beside the Diffuse colour / gradient — a small popover with use · Radius · Strength (the separate AO section is gone)
+- Material: **Mirror** metal type and a 거울 / Mirror preset — a sharp silver-backed mirror (Roughness 0)
 - View capture video: **Match timeline** (default) records exactly the timeline's start–end frames at its fps (key animation plays along) — the clip is frames ÷ fps long, no more drift; turn it off to set frames · fps (12–60) yourself; the node gets a player (▶ / ❚❚, frame slider, time, ⟲ loop)
 - Help (F1 guide + docs): updated for v1.3 — new pictures and steps for AutoGrid, Auto Dim · Drawing, AI Render nodes and the video node / ◉ Capture
 - Version 1.3
@@ -26,6 +34,14 @@
 - **표면에 맞춰 만들기(AutoGrid)** — 마우스가 물체 표면 위에 있으면 3D 물체 · 2D 도형 · Line을 그 면의 노멀 방향으로, 물체 축에 맞춘 2×2 그리드 아이콘이 면 그리드를 보여 주고 Snap(그리드)은 그 칸에 맞춰요, 빈 곳은 기존처럼 뷰 그리드에 (Create 패널 ▸ On Surface)
 - AI Render 노드: 결과 노드가 만든 생성 노드와 선으로 이어져요, 빈 곳 우클릭 = ＋ 노드 메뉴(검색 칸 없음)
 - AI Render 노드: 노드 더블클릭 = 그 노드와 아래로 연결된 노드 모두 선택, 빈 곳 왼쪽 드래그 = 선택 상자, 휠 드래그 = 화면 이동
+- GI Render: 뷰포트가 **Wireframe**이어도 모든 물체를 렌더(전에는 선택한 물체만 — 선택이 없으면 빈 화면), 조명 · 발광 재질 빛이 **유리 여러 겹**을 끝까지 통과(창유리 여러 장 · 겹친 유리 안쪽이 검게 나오던 문제), 유리 바로 뒤의 **Render에 숨기기** 물체가 유리 너머에서도 숨겨짐(유리 뒤 숨긴 거울에 막혀 화면 전체가 검게 나오던 문제)
+- 재질: **Multi 재질** — 샘플구 우클릭 ▸ Multi 재질로 만들기(현재 재질을 1번으로? 몇 개?) → 번호 순서 목록, Modify Poly의 Polygon · Element에 **재질 ID**(ID 설정 · ID로 선택)를 주면 그 번호의 재질이 들어감 — 뷰포트 · GI 렌더 · GLB · FBX · OBJ, Shell에 **측면(두께) 재질 ID** (유리 Multi는 2번을 조금 어둡고 덜 매끈한 유리 측면으로 자동 — Preset 버튼은 없음)
+- 재질: Multi 안에서 추가한 재질(＋ 재질 추가 · 새 재질 · Multi가 만든 재질)은 위 샘플구 목록에 따로 생기지 않고 Multi 목록에만, Multi를 지우면 그 재질들도 함께 지움
+- 우클릭 메뉴가 항상 창 위에 (샘플구 우클릭 메뉴가 재질 편집기 뒤에 가려지던 문제)
+- 재질: **나의 재질** — 샘플구 우클릭 ▸ 내 재질에 추가(이름 · 텍스처 포함, 이 컴퓨터에 저장), 전체 Reset 옆 나의 재질 버튼에서 샘플구로 보고 더블클릭으로 장면에 추가
+- 재질: **IOR 20까지** — 실제 유리(1.5)보다 높여 면 반사를 더 강하게, 발광은 **조명**으로 이름 변경(조명 Preset = Strength 1)
+- 재질: **AO**를 Diffuse 색 · 그라데이션 옆 버튼으로 — 작은 창에서 사용 · Radius · Strength 조절 (따로 있던 AO 섹션은 없앰)
+- 재질: 금속 종류에 **Mirror(거울)** 추가 + 거울 Preset — 은 코팅 거울처럼 선명한 반사(Roughness 0)
 - 뷰 캡처 영상: **타임라인과 같게**(기본) — 타임라인 시작~끝 프레임 수와 fps 그대로 정확히 캡처(키 애니메이션도 함께 재생), 영상 길이 = 프레임 ÷ fps로 어긋나지 않음, 끄면 프레임 · fps(12–60) 직접 지정, 노드에 플레이어(▶ / ❚❚ · 프레임 슬라이더 · 시간 · ⟲ 반복)
 - 도움말(기능 가이드 + 문서) v1.3 최신화 — AutoGrid, Auto Dim · 도면, AI Render 노드, 영상 노드 · ◉ 캡처의 새 그림과 설명
 - 버전 1.3
