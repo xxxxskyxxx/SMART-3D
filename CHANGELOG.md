@@ -1,5 +1,41 @@
 # Changelog
 
+## v1.3 — 2026-10
+
+### English
+- **AI Render 1.3 — node graph** (F10): sources (view capture · GI render image · load image · image to edit · view capture video · reference video), references (material · mood · object · person, each with “which part” and “where”), prompt and image / video generator nodes on a pannable, zoomable canvas; nodes move, resize, select and delete; drag between ports to connect (many references on one input), drop on empty space for a search menu; every run adds a result node (v1, v2…); right panel: AI connection, results gallery with A / B compare, save folder; ✎ edit marks on any image; short prompts get the photographic AI Render direction automatically; the classic panel stays available
+- Timeline **◉ Capture**: records the current view at the set ratio · frame count while you orbit / zoom — a video source for the video generator
+- **Build on surfaces (AutoGrid)** — creating a 3D object, 2D shape or Line with the mouse over an object's surface aligns it to that face's normal; a 2×2 grid icon aligned to the object's axes shows the face grid and grid Snap snaps to its cells; empty space uses the view grid as before (Create panel ▸ On Surface)
+- AI Render nodes: each result node stays linked to the generator that made it; right-click empty canvas = ＋ node menu (no search box)
+- AI Render nodes: double-click a node = it and everything linked below it selected; left drag on empty canvas = box select; wheel (middle) drag = pan
+- Help (F1 guide + docs): updated for v1.3 — new pictures and steps for AutoGrid, Auto Dim · Drawing, AI Render nodes and the video node / ◉ Capture
+- Version 1.3
+- **Auto Dim** (Views ▸ Auto Dim) — CAD-style dimensions on 3D objects: ⚡ automatic overall sizes, steps, slope lengths, hole positions, n-Ø hole callouts and centre lines (holes found exactly, also in boolean results); add your own (2-point X / Y / Z / aligned, edge, Ø, angle); click + Delete to remove, double-click to change a value, drag to move; cm / mm with truncated decimals; save the view as PNG / PDF (black · white · as on screen, hidden lines removed)
+- Auto Dim rules: overall sizes + big form changes only, baseline dimensions stacked outward from one datum face and kept off the part, repeated forms once + pitch (3×20), R on curved surfaces (smoothing groups) per size (4-R8); 2-point dimensions join the existing dimension line height on that side; Auto Dim in the viewport right-click menu
+- Auto Dim placement: each dimension goes to the outside next to the edge / face it measures instead of all below; overlapping ones on a side step outward; hole positions on the hole's own face
+- Drawing: a selected dimension gets end handles — drag along the dimension axis with snap (end point · midpoint · centre · quadrant), dimension lines snap into line with each other; three views → an automatic isometric view in the free corner with the key outer sizes
+- **Drawing sheet** (📐 Drawing) — drag a box for the front view, drag out of it for aligned projected views (up to 3, KS 3rd angle default · 1st angle option); hidden lines dashed, centre lines chain; right-click → "Create dimensions?" → 2D dimensions per the Auto Dim rules (each size once, holes located where they are circles, n-Ø · n-R); edit / move / delete dimensions; save as PNG · PDF (colour · black & white)
+- Auto Dim: dimensions start on the visible faces (no more extension lines from the back face); faceted cylinders / holes without smoothing are recognised as circles — Ø plus centre distances from the outer edges, no facet-corner dimensions
+- Boolean cleanup: flat faces cut by a boolean no longer show split lines or stray points — bridge edges around holes are hidden (still shown faintly in sub-object edit), leftover in-line vertices are removed and coplanar pieces merge more reliably
+- Auto Dim: dimensions you add (2-point X / Y / Z, aligned, edge) sit at the **same height** as the object's existing dimensions and on the side they already use; a new one on top of an existing one moves out one tier
+
+### 한국어
+- **AI Render 1.3 — 노드 그래프**(F10): 소스(뷰 캡처 · GI 렌더 이미지 · 이미지 불러오기 · 수정할 이미지 · 뷰 캡처 영상 · 참고 영상), 참고(재질 · 분위기 · 오브젝트 · 인물 — 참고할 부분 · 적용할 곳), 프롬프트, 이미지 / 영상 생성 노드를 이동 · 확대되는 캔버스에서 연결. 노드 이동 · 크기 조절 · 선택 · 삭제, 포트끼리 끌어 연결(한 입력에 참고 여러 개), 빈 곳에 놓으면 검색 메뉴, 생성할 때마다 결과 노드(v1, v2…). 오른쪽: AI 연결 · 생성 결과 갤러리 A / B 비교 · 저장 폴더. 모든 이미지에 ✎ 수정 표시, 짧은 프롬프트도 AI Render 사진 연출로 자동 보강, 클래식 패널 유지
+- 타임라인 **◉ 캡처**: 정해진 비율 · 프레임으로 지금 뷰를 녹화 — 녹화 중에 뷰를 돌리고 확대 · 축소한 움직임이 영상 생성의 소스
+- **표면에 맞춰 만들기(AutoGrid)** — 마우스가 물체 표면 위에 있으면 3D 물체 · 2D 도형 · Line을 그 면의 노멀 방향으로, 물체 축에 맞춘 2×2 그리드 아이콘이 면 그리드를 보여 주고 Snap(그리드)은 그 칸에 맞춰요, 빈 곳은 기존처럼 뷰 그리드에 (Create 패널 ▸ On Surface)
+- AI Render 노드: 결과 노드가 만든 생성 노드와 선으로 이어져요, 빈 곳 우클릭 = ＋ 노드 메뉴(검색 칸 없음)
+- AI Render 노드: 노드 더블클릭 = 그 노드와 아래로 연결된 노드 모두 선택, 빈 곳 왼쪽 드래그 = 선택 상자, 휠 드래그 = 화면 이동
+- 도움말(기능 가이드 + 문서) v1.3 최신화 — AutoGrid, Auto Dim · 도면, AI Render 노드, 영상 노드 · ◉ 캡처의 새 그림과 설명
+- 버전 1.3
+- **Auto Dim**(Views ▸ Auto Dim) — 3D 물체에 CAD식 치수: ⚡ 자동으로 전체 크기 · 단차 · 경사 길이 · 구멍 위치 · n-Ø 구멍 표기 · 중심선(불리언 결과도 구멍을 정확히 인식), 직접 추가(2점 X / Y / Z / 정렬 · Edge · Ø · 각도), 클릭 + Delete로 삭제 · 더블클릭으로 값 수정 · 드래그로 이동, cm / mm 단위와 소수 버림, PNG / PDF 저장(검은 배경 · 흰 배경 · 화면 그대로, 숨은선 제거)
+- Auto Dim 규칙: 전체 크기 + 크게 바뀌는 형태만, 한 기준면에서 바깥쪽으로 단계별 누적 치수(물체 위를 지나지 않게), 반복 형태는 하나 + 피치(3×20), 곡면(스무딩 그룹)은 크기별 R(4-R8), 2점 치수는 그쪽 기존 치수선 높이에 맞춤, 뷰포트 우클릭 메뉴에 Auto Dim
+- Auto Dim 배치: 모든 치수를 아래로 몰지 않고 재는 모서리 · 면에 가까운 바깥쪽에, 같은 쪽에서 겹칠 때만 한 단 바깥으로, 구멍 위치는 구멍이 있는 면 위에서
+- 도면: 선택한 치수의 끝 핸들을 치수 방향으로 끌어 스냅(끝점 · 중점 · 중심 · 사분점), 치수선끼리 정렬 스냅, 투상도 3개가 되면 빈 곳에 등각 투상도 자동 생성 + 꼭 필요한 외형 치수
+- **도면 시트**(📐 도면) — 드래그로 정면도, 정면도에서 끌어내면 정렬된 투상도(최대 3개, KS 3각법 기본 · 1각법 선택), 숨은선 파선 · 중심선 1점 쇄선, 우클릭 → "치수를 생성할까요?" → Auto Dim 규칙의 2D 치수(각 치수 한 번, 구멍은 원으로 보이는 뷰에서 위치, n-Ø · n-R), 치수 수정 · 이동 · 삭제, PNG · PDF 저장(컬러 · 흑백)
+- Auto Dim: 치수는 보이는 면에서 시작(뒤쪽 면 기준 보조선 없음), 스무딩 없는 각진 원기둥 · 구멍도 원으로 인식 — 꺾인 점 치수 대신 Ø + 바깥 모서리에서 원 중심까지의 거리
+- Boolean 정리: 불리언으로 잘린 평면에 분할선 · 불필요한 점이 보이지 않아요 — 구멍 둘레의 연결 엣지는 숨김 처리(하위 객체 편집 중에는 흐리게 표시), 일직선 위의 남는 점 제거, 같은 평면 조각 병합 강화
+- Auto Dim: 직접 추가한 치수(2점 X / Y / Z · 정렬 · Edge)도 기존 치수와 **같은 높이**, 같은 쪽에 놓여요 — 기존 치수와 겹치면 한 단 바깥으로
+
 ## v1.2 — 2026-10
 
 ### English
