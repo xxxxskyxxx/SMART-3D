@@ -8,6 +8,7 @@
 - **Build on surfaces (AutoGrid)** — creating a 3D object, 2D shape or Line with the mouse over an object's surface aligns it to that face's normal; a 2×2 grid icon aligned to the object's axes shows the face grid and grid Snap snaps to its cells; empty space uses the view grid as before (Create panel ▸ On Surface)
 - AI Render nodes: each result node stays linked to the generator that made it; right-click empty canvas = ＋ node menu (no search box)
 - AI Render nodes: double-click a node = it and everything linked below it selected; left drag on empty canvas = box select; wheel (middle) drag = pan
+- View capture video: **Match timeline** (default) records exactly the timeline's start–end frames at its fps (key animation plays along) — the clip is frames ÷ fps long, no more drift; turn it off to set frames · fps (12–60) yourself; the node gets a player (▶ / ❚❚, frame slider, time, ⟲ loop)
 - Help (F1 guide + docs): updated for v1.3 — new pictures and steps for AutoGrid, Auto Dim · Drawing, AI Render nodes and the video node / ◉ Capture
 - Version 1.3
 - **Auto Dim** (Views ▸ Auto Dim) — CAD-style dimensions on 3D objects: ⚡ automatic overall sizes, steps, slope lengths, hole positions, n-Ø hole callouts and centre lines (holes found exactly, also in boolean results); add your own (2-point X / Y / Z / aligned, edge, Ø, angle); click + Delete to remove, double-click to change a value, drag to move; cm / mm with truncated decimals; save the view as PNG / PDF (black · white · as on screen, hidden lines removed)
@@ -25,6 +26,7 @@
 - **표면에 맞춰 만들기(AutoGrid)** — 마우스가 물체 표면 위에 있으면 3D 물체 · 2D 도형 · Line을 그 면의 노멀 방향으로, 물체 축에 맞춘 2×2 그리드 아이콘이 면 그리드를 보여 주고 Snap(그리드)은 그 칸에 맞춰요, 빈 곳은 기존처럼 뷰 그리드에 (Create 패널 ▸ On Surface)
 - AI Render 노드: 결과 노드가 만든 생성 노드와 선으로 이어져요, 빈 곳 우클릭 = ＋ 노드 메뉴(검색 칸 없음)
 - AI Render 노드: 노드 더블클릭 = 그 노드와 아래로 연결된 노드 모두 선택, 빈 곳 왼쪽 드래그 = 선택 상자, 휠 드래그 = 화면 이동
+- 뷰 캡처 영상: **타임라인과 같게**(기본) — 타임라인 시작~끝 프레임 수와 fps 그대로 정확히 캡처(키 애니메이션도 함께 재생), 영상 길이 = 프레임 ÷ fps로 어긋나지 않음, 끄면 프레임 · fps(12–60) 직접 지정, 노드에 플레이어(▶ / ❚❚ · 프레임 슬라이더 · 시간 · ⟲ 반복)
 - 도움말(기능 가이드 + 문서) v1.3 최신화 — AutoGrid, Auto Dim · 도면, AI Render 노드, 영상 노드 · ◉ 캡처의 새 그림과 설명
 - 버전 1.3
 - **Auto Dim**(Views ▸ Auto Dim) — 3D 물체에 CAD식 치수: ⚡ 자동으로 전체 크기 · 단차 · 경사 길이 · 구멍 위치 · n-Ø 구멍 표기 · 중심선(불리언 결과도 구멍을 정확히 인식), 직접 추가(2점 X / Y / Z / 정렬 · Edge · Ø · 각도), 클릭 + Delete로 삭제 · 더블클릭으로 값 수정 · 드래그로 이동, cm / mm 단위와 소수 버림, PNG / PDF 저장(검은 배경 · 흰 배경 · 화면 그대로, 숨은선 제거)
