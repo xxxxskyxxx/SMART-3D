@@ -3,6 +3,16 @@
 ## v1.3 — 2026-10
 
 ### English
+- AI Render ▸ View capture node: 💾 saves the captured video (.webm/.mp4) to a chosen folder through the file dialog, with its own “Videos” bookmarks / ★ start folder.
+- Higgsfield (login) generation: real job ids are preferred; if Higgsfield answers with a preset suggestion instead of starting a job it is declined and the request resubmitted; ids that come back as "lookup_failed" are dropped, and if no job was created the server's own answer is shown (an older video is never picked up).
+- AI render auto-save (desktop app): the save folder is kept as a path and files are written directly — no save dialog; with no folder set they go to Downloads silently. Browser: folder permission is asked on the Generate click.
+- AI Render: after an image is generated, "Video template" keeps the graph and adds a Video node next to the result — the generated image is wired as the first frame and the video ratio follows that image (selected result, or the newest one).
+- AI Render window: resize from the left, right and bottom edges and both bottom corners (visible grip); size and position are remembered.
+- Object Align: while picking, dashed lines run from the selected objects' pivots to the cursor; over a valid target a + marker, the target name and its outline appear.
+- Hierarchy ▸ Adjust Pivot: Center Bottom (pivot to the object's XY center and lowest Z), hotkey Ctrl+Alt+Shift+Z (editable in Hotkey settings).
+- Object Align… (Quad menu / Tools menu / hotkey list): pick a target, then per axis X/Y/Z align the current object's − side / Center / + side to the target's − side / Center / + side, World or Local axes, live preview, Apply / OK / Cancel.
+- Command panel: no horizontal scrollbar — rows shrink to fit the panel width.
+- Spline Clone: Gap accepts negative values (path and area); Corner rollout moved right below Objects.
 - New in-app file dialog for Import, Export/Save and Material Editor textures: bookmark folders (☆/★), remove bookmarks, ★ = the folder the dialog always opens first (separate bookmarks for models and textures), thumbnail view for textures, OBJ import automatically brings its .mtl and textures, "System dialog…" fallback.
 - Modify Spline ▸ Segment: Shift+Ctrl+Drag copies the segments and connects every vertex to its copy with straight lines.
 - Modify Spline ▸ Segment: Shift+Drag copies the selected segments and connects the copy to the original points with lines.
@@ -43,6 +53,16 @@
 - Auto Dim: dimensions you add (2-point X / Y / Z, aligned, edge) sit at the **same height** as the object's existing dimensions and on the side they already use; a new one on top of an existing one moves out one tier
 
 ### 한국어
+- AI Render ▸ 뷰 캡쳐 노드: 💾 버튼으로 캡쳐 영상(.webm/.mp4)을 원하는 폴더에 저장 — 파일 선택 창에 ‘영상’ 전용 북마크 / ★ 시작 폴더.
+- Higgsfield(로그인) 생성: 실제 작업 ID를 우선 사용, 작업 대신 추천 프리셋을 돌려주면 거절하고 다시 요청, ‘lookup_failed’ ID는 빼고, 작업이 만들어지지 않았으면 서버 응답을 그대로 표시 (예전 영상을 가져오지 않음).
+- AI 렌더 자동 저장(데스크톱 앱): 저장 폴더를 경로로 기억해 저장 창 없이 바로 저장, 폴더가 없으면 다운로드 폴더에 조용히 저장. 브라우저는 ‘생성’을 누를 때 폴더 권한을 미리 확인.
+- AI Render: 이미지 생성 후 ‘영상 템플릿’을 누르면 기존 그래프는 그대로 두고 결과 옆에 영상 생성 노드를 추가 — 생성된 이미지가 첫 프레임으로 자동 연결되고 영상 비율도 그 이미지와 같게 (선택한 결과, 없으면 가장 최근 결과).
+- AI Render 창: 왼쪽 · 오른쪽 · 아래 가장자리와 아래 양쪽 모서리로 크기 조절 (보이는 손잡이), 크기 · 위치 기억.
+- Object Align: 대상 고르는 동안 선택 물체의 축에서 커서까지 점선이 나오고, 대상 물체 위에서는 + 표시 · 물체 이름 · 외곽 박스가 보임.
+- Hierarchy ▸ Adjust Pivot: Center Bottom (축을 물체 가운데 XY · 가장 아랫면 Z로), 단축키 Ctrl+Alt+Shift+Z (단축키 설정에서 변경 가능).
+- Object Align… (Quad 메뉴 · Tools 메뉴 · 단축키 목록): 대상 물체를 클릭하고 X/Y/Z 축마다 현재 물체의 −면/Center/+면을 대상의 −면/Center/+면에 맞춤, World/Local 축, 실시간 미리보기, 적용/확인/취소.
+- 명령 패널: 좌우 스크롤바 없이 패널 폭에 맞게 정리.
+- Spline Clone: Gap에 − 값 사용 가능 (경로·영역), Corner 롤아웃을 Objects 바로 아래로 이동.
 - 새 파일 선택 창 (Import · Export/저장 · 재질 편집기 텍스처): 폴더 북마크 추가/지우기, ★ = 창을 열면 항상 먼저 보이는 폴더 (모델·텍스처 북마크 따로), 텍스처 썸네일 보기, OBJ를 고르면 .mtl·텍스처 자동 포함, ‘시스템 창…’으로 기존 창도 사용 가능.
 - Modify Spline ▸ Segment: Shift+Ctrl+드래그하면 세그먼트를 복사하면서 모든 점을 복사된 점과 직선으로 연결.
 - Modify Spline ▸ Segment: Shift+드래그하면 선택한 세그먼트가 복사되고 원래 점과 선으로 연결.
