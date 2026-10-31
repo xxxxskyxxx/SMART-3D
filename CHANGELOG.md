@@ -3,6 +3,25 @@
 ## v1.3 — 2026-10
 
 ### English
+- Cloth: sewn cloths share one triangle size — changing Triangle size / Fine / Normal / Keep original mesh on one applies to every cloth sewn to it, so both sides of a seam get the same triangles
+- **Modify Poly shape keys** (Modify Poly ▸ Animation): ◆ Shape key stores the mesh at the current frame; between keys vertices move and new faces (Extrude, Bevel …) grow out of the original surface (deleted parts shrink into it); Linear / Smooth / Ease / Step follow the timeline interpolation; REC keys shape edits automatically; delete / clear shape keys
+- Modify Poly ▸ Element: Shift+Drag (move) now only copies the selected elements — the copy is selected and moves, no connecting faces
+- Cloth: Shift+Space starts / stops the simulation while a Cloth panel is open or simulating (editable in Hotkey Editor; otherwise Shift+Space is still Selection Lock); the whole-object “freeze” checkbox is gone (use element Freeze) — it only shows on old files that had it on
+- Fix: Cloth / Quad Remesh no longer fall back to the old shape after rotating an element in Modify Poly below them (the shape check now sees every vertex)
+- Cloth **self collision rebuilt**: every cloth point is checked against nearby cloth triangles (not just other points), keeping the side it came from, so folds and stacked cloths stay one **Thickness** apart instead of passing front-through-back; on by default for new Cloth; about the same speed as before
+- Cloth: the Vertex · Edge · Border · Polygon · Element picking (icons, Loop, by angle) moved into the Freeze section — **Freeze selected / Unfreeze** act on that selection (or on the Modify Poly selection when nothing is picked); notes removed
+- Cloth ▸ **Pin by selection**: pick Vertex · Edge · Border · Polygon · Element on the mesh as it was before Cloth (shown as a guide) — click / Ctrl+click add / Alt+click remove / drag box, double-click an edge = loop, Loop button (edges, two neighbouring vertices or polygons), Border takes the whole rim, Polygon by angle; then Pin selection / Unpin selection (shows how many cloth points will be pinned)
+- **Quad Remesh — field-aligned flow**: Quads mode now builds a 4-way direction field (aligned to sharp edges and the surface) and a matching lattice, so quads run in clean rows along the form like AutoRemesher — box 99% regular vertices · ~1° angle error, sphere / cylinder ~95% (before 86–94% · 15–18°); edge rows snap onto sharp edges, folded faces across edges are cut; models with very thin parts automatically use the basic method; the panel shows the method and the share of regular vertices
+- Create panel: **AutoGrid** (Build on surfaces) checkbox moved to the top of Objects, above Box; the separate On Surface rollout and its note removed
+- **Quad Remesh** modifier (Modify ▸ Quad Remesh): rebuilds the mesh with even, mostly square faces while keeping the shape — modes Quad / Quad-dominant / Triangle, target face count (quick 500 · 1.5k · 5k · 15k), sharp-edge angle (feature edges and corners kept), iterations and smoothing; shows the result face count (quads · tris · vertices), the original count and time
+- Cloth sewing keeps going: after each seam the next border A can be picked right away until right-click / Esc (no quad menu pops up).
+- Cloth seams close tightly (stiffer iterated seam solve, also after collisions).
+- Cloth triangle size down to 0.5 cm; the Fine / Normal buttons use editable values, plus “Keep the original mesh”; particle limit raised to 24,000 per object.
+- Cloth pins can be selected and dragged (the cloth follows; the simulation starts if needed); Delete removes the selected pin.
+- Cloth: flat parts lying on the floor no longer lose their faces / edge lines after the simulation stops (all cloth triangles stay visible).
+- Cloth: while simulating, objects can be selected again (clicks only grab the cloth when its Cloth panel is open; picking uses the moving shape), a floating bar above the viewport shows the simulation with “Select cloth” and ■ Stop, and timeline playback stops the simulation (shape kept).
+- Cloth: freeze part of the cloth — Ctrl+Shift+click freezes / unfreezes the clicked cloth piece (any sewn cloth object), or freeze / unfreeze the faces · elements · vertices selected in Modify Poly; frozen parts get no gravity or simulation, stay put and the sewn cloth keeps moving (light-blue dots).
+- New Cloth modifier (Add Modifier ▸ Cloth): any scene object (Plane, closed Line, mesh) becomes a cloth pattern; real-time simulation in the viewport with every cloth object together. Fabric presets (cotton, linen, silk, denim, wool, knit, leather, rubber), stretch / bend / weight / damping / friction / thickness, triangle size (re-mesh), gravity, wind + gusts, balloon pressure, floor and scene-object collision, optional cloth-cloth collision, accuracy. Sewing in the Modify panel (click border A → border B, across objects or inside one, Flip / delete), pins with Ctrl+click / Ctrl+Alt+click, pin radius, pin selected Modify Poly vertices, freeze, drag to grab the cloth while simulating, ■ Stop keeps the shape (Undo / To Modify Poly bakes it).
 - AI Render ▸ View capture node: 💾 saves the captured video (.webm/.mp4) to a chosen folder through the file dialog, with its own “Videos” bookmarks / ★ start folder.
 - Higgsfield (login) generation: real job ids are preferred; if Higgsfield answers with a preset suggestion instead of starting a job it is declined and the request resubmitted; ids that come back as "lookup_failed" are dropped, and if no job was created the server's own answer is shown (an older video is never picked up).
 - AI render auto-save (desktop app): the save folder is kept as a path and files are written directly — no save dialog; with no folder set they go to Downloads silently. Browser: folder permission is asked on the Generate click.
@@ -53,6 +72,25 @@
 - Auto Dim: dimensions you add (2-point X / Y / Z, aligned, edge) sit at the **same height** as the object's existing dimensions and on the side they already use; a new one on top of an existing one moves out one tier
 
 ### 한국어
+- Cloth: 재봉된 천은 삼각형 크기를 함께 써요 — 한쪽에서 삼각형 크기 · 정밀 / 보통 · 원래 메시 그대로를 바꾸면 재봉된 모든 천에 같이 적용돼 이음매 양쪽 삼각형이 같아짐
+- **Modify Poly 형태 키** (Modify Poly ▸ 애니메이션): ◆ 형태 키로 지금 프레임의 모양을 저장 — 키 사이에서 점이 움직이고 Extrude · Bevel 같은 새 면은 원래 표면에서 자라나요 (지운 부분은 표면으로 줄어듦); 보간은 타임라인 설정(Linear / Smooth / Ease / Step), REC를 켜면 편집할 때 자동 키, 키 삭제 / 모두 지우기
+- Modify Poly ▸ Element: Shift+드래그(이동) = 선택한 요소를 복사만 — 복사본이 선택되어 움직이고 연결 면은 생기지 않음
+- Cloth: Cloth 패널이 열려 있거나 시뮬레이션 중일 때 Shift+Space = 시뮬레이션 시작 / 멈춤 (Hotkey Editor에서 변경 가능, 그 외엔 기존처럼 Selection Lock); 물체 전체 '형태 그대로 얼리기' 체크 제거 (요소 Freeze 사용) — 예전 파일에서 켜져 있을 때만 보임
+- 수정: Modify Poly에서 요소를 회전한 뒤 Cloth · Quad Remesh가 예전 모양으로 돌아가던 문제 (모든 점을 보고 변경을 확인)
+- Cloth **자기 충돌 새로 구현**: 천의 점끼리만이 아니라 점과 주변 천 삼각형을 검사하고 원래 있던 쪽을 유지해서, 주름·겹친 천이 앞뒤로 통과하지 않고 **두께**만큼 떨어져요; 새 Cloth는 기본으로 켜짐, 속도는 이전과 비슷
+- Cloth: 점 · 엣지 · 경계 · 폴리곤 · 요소 선택(아이콘, Loop, 각도 선택)을 Freeze 영역으로 이동 — **선택 Freeze / 선택 Freeze 해제**가 그 선택에 적용(선택이 없으면 Modify Poly 선택), 설명 문구 삭제
+- Cloth ▸ **선택해서 고정**: Cloth 적용 전 메시를 가이드로 보여주고 점 · 엣지 · 경계 · 폴리곤 · 요소를 선택 — 클릭 / Ctrl+클릭 추가 / Alt+클릭 빼기 / 드래그 영역, 엣지 더블클릭 = Loop, Loop 버튼 (엣지 · 이웃한 점 2개 · 이웃한 폴리곤 2개), 경계는 테두리 전체, 폴리곤은 각도로 선택; 선택 부분 고정 / 핀 해제 (고정될 천 점 개수 표시)
+- **Quad Remesh — 흐름 정렬**: 사각형 모드가 날카로운 모서리·표면을 따르는 4방향 흐름장과 격자를 만들어, AutoRemesher처럼 면이 형태를 따라 가지런히 줄지어요 — 박스 규칙 점 99% · 각도 오차 약 1°, 구·원기둥 약 95% (이전 86–94% · 15–18°); 모서리 줄은 날카로운 모서리에 붙고, 모서리를 가로질러 접힌 면은 잘라 정리; 아주 얇은 부분이 있는 모델은 자동으로 기본 방식 사용; 패널에 방식과 규칙 점 비율 표시
+- Create 패널: **AutoGrid**(표면에 맞춰 만들기) 체크를 Objects의 Box 위로 이동, 별도 On Surface 항목과 설명 삭제
+- **Quad Remesh** 모디파이어 (Modify ▸ Quad Remesh): 형태를 유지하면서 고르고 대부분 사각형인 면으로 메쉬를 다시 만듦 — 사각형 / 사각 위주 / 삼각형 모드, 목표 면 개수 (빠른 선택 500 · 1.5k · 5k · 15k), 날카로운 모서리 각도 (경계·모서리·꼭짓점 유지), 반복·스무딩; 결과 면 개수 (사각 · 삼각 · 점)와 원래 면 개수·계산 시간 표시
+- Cloth 재봉 연속 모드: 재봉 하나를 만들면 바로 다음 경계 A를 고를 수 있고 우클릭 · Esc로 끝 (Quad 메뉴 안 뜸).
+- Cloth 재봉 경계가 벌어지지 않고 딱 붙도록 (재봉 계산 강화, 충돌 뒤에도 한 번 더).
+- Cloth 삼각형 크기 최소 0.5cm, 정밀 · 보통 버튼 값을 수치로 조절, ‘원래 메시 그대로’ 옵션, 물체당 입자 한도 24,000개.
+- Cloth 고정핀을 선택해서 드래그로 이동 (천이 따라옴, 필요하면 시뮬레이션 자동 시작), 선택한 핀 Delete로 지우기.
+- Cloth: 시뮬레이션을 멈춘 뒤 바닥에 평평하게 닿은 부분의 면 · 선이 사라지던 문제 수정 (천의 모든 삼각형 표시).
+- Cloth: 시뮬레이션 중에도 물체 선택 가능 (천 드래그는 Cloth 패널이 열려 있을 때만, 움직이는 천도 클릭으로 선택), 뷰 위에 시뮬레이션 표시줄(‘Cloth 선택’ · ■ 정지), 타임라인 재생하면 시뮬레이션 정지 (형태 저장).
+- Cloth: 천 일부 고정(Freeze) — Ctrl+Shift+클릭으로 클릭한 천 조각 고정/해제(재봉된 다른 물체 천도 가능), Modify Poly에서 고른 면 · 요소 · 점 고정/해제, 고정된 부분은 중력 · 시뮬레이션에서 빠지고 그대로 있으며 재봉된 나머지 천만 움직임(하늘색 점).
+- 새 Cloth 모디파이어 (Add Modifier ▸ Cloth): 장면의 물체(Plane · 닫힌 Line · 메시)를 그대로 천 패턴으로 사용, 뷰포트에서 모든 천을 함께 실시간 시뮬레이션. 원단 프리셋(면 · 리넨 · 실크 · 데님 · 울 · 니트 · 가죽 · 고무), 늘어남 · 휘어짐 저항 · 무게 · 감쇠 · 마찰 · 두께, 삼각형 크기(재분할), 중력 · 바람 · 흔들림 · 풍선 압력, 바닥 · 장면 물체 충돌, 천끼리 충돌, 계산 정밀도. Modify 패널에서 재봉(경계 A → B 클릭, 다른 물체끼리 · 같은 물체 안, Flip · 삭제), Ctrl+클릭 고정핀 / Ctrl+Alt+클릭 지우기, 핀 반경, Modify Poly 선택 정점 고정, 얼리기, 시뮬레이션 중 드래그로 천 잡기, ■ 정지하면 형태 저장 (Undo · To Modify Poly로 굳히기).
 - AI Render ▸ 뷰 캡쳐 노드: 💾 버튼으로 캡쳐 영상(.webm/.mp4)을 원하는 폴더에 저장 — 파일 선택 창에 ‘영상’ 전용 북마크 / ★ 시작 폴더.
 - Higgsfield(로그인) 생성: 실제 작업 ID를 우선 사용, 작업 대신 추천 프리셋을 돌려주면 거절하고 다시 요청, ‘lookup_failed’ ID는 빼고, 작업이 만들어지지 않았으면 서버 응답을 그대로 표시 (예전 영상을 가져오지 않음).
 - AI 렌더 자동 저장(데스크톱 앱): 저장 폴더를 경로로 기억해 저장 창 없이 바로 저장, 폴더가 없으면 다운로드 폴더에 조용히 저장. 브라우저는 ‘생성’을 누를 때 폴더 권한을 미리 확인.
