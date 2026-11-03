@@ -1,8 +1,107 @@
 # Changelog
 
+## v1.4 — 2026-11
+
+### English
+- Dot Select works on every selected part at once (each pair of neighbouring polygons / vertices sets its own direction).
+- View Select: the View Angle spinner updates the selection live while dragging.
+- GI: with “Environment light off” the HDRI background stays visible (it no longer goes black).
+- Material Coating: clear glossy coat layer with overall amount %, coat colour and gloss roughness (viewport + GI).
+- Metal presets (Gold, Silver, Copper …) now put their base colour into Diffuse; change the Diffuse colour to tint the metal.
+- Modify Poly › Polygon: View Select — selects polygons facing the current view within the given angle (Ctrl = add, Alt = remove).
+- Smoothing Groups: double-click a group number to select its faces (Ctrl = add).
+- Right-click a Geometry create button for continuous create (∞): the command stays active and does not switch to Modify. Left-click or right-click again to leave it.
+- Closing the Node Material Editor now closes the material editor completely (no fallback to the classic editor).
+- Creating a geometry object ends the create command and switches to the Modify panel automatically.
+- Distance map objects: an editable list — ＋ Add selected, − Remove selected, ✕ per object, Clear (empty = every object)
+- Node Material Editor: opening it closes the floating classic material editor (its options appear docked on the right); materials of the selected objects show a red bar before the name
+- Node Material Editor: Dirt / Distance maps can also plug into the material Diffuse input; Distance objects: Selection · Add sel. · Remove sel. · All; a texture button next to each Near / Far (Outer / Inner) colour; scene objects can be deleted (Delete) while the node editor is open
+- Node Material Editor: materials used by the selected objects get a red outline on their name bar (and a red mark in the scene material list)
+- **Dirt** and **Distance** are now map nodes in the Node Material Editor map list (connect to the material Dirt / Distance inputs; textures plug into their outer · inner / near · far inputs); Distance can use only chosen objects (checkbox list, “Use selection”, empty = all); the classic material editor keeps SSS. Node material previews fit the square exactly. Gradient: the colour picker stays open while you pick
+- **Node Material Editor** update: drag materials and maps from the left list onto the canvas, tabs for separate views (＋ adds a tab, double-click renames, right-click deletes), the right panel shows the full material options (Preset, Light, Reflection, Bump, Opacity, Color Correct, Mapping, Dirt · Distance · SSS …) and map options (Noise / Gradient / Cell settings right away), connected maps show a thumbnail on the material input, square node previews, resizable window; the left list shows Physical Material, new maps, scene maps and scene materials with preview spheres
+- **Node Material Editor** (Render ▸ Node Material Editor…, Shift+M, or the “Nodes” button in the material editor): a Slate-style node view of the same materials — material nodes with Diffuse · Roughness · Bump · Normal · Opacity · Displacement · Dirt · Distance inputs, Bitmap / Noise / Gradient / Cell Pattern map nodes; drag a map output to an input to connect (one map can feed several inputs), drag it away to disconnect, properties on the right; the classic editor stays and both stay in sync
+- **Procedural textures** (right-click any texture icon in the material editor): **Noise** (Perlin, turbulence, ridged, marble), **Gradient** (linear / radial, click the bar to add colours, drag to move, mirror, invert, whole-object Diffuse gradient) and **Cell Pattern** (Voronoi, stones, cracks, bricks, tiles, hexagons, dots, checker, stripes with edge width and softness); seamless, live while editing
+- **Dirt map**: outer (convex) and inner (concave) edges get their own colour or texture within a radius, with softness and edge angle; **Distance map**: colour or texture near other objects (default red) and elsewhere (default white), with softness — both in the viewport and the GI render
+- **SSS** material option: light soaks into the surface (amount, depth, scatter colour) in the GI render, soft glow in the viewport
+- Create panel: the Keyboard Entry rollout is removed
+- **Camera Type**: Perspective or Orthographic (parallel projection without perspective distortion) in the camera's Modify panel; the camera view, picking and GI render follow the type
+- **Camera Clipping**: Enable + Near / Far (scene units) — everything closer than Near or farther than Far is cut away in the camera view and in the GI render (e.g. look into a room through its wall); Show in viewport draws the clip planes on the camera
+- **Displacement** (Material Editor ▸ Bump · Normal): link a grey height texture and set Displacement (scene units, + or −), Mid level (grey that stays put; brighter goes out, darker goes in) and Detail (subdivision size, 0 = automatic); the surface is really subdivided and moved in the viewport and in the GI render
+- **Cloth ▸ Freeze transform**: “Transform Frozen” puts the gizmo on the frozen part — move (W), rotate (E) or scale (R) it and the cloth follows in the simulation (it starts by itself); Reset Transform puts it back. **Link to** another object: the frozen part follows that object's move, rotation and scale (each can be switched off), also while the object is animated or moved later
+- **SmartGrid**: the Create panel option “Build on surfaces” (formerly AutoGrid) is now called SmartGrid
+- **Group menu**: Group (Ctrl+G) puts the selection into a group — clicking any member selects the whole group; Open lets you pick and edit objects inside (pink bounding box), Close closes it again, Add adds selected objects to the open group (or click a group to add them to), Detach takes objects out of an open group, Explode (Ctrl+Shift+G) ungroups. Hotkeys can be set in the Hotkey Editor; the Modify panel shows the group name (rename), Open/Close and Explode. Cloning a whole group makes a new group
+- **Select Similar** (right-click, hotkey assignable): objects with the same vertex count and structure, whatever their size or rotation; in Modify Poly it selects vertices (same valence · edge length), edges / borders (same length · angle), polygons (same sides · area · perimeter) and elements (same face count · area)
+- **Dot Select** (Modify Poly ▸ Similar · Dot Select): selects every N-th along a line, skipping the Dot value — vertices and polygons follow the direction of the last two selected, edges follow the edge loop
+- **Compact panels**: the long descriptions in the command panel are hidden — hover the ⓘ next to a rollout title to read them, buttons show only a short hint (e.g. Add Objects ▸ + Add “Register scene objects”, Delete “Delete checked items”) (Settings ▸ Always show panel descriptions brings them back)
+- **Instances**: Clone (Quad menu / Shift+drag) makes instances by default — copies share the shape, parameters and modifiers and one geometry in memory, so editing one changes all; lights clone as instances too (power, colour … change together). Settings ▸ Clone mode switches between Instance and Copy. Quad menu ▸ **Make Instance** links selected objects with the same shape (Modify Poly meshes are matched even when moved / rotated / scaled into the mesh — the transform is moved onto the object), **Make Unique** splits one off again; the Modify panel shows the instance count. Files and undo steps store an instance's shape only once
+- **Display modes** Full / Low Poly / Box / Wire Box (Quad menu, Modify panel buttons, Shift+B = Wire Box): apply to a whole instance group, stay through modifier edits and are used by Scatter; rendering and export always use the full object
+- **Scatter instancing**: Scatter draws its objects as GPU instances of one source (no merged copy, no 600k face limit); GI render, export and To Modify Poly still get the full merged mesh. Turn it off with “Instanced display” in Modify
+- **Proxy**: Quad menu ▸ Save as Proxy… writes the object to a .s3dproxy file and the scene stores only a light, shape-keeping proxy mesh (instances share it). Display **Full** shows the real object (with its edges, also used by GI render) from this PC's proxy cache — on another PC use “Link original file”; **Low** shows the proxy. Load Proxy Original… turns it back into the full object, Import Proxy File… adds a proxy file to the scene
+- **Low Poly** display and proxies use quadric edge-collapse simplification, so faces and silhouettes keep their shape
+- **Layers**: new lights go to a **Lights** layer and cameras to a **Cameras** layer automatically (created when needed); objects you move to another layer stay there
+- **Big scenes**: undo keeps the newest steps within about 600 MB (it used to keep 80 full scene copies — a 100 MB scene filled the memory after a few edits), no browser autosave copy for scenes over 4 MB, a scene file is parsed once when opened, shape-key snapshots are only taken for keyed objects / REC; the desktop app may use up to 8 GB for the scene
+- **Fast navigation** in heavy scenes (over 400k triangles): while orbiting, panning or zooming the edge lines are hidden and the view draws at a lower resolution, then returns to full quality as soon as the view stops
+- **Box display** (Shift+B, Quad menu): selected objects are drawn as their bounding box (still selectable, kept in the file); Shift+B again shows the real shape
+- **Settings ▸ Scene units** (m / cm / mm): length values in the command panel (object parameters, modifiers, Cloth …) and the transform X / Y / Z boxes show and accept the chosen unit (label shows the unit); the grid follows — 1 m / 10 cm / 10 mm — and the status bar shows Grid in that unit; the choice is remembered (internally the scene stays in cm, so files and exports are unchanged)
+- AI Render: edit marks (✎) on a result / image-to-edit node connected to an image generator are applied automatically — no prompt needed; the photo preset and composition lock no longer tell the model to keep everything as it is when marks are present, and every mark (lines, arrows, text) is removed from the result
+- AI Render ▸ Image generator: **1–4 images per run** (count menu beside the ratio); each image becomes its own result node (v1, v2 …)
+- AI Render node graph label 1.4; the version is shown next to the app name (menu bar and window title)
+- **Clay Modeling** (toolbar ▸ Clay): brush bar on the left (Clay, Inflate, Smooth, Move, Flatten, Crease, Pinch, Mask, Detail — keys 1–9), settings in Modify (add/subtract, size, strength, falloff, XYZ symmetry, front only, pen pressure, mask invert/clear, subdivide / smooth subdivide); any object is converted to Modify Poly; live viewport update while sculpting; Shift = Smooth, Ctrl = Mask, Alt = invert, [ ] size, X symmetry, Esc
+- **Quad Remesh ▸ AutoRemesher 1.2.0** (desktop app): Clay Modeling ▸ Quad Remesh and the Quad Remesh modifier run the AutoRemesher engine on this PC (target faces, curvature adaptivity, sharp edge angle, direction adaptivity); built-in field remesher as the other engine and in the browser
+- Version 1.4
+
+### 한국어
+- Dot Select: 여러 곳이 선택돼 있어도 선택된 부분마다 모두 적용 (이웃한 폴리곤 · 점 2개씩이 각자의 방향).
+- View Select: View Angle 값을 드래그하면 선택이 바로 바뀌어 보임.
+- GI: '환경광 끄기'를 켜도 배경 HDRI는 보이게 (검게 나오지 않음).
+- 재질 코팅(Coating): 표면 위 투명 광택층 — 전체 적용 %, 코팅 색상, 광택 Roughness 조절 (뷰포트 + GI).
+- 금속 프리셋(Gold · Silver · Copper …)을 고르면 기본 색이 Diffuse에 들어가고, Diffuse 색을 바꾸면 금속 색이 바뀝니다.
+- Modify Poly › Polygon: View Select — 현재 뷰를 향하는 폴리곤을 입력 각도 범위 안에서 선택 (Ctrl = 추가, Alt = 빼기).
+- Smoothing Groups: 그룹 번호를 더블클릭하면 그 그룹의 면이 선택됩니다 (Ctrl = 추가).
+- Geometry 만들기 버튼을 오른쪽 클릭하면 연속 만들기(∞): Modify로 넘어가지 않고 같은 물체를 계속 만듭니다. 다시 오른쪽 클릭하거나 다른 버튼을 왼쪽 클릭하면 해제됩니다.
+- 노드 재질 편집기를 닫으면 기본 재질 편집기로 돌아가지 않고 재질 편집기가 완전히 닫힙니다.
+- Geometry에서 물체를 만들면 만들기 명령이 끝나고 자동으로 Modify 패널로 이동합니다.
+- Distance 맵 기준 물체: 편집 목록 — ＋ 선택 물체 추가, − 선택 물체 삭제, 항목별 ✕, 비우기(비우면 모든 물체 기준)
+- Node Material Editor: 열면 떠 있던 기본 재질 편집기는 자동으로 닫힘(옵션은 오른쪽에 붙어서 표시), 선택한 물체의 재질은 노드 이름 앞에 빨간 막대
+- Node Material Editor: Dirt · Distance 맵을 재질의 Diffuse 입력에도 연결 가능, Distance 기준 물체 ‘선택만 · 선택 추가 · 선택 빼기 · 모두’, 가까운 곳 · 먼 곳(바깥 · 안쪽) 색 옆에 텍스처 버튼, 노드 창이 떠 있어도 장면 물체 Delete로 삭제 가능
+- Node Material Editor: 선택한 물체에 적용된 재질은 노드 이름 막대에 빨간 테두리(장면의 재질 목록에도 빨간 표시)
+- **Dirt** · **Distance**를 Node Material Editor의 맵 목록으로 이동(재질의 Dirt · Distance 입력에 연결, 바깥 · 안쪽 / 가까운 곳 · 먼 곳 입력에 텍스처 연결), Distance는 기준 물체 선택 가능(체크 목록 · ‘선택한 물체로’ · 비우면 전체); 기본 재질 편집기에는 SSS만 남김. 노드 재질 샘플이 정사각형에 딱 맞게. Gradient 색 선택 창이 고르는 동안 꺼지지 않게
+- **Node Material Editor** 개선: 왼쪽 목록의 재질 · 맵을 드래그해서 추가, 탭으로 화면 구분(＋ = 새 탭, 더블클릭 = 이름, 우클릭 = 삭제), 오른쪽에 기본 재질 옵션 전체(Preset · Light · Reflection · Bump · Opacity · Color Correct · Mapping · Dirt · Distance · SSS 등)와 맵 옵션(Noise · Gradient · Cell 설정 바로 표시), 연결된 맵은 재질 입력 오른쪽에 썸네일, 노드 샘플 정사각형, 창 크기 조절; 왼쪽 목록은 Physical Material · 맵 만들기 · 장면의 맵 · 장면의 재질(샘플구)
+- **Node Material Editor**(Render ▸ Node Material Editor…, Shift+M, 재질 편집기의 ‘노드’ 버튼): Slate처럼 같은 재질을 노드로 — 재질 노드(Diffuse · Roughness · Bump · Normal · Opacity · Displacement · Dirt · Distance 입력), Bitmap / Noise / Gradient / Cell Pattern 맵 노드; 맵 출력을 입력으로 드래그하면 연결(한 맵을 여러 곳에), 끌어내면 해제, 오른쪽에 속성; 기본 편집기는 그대로이고 서로 함께 바뀜
+- **절차 텍스처**(재질 편집기의 텍스처 아이콘 우클릭): **Noise**(Perlin · Turbulence · Ridged · Marble), **Gradient**(직선 / 원형, 막대 클릭으로 색 추가 · 드래그로 위치, 왕복 · 반전, Diffuse 옆 물체 전체 Gradient 포함), **Cell Pattern**(Voronoi · 돌 · 갈라짐 · 벽돌 · 타일 · 육각형 · 점 · 체커 · 줄무늬, 경계 두께 · 부드럽기); 끊김 없이 반복, 편집하면 바로 반영
+- **Dirt map**: 바깥(볼록) · 안쪽(오목) 모서리에서 Radius 안쪽을 각각 색 / 텍스처로(부드럽기 · 모서리 각도); **Distance map**: 다른 물체와 가까운 곳(기본 빨강)과 먼 곳(기본 흰색)을 색 / 텍스처로, 부드럽기 — 뷰포트와 GI 렌더 모두
+- **SSS** 재질 옵션: 빛이 표면 안으로 스며드는 표현(양 · 깊이 · 산란 색) — GI 렌더, 뷰포트는 부드러운 광택
+- 만들기 패널의 Keyboard Entry 롤아웃 삭제
+- **Camera Type**: 카메라 Modify 패널에서 Perspective / Orthographic(원근 왜곡 없는 평행 투영) 선택 — 카메라 뷰 · 선택 · GI 렌더가 함께 따름
+- **Camera Clipping**: Enable + Near / Far(장면 단위) — Near보다 가깝거나 Far보다 먼 부분은 카메라 뷰와 GI 렌더에서 잘라서 보여줌(벽 너머 실내 보기 등), Show in viewport로 카메라에 클리핑 면 표시
+- **Displacement**(재질 편집기 ▸ Bump · Normal): 흑백 높이 텍스처를 연결하고 Displacement(장면 단위, + / −), Mid level(움직이지 않는 회색 — 밝으면 +, 어두우면 −), Detail(분할 크기, 0 = 자동) 설정 — 뷰포트와 GI 렌더에서 표면을 실제로 분할해서 밀고 당김
+- **Cloth ▸ Freeze 변형**: ‘Freeze 변형’을 누르면 고정된 부분에 기즈모가 생겨 이동(W) · 회전(E) · 크기(R) 조절, 천이 시뮬레이션으로 따라옴(시뮬레이션 자동 시작); ‘변형 초기화’로 원래 위치. **연결 물체**를 고르면 고정 부분이 그 물체의 이동 · 회전 · 크기를 따라감(각각 끄기 가능), 나중에 그 물체를 움직이거나 애니메이션해도 따라감
+- **SmartGrid**: 만들기 패널의 ‘표면에 맞춰 만들기’(예전 AutoGrid) 이름을 SmartGrid로 변경
+- **Group 메뉴**: Group(Ctrl+G)으로 선택 물체를 하나의 그룹으로 — 그룹의 물체를 클릭하면 그룹 전체 선택; Open은 그룹 안의 물체를 따로 선택 · 수정(분홍 바운딩 박스), Close로 다시 닫기, Add는 선택 물체를 열린 그룹에 추가(또는 추가할 그룹을 클릭), Detach는 열린 그룹에서 물체 빼기, Explode(Ctrl+Shift+G)는 그룹 해제. 단축키는 단축키 편집기에서 지정, Modify 패널에 그룹 이름(변경 가능) · Open/Close · Explode 표시. 그룹 전체를 복사하면 새 그룹으로
+- **Select Similar**(우클릭 메뉴, 단축키 지정 가능): 점 개수와 구성 규칙이 같은 물체 선택(크기 · 회전 무관); Modify Poly에서는 점(연결 엣지 수 · 엣지 길이), 엣지 · 보더(길이 · 각도), 폴리곤(변 수 · 면적 · 둘레), Element(면 수 · 면적)가 같은 요소 선택
+- **Dot Select**(Modify Poly ▸ Similar · Dot Select): Dot 값만큼 건너뛰며 선택 — 점 · 폴리곤은 마지막에 고른 2개의 방향으로, 엣지는 엣지 루프 방향으로
+- **간결한 패널**: 명령 패널의 긴 설명은 숨기고 롤아웃 제목 옆 ⓘ에 마우스를 올리면 표시, 버튼에는 짧은 설명만 (예: Add Objects ▸ + Add ‘장면 물체를 등록’, Delete ‘선택 목록 삭제’) (Settings ▸ 패널 설명 항상 보이기로 다시 표시)
+- **Instance**: Clone(Quad 메뉴 · Shift+드래그)이 기본으로 Instance — 복사본이 모양 · 파라미터 · Modifier와 메모리의 지오메트리 1개를 함께 써서 하나를 고치면 모두 바뀜; 조명도 Instance로 복사(밝기 · 색 등이 함께 바뀜). Settings ▸ 복사 방식에서 Instance / Copy 선택. Quad 메뉴 ▸ **Instance로 만들기**는 같은 모양의 선택 물체를 연결(Modify Poly는 이동 · 회전 · 크기가 메시에 굳어 있어도 찾아서 그 변형을 물체 Transform으로 옮김), **Instance 해제**로 다시 독립; Modify 패널에 Instance 개수 표시. 파일과 실행 취소 단계에는 Instance 모양을 한 번만 저장
+- **표시 방식** Full / Low Poly / Box / Wire Box(Quad 메뉴, Modify 패널 버튼, Shift+B = Wire Box): Instance 그룹 전체에 함께 적용, Modifier를 바꿔도 유지, Scatter에도 적용; 렌더 · 내보내기는 항상 원래 물체로
+- **Scatter Instance**: Scatter가 Source 1개를 GPU Instance로 그려서 합친 복사본이 없음(60만 면 제한 없음); GI 렌더 · 내보내기 · To Modify Poly는 그대로 전체 메시 사용. Modify의 ‘Instance 표시’로 끄기 가능
+- **Proxy**: Quad 메뉴 ▸ Proxy로 저장…은 물체를 .s3dproxy 파일로 저장하고 장면에는 형태를 살린 가벼운 Proxy 메시만 저장(Instance끼리 공유). 표시 **Full** = 이 PC의 Proxy 캐시에서 원래 모양을 엣지까지 그대로 표시(GI 렌더도 원래 모양), 다른 PC에서는 ‘원본 파일 연결’; **Low** = Proxy 메시. Proxy 원본 불러오기…로 원래 물체로 되돌리기, Proxy 파일 불러오기…로 Proxy 파일을 장면에 추가
+- **Low Poly** 표시와 Proxy는 Quadric Edge Collapse 방식으로 줄여서 얼굴 · 실루엣 형태가 유지됨
+- **Layer**: 새 조명은 **Lights** Layer, 카메라는 **Cameras** Layer로 자동 분리(없으면 생성); 다른 Layer로 옮긴 물체는 그대로 유지
+- **큰 장면**: 실행 취소는 약 600 MB 안에서 최근 단계만 보관 (예전엔 장면 전체 복사본 80개를 보관해서 100 MB 장면은 몇 번 편집하면 메모리가 가득 참), 4 MB가 넘는 장면은 브라우저 자동 저장 복사본을 만들지 않음, 장면 파일은 열 때 한 번만 읽음, 형태 키 스냅샷은 키가 있는 물체 / REC일 때만; 데스크톱 앱은 장면에 최대 8 GB 메모리 사용 가능
+- **빠른 뷰 이동**(삼각형 40만 개 이상인 장면): 회전 · 이동 · 확대하는 동안 엣지 선을 숨기고 낮은 해상도로 그린 뒤, 멈추면 바로 원래 품질로
+- **Box 표시**(Shift+B, Quad 메뉴): 선택한 물체를 바운딩 박스로 표시 (선택 가능, 파일에도 저장), Shift+B를 다시 누르면 원래 모양
+- **Settings ▸ 장면 단위**(m / cm / mm): 명령 패널의 길이 값(물체 파라미터 · 모디파이어 · Cloth …)과 변형 X / Y / Z 입력이 고른 단위로 표시 · 입력됨(라벨에 단위 표시); 그리드도 1 m / 10 cm / 10 mm로 바뀌고 상태 표시줄 Grid가 그 단위로 표시; 선택은 기억됨 (내부는 cm 그대로라 파일 · 내보내기는 같음)
+- AI Render: 이미지 생성에 연결된 결과 / 수정할 이미지 노드의 수정 표시(✎)를 자동으로 적용 — 프롬프트가 없어도 됨; 표시가 있으면 사진 연출 · 구도 고정이 '모두 그대로 유지'를 지시하지 않고, 결과에서 표시(선 · 화살표 · 글자)는 모두 지워짐
+- AI Render ▸ 이미지 생성: **한 번에 1–4장** (비율 옆 개수 메뉴), 장마다 결과 노드(v1, v2 …)가 생김
+- AI Render 노드 표시 1.4, 앱 이름 옆에 버전 표시(메뉴 막대 · 창 제목)
+- **Clay Modeling**(툴바 ▸ Clay): 왼쪽 브러시 바(쌓기 · 부풀리기 · 부드럽게 · 당기기 · 평평하게 · 홈 · 모으기 · 마스크 · 부분 분할 — 1–9), 설정은 Modify(더하기/빼기, 크기, 강도, 경계, XYZ 대칭, 앞쪽만, 펜 압력, 마스크 반전/해제, 면 분할 / 매끈하게 분할); 어떤 물체든 Modify Poly로 바꿔 조형, 조형 중 화면 즉시 갱신; Shift = Smooth, Ctrl = 마스크, Alt = 반대로, [ ] 크기, X 대칭, Esc
+- **Quad Remesh ▸ AutoRemesher 1.2.0**(데스크톱 앱): Clay Modeling ▸ Quad Remesh와 Quad Remesh 모디파이어가 AutoRemesher 엔진을 이 PC에서 실행(목표 면, 곡률 적응도, 모서리 각도, 면 방향 적응도); 내장 흐름 정렬은 다른 엔진 옵션 · 브라우저용
+- 버전 1.4
+
 ## v1.3 — 2026-10
 
 ### English
+- Path3D: closing the section at the path ends is now the **Caps — close the ends** option, off by default (open tube); turn it on for capped ends
 - Cloth: sewn cloths share one triangle size — changing Triangle size / Fine / Normal / Keep original mesh on one applies to every cloth sewn to it, so both sides of a seam get the same triangles
 - **Modify Poly shape keys** (Modify Poly ▸ Animation): ◆ Shape key stores the mesh at the current frame; between keys vertices move and new faces (Extrude, Bevel …) grow out of the original surface (deleted parts shrink into it); Linear / Smooth / Ease / Step follow the timeline interpolation; REC keys shape edits automatically; delete / clear shape keys
 - Modify Poly ▸ Element: Shift+Drag (move) now only copies the selected elements — the copy is selected and moves, no connecting faces
@@ -12,7 +111,7 @@
 - Cloth: the Vertex · Edge · Border · Polygon · Element picking (icons, Loop, by angle) moved into the Freeze section — **Freeze selected / Unfreeze** act on that selection (or on the Modify Poly selection when nothing is picked); notes removed
 - Cloth ▸ **Pin by selection**: pick Vertex · Edge · Border · Polygon · Element on the mesh as it was before Cloth (shown as a guide) — click / Ctrl+click add / Alt+click remove / drag box, double-click an edge = loop, Loop button (edges, two neighbouring vertices or polygons), Border takes the whole rim, Polygon by angle; then Pin selection / Unpin selection (shows how many cloth points will be pinned)
 - **Quad Remesh — field-aligned flow**: Quads mode now builds a 4-way direction field (aligned to sharp edges and the surface) and a matching lattice, so quads run in clean rows along the form like AutoRemesher — box 99% regular vertices · ~1° angle error, sphere / cylinder ~95% (before 86–94% · 15–18°); edge rows snap onto sharp edges, folded faces across edges are cut; models with very thin parts automatically use the basic method; the panel shows the method and the share of regular vertices
-- Create panel: **AutoGrid** (Build on surfaces) checkbox moved to the top of Objects, above Box; the separate On Surface rollout and its note removed
+- Create panel: **SmartGrid** (Build on surfaces) checkbox moved to the top of Objects, above Box; the separate On Surface rollout and its note removed
 - **Quad Remesh** modifier (Modify ▸ Quad Remesh): rebuilds the mesh with even, mostly square faces while keeping the shape — modes Quad / Quad-dominant / Triangle, target face count (quick 500 · 1.5k · 5k · 15k), sharp-edge angle (feature edges and corners kept), iterations and smoothing; shows the result face count (quads · tris · vertices), the original count and time
 - Cloth sewing keeps going: after each seam the next border A can be picked right away until right-click / Esc (no quad menu pops up).
 - Cloth seams close tightly (stiffer iterated seam solve, also after collisions).
@@ -72,6 +171,7 @@
 - Auto Dim: dimensions you add (2-point X / Y / Z, aligned, edge) sit at the **same height** as the object's existing dimensions and on the side they already use; a new one on top of an existing one moves out one tier
 
 ### 한국어
+- Path3D: 단면 끝을 면으로 닫는 것은 **Caps — 단면 끝 닫기** 옵션으로, 기본은 꺼짐(열린 관) — 켜면 끝이 막혀요
 - Cloth: 재봉된 천은 삼각형 크기를 함께 써요 — 한쪽에서 삼각형 크기 · 정밀 / 보통 · 원래 메시 그대로를 바꾸면 재봉된 모든 천에 같이 적용돼 이음매 양쪽 삼각형이 같아짐
 - **Modify Poly 형태 키** (Modify Poly ▸ 애니메이션): ◆ 형태 키로 지금 프레임의 모양을 저장 — 키 사이에서 점이 움직이고 Extrude · Bevel 같은 새 면은 원래 표면에서 자라나요 (지운 부분은 표면으로 줄어듦); 보간은 타임라인 설정(Linear / Smooth / Ease / Step), REC를 켜면 편집할 때 자동 키, 키 삭제 / 모두 지우기
 - Modify Poly ▸ Element: Shift+드래그(이동) = 선택한 요소를 복사만 — 복사본이 선택되어 움직이고 연결 면은 생기지 않음
@@ -81,7 +181,7 @@
 - Cloth: 점 · 엣지 · 경계 · 폴리곤 · 요소 선택(아이콘, Loop, 각도 선택)을 Freeze 영역으로 이동 — **선택 Freeze / 선택 Freeze 해제**가 그 선택에 적용(선택이 없으면 Modify Poly 선택), 설명 문구 삭제
 - Cloth ▸ **선택해서 고정**: Cloth 적용 전 메시를 가이드로 보여주고 점 · 엣지 · 경계 · 폴리곤 · 요소를 선택 — 클릭 / Ctrl+클릭 추가 / Alt+클릭 빼기 / 드래그 영역, 엣지 더블클릭 = Loop, Loop 버튼 (엣지 · 이웃한 점 2개 · 이웃한 폴리곤 2개), 경계는 테두리 전체, 폴리곤은 각도로 선택; 선택 부분 고정 / 핀 해제 (고정될 천 점 개수 표시)
 - **Quad Remesh — 흐름 정렬**: 사각형 모드가 날카로운 모서리·표면을 따르는 4방향 흐름장과 격자를 만들어, AutoRemesher처럼 면이 형태를 따라 가지런히 줄지어요 — 박스 규칙 점 99% · 각도 오차 약 1°, 구·원기둥 약 95% (이전 86–94% · 15–18°); 모서리 줄은 날카로운 모서리에 붙고, 모서리를 가로질러 접힌 면은 잘라 정리; 아주 얇은 부분이 있는 모델은 자동으로 기본 방식 사용; 패널에 방식과 규칙 점 비율 표시
-- Create 패널: **AutoGrid**(표면에 맞춰 만들기) 체크를 Objects의 Box 위로 이동, 별도 On Surface 항목과 설명 삭제
+- Create 패널: **SmartGrid**(표면에 맞춰 만들기) 체크를 Objects의 Box 위로 이동, 별도 On Surface 항목과 설명 삭제
 - **Quad Remesh** 모디파이어 (Modify ▸ Quad Remesh): 형태를 유지하면서 고르고 대부분 사각형인 면으로 메쉬를 다시 만듦 — 사각형 / 사각 위주 / 삼각형 모드, 목표 면 개수 (빠른 선택 500 · 1.5k · 5k · 15k), 날카로운 모서리 각도 (경계·모서리·꼭짓점 유지), 반복·스무딩; 결과 면 개수 (사각 · 삼각 · 점)와 원래 면 개수·계산 시간 표시
 - Cloth 재봉 연속 모드: 재봉 하나를 만들면 바로 다음 경계 A를 고를 수 있고 우클릭 · Esc로 끝 (Quad 메뉴 안 뜸).
 - Cloth 재봉 경계가 벌어지지 않고 딱 붙도록 (재봉 계산 강화, 충돌 뒤에도 한 번 더).
