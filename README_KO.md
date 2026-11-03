@@ -13,33 +13,43 @@
 
 | 파일 | 언어 | 설명 |
 |---|---|---|
-| `SMART3D_KO_v1.3.exe` | 한국어 | Windows 실행 파일 — 더블클릭으로 바로 실행 (설치 필요 없음) |
-| `SMART3D_EN_v1.3.exe` | English | Windows executable (English UI) |
-| `SMART-3D_KO_v1.3_html.zip` | 한국어 | 브라우저(Chrome·Edge)에서 여는 HTML 버전 + 도움말 |
-| `SMART-3D_EN_v1.3_html.zip` | English | HTML version (English UI) + help |
+| `SMART3D_KO_v1.4.exe` | 한국어 | Windows 실행 파일 — 더블클릭으로 바로 실행 (설치 필요 없음) |
+| `SMART3D_EN_v1.4.exe` | English | Windows executable (English UI) |
+| `SMART-3D_KO_v1.4_html.zip` | 한국어 | 브라우저(Chrome·Edge)에서 여는 HTML 버전 + 도움말 |
+| `SMART-3D_EN_v1.4_html.zip` | English | HTML version (English UI) + help |
 
 > **처음 실행할 때** Windows가 “PC 보호” 창을 띄우면 **추가 정보 → 실행**을 누르세요. (코드 서명 인증서가 없는 개인 배포 프로그램이라 나오는 안내입니다.)
 
 ## 주요 기능
 
-- **모델링** — 기본 도형·스플라인, Modify Poly / Modify Spline 편집(Extrude, Inset, Bevel, Chamfer, Bridge 등), 모디파이어 스택(Multi Select, Projection Spline, Pattern 표면 타일링(삼각·사각·육각), Shell, Noise …), Boolean, Mirror, SMART Utils ▸ Drop Surface
+**1.4 새 기능** — 노드 재질 편집기, Clay Modeling, Cloth, Quad Remesh, Instance · Proxy, Group 메뉴, 코팅 · 절차 텍스처. 전체 목록: [릴리스 노트](https://github.com/xxxxskyxxx/SMART-3D/releases/latest) · [CHANGELOG](CHANGELOG.md)
+
+- **모델링** — 기본 도형·스플라인, Modify Poly / Modify Spline 편집(Extrude, Inset, Bevel, Chamfer, Bridge, Connect, Trim 등), 모디파이어 스택(Multi Select, Projection Spline, Pattern 표면 타일링(삼각·사각·육각), Shell, Noise …), Boolean, Mirror, Mask 물체, SMART Utils ▸ Drop Surface. **SmartGrid**로 표면 위에 바로 만들기, 만들고 나면 Modify로 자동 이동(만들기 버튼 우클릭 = 연속 만들기 ∞)
+- **선택** — Select Similar(크기가 달라도 구성이 같은 물체 · 같은 요소), Dot Select(줄을 따라 N개씩 건너뛰기, 선택한 여러 곳에 한 번에), View Select(뷰를 향하는 폴리곤을 각도로 선택, 드래그하면 바로 반영), 스무딩 그룹 번호 더블클릭으로 그 면 선택
+- **Clay Modeling** — 물체를 점토처럼 조형(쌓기 · 부풀리기 · 부드럽게 · 당기기 · 평평하게 · 홈 · 모으기 · 마스크 · 부분 분할, 대칭, 펜 압력)
+- **Quad Remesh** — 형태를 유지하며 고른 사각형으로 다시 만들기, 데스크톱 앱은 AutoRemesher 1.2.0 엔진 사용
+- **Cloth** — 실시간 천 시뮬레이션: 원단 Preset, 바람, 충돌, 재봉, 고정핀, 선택 Freeze. 고정된 부분을 움직이거나 다른 물체를 따라가게
+- **Instance · Proxy · Group** — Clone이 Instance로 복사, Full / Low Poly / Box / Wire Box 표시, Scatter는 GPU Instance, Proxy로 저장(.s3dproxy), Group 메뉴(Ctrl+G · Open · Close · Add · Detach · Explode), 조명 · 카메라 Layer 자동 분리
 - **복사** — Shift+드래그 후 개수 지정: 원본과 복사본 사이 채우기 / 같은 간격으로 더 만들기
-- **재질** — 재질 편집기(M): PBR 프리셋(무광 · 광택 · 금속 · 유리 · 발광), 실제 반사값 금속 종류, 빛 투과, Roughness / Bump / Normal / Opacity 맵, 실제 렌더 미리보기, Random 매핑, Color correct
+- **재질** — 재질 편집기(M)와 **노드 재질 편집기**(Shift+M): PBR 프리셋(무광 · 광택 · 금속 · 거울 · 유리 · 발광), Diffuse에서 색을 바꿀 수 있는 금속 종류, **코팅**(전체 적용 %, 색상, 광택 Roughness), 빛 투과, **SSS**, **Displacement**, Roughness / Bump / Normal / Opacity 맵, 절차 텍스처 **Noise · Gradient · Cell Pattern**, **Dirt** · **Distance** 맵, 재질 ID를 쓰는 Multi 재질, 나의 재질 라이브러리, 실제 렌더 미리보기, Random 매핑, Color correct
 - **Mapping 모디파이어** — Box · Box Blur(경계 부드럽게) · Plane(Bend · Lattice) · Cylinder · Sphere · Spline
-- **GI 렌더**(F9) — GPU 패스트레이싱: 부드러운 그림자 · 간접광 · 반사 · 굴절 · **조명**: Rect · Disk · Sphere · Spot(IES)
-- **카메라** — 실내·실외·제품 프리셋, 2점 투시(수직 보정), Safe Frame 비율
-- **애니메이션** — 타임라인, ● REC 자동 키, 이동·회전·크기·파라미터·카메라 키, 키 드래그 다중 선택·이동·복사, RAM 미리보기
-- **가져오기 · 내보내기** — File ▸ Import… / Export… 창에서 형식 선택: GLB(애니메이션 포함) · FBX · OBJ · STL · PLY, 영상(MP4/WebM) · PNG 시퀀스
+- **GI 렌더**(F9) — GPU 패스트레이싱: 부드러운 그림자 · 간접광 · 반사 · 굴절 · HDRI 환경 · AI 디노이즈 · LUT · 4K와 인쇄 크기(A4~A0, DPI) · **조명**: Rect · Disk · Sphere · Spot(IES)
+- **카메라** — Perspective / Orthographic, Camera Clipping(Near / Far), 실내·실외·제품 프리셋, 2점 투시(수직 보정), Safe Frame 비율
+- **애니메이션** — 타임라인, ● REC 자동 키, 이동·회전·크기·파라미터·카메라 키, Modify Poly 형태 키, 키 드래그 다중 선택·이동·복사, RAM 미리보기
+- **단위** — 길이 입력 · 변형 · 그리드를 m / cm / mm로
+- **가져오기 · 내보내기** — File ▸ Import… / Export… 창에서 형식 선택: GLB(애니메이션 포함) · FBX · OBJ · STL · PLY, 영상(MP4/WebM) · PNG 시퀀스, 폴더 북마크가 있는 파일 선택 창
 - **Auto Dim · 도면** — 3D 물체에 CAD식 치수(⚡ 자동 · 수정 가능 · PNG / PDF), 정렬된 정투상도 도면 시트(KS 3각법 · 1각법), 숨은선 · 중심선, 자동 등각 투상도, 치수 스냅
-- **AI Render 1.3 (노드)** — 뷰 캡처 · GI 렌더 · 불러온 이미지 · 참고(재질 · 분위기 · 오브젝트 · 인물) · 프롬프트 · 이미지 / 영상 생성 노드를 캔버스에서 연결, 결과를 나란히 A / B 비교, 타임라인 ◉ 캡처로 뷰 움직임을 영상 소스로
+- **AI Render 1.3 (노드)**(F10) — 뷰 캡처 · GI 렌더 · 불러온 이미지 · 참고(재질 · 분위기 · 오브젝트 · 인물) · 프롬프트 · 이미지 / 영상 생성 노드를 캔버스에서 연결, 결과를 나란히 A / B 비교, 타임라인 ◉ 캡처로 뷰 움직임을 영상 소스로
 - **AI Render** — 이미지와 영상을 한 창에서
   - Google Gemini(이미지) · **Google Veo(영상)**
   - **Higgsfield API**(키) · **Higgsfield 로그인**(구독 크레딧, exe 전용) — 모델 목록 자동 로드
-  - 애니메이션 캡처(첫·끝 프레임 + 참고 영상)로 AI 영상 만들기, 전/후 비교, 뷰포트 겹쳐 보기
+  - 애니메이션 캡처(첫·끝 프레임 + 참고 영상)로 AI 영상 만들기, 전/후 비교, 뷰포트 겹쳐 보기, 수정 표시, 한 번에 1–4장
 
-| 애니메이션 | AI 영상 |
+| 노드 재질 편집기 | Clay Modeling |
 |---|---|
-| ![애니메이션](docs/images/anim_ko.jpg) | ![AI 영상](docs/images/aivid_ko.jpg) |
+| ![노드 재질 편집기](docs/images/nodes_ko.jpg) | ![Clay Modeling](docs/images/clay_ko.jpg) |
+| **애니메이션** | **AI Render (노드)** |
+| ![애니메이션](docs/images/anim_ko.jpg) | ![AI Render](docs/images/aivid_ko.jpg) |
 
 ## 도움말
 
@@ -63,7 +73,7 @@
 **프리웨어** — 개인·상업 작업 모두 무료로 사용할 수 있습니다. 프로그램으로 만든 결과물은 사용자의 것입니다.
 프로그램 자체의 판매, 수정·재배포, 역설계는 허용되지 않습니다. 자세한 내용은 [LICENSE.md](LICENSE.md)를 보세요.
 
-사용한 오픈소스: [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md) (three.js, three-bvh-csg, three-mesh-bvh, Electron — MIT)
+사용한 오픈소스: [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md) (three.js, three-bvh-csg, three-mesh-bvh, three-gpu-pathtracer, oidn-web, Electron, AutoRemesher — MIT)
 
 3ds Max는 Autodesk, Inc.의 상표이며, SMART 3D는 Autodesk와 관계없는 독립 제품입니다. Google, Gemini, Veo, Higgsfield, Claude(Anthropic)는 각 소유자의 상표입니다.
 

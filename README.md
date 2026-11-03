@@ -13,33 +13,43 @@ Free to use as a **Windows program (SMART3D.exe)** that runs without installatio
 
 | File | Language | Description |
 |---|---|---|
-| `SMART3D_EN_v1.3.exe` | English | Windows executable — double-click to run (no installation) |
-| `SMART3D_KO_v1.3.exe` | Korean | Windows executable (Korean UI) |
-| `SMART-3D_EN_v1.3_html.zip` | English | HTML version for Chrome / Edge + help |
-| `SMART-3D_KO_v1.3_html.zip` | Korean | HTML version (Korean UI) + help |
+| `SMART3D_EN_v1.4.exe` | English | Windows executable — double-click to run (no installation) |
+| `SMART3D_KO_v1.4.exe` | Korean | Windows executable (Korean UI) |
+| `SMART-3D_EN_v1.4_html.zip` | English | HTML version for Chrome / Edge + help |
+| `SMART-3D_KO_v1.4_html.zip` | Korean | HTML version (Korean UI) + help |
 
 > **First run:** if Windows shows “Windows protected your PC”, click **More info → Run anyway**. (It appears because this independent program is not code-signed.)
 
 ## Features
 
-- **Modeling** — primitives and splines, Modify Poly / Modify Spline editing (Extrude, Inset, Bevel, Chamfer, Bridge…), modifier stack (Multi Select, Projection Spline, Pattern surface tiling (tri · quad · hex), Shell, Noise…), Boolean, Mirror, SMART Utils ▸ Drop Surface
+**What’s new in 1.4** — Node Material Editor, Clay Modeling, Cloth, Quad Remesh, Instances · Proxy, Group menu, coating and procedural textures. Full list: [Release notes](https://github.com/xxxxskyxxx/SMART-3D/releases/latest) · [CHANGELOG](CHANGELOG.md)
+
+- **Modeling** — primitives and splines, Modify Poly / Modify Spline editing (Extrude, Inset, Bevel, Chamfer, Bridge, Connect, Trim…), modifier stack (Multi Select, Projection Spline, Pattern surface tiling (tri · quad · hex), Shell, Noise…), Boolean, Mirror, Mask objects, SMART Utils ▸ Drop Surface; **SmartGrid** builds right on a surface, a new object switches to Modify (right-click a create button for continuous create ∞)
+- **Selection** — Select Similar (objects with the same structure at any size, or matching elements), Dot Select (every N along a line, on every selected part), View Select (polygons facing the view within an angle, live while dragging), select a smoothing group by double-clicking its number
+- **Clay Modeling** — sculpt any object like clay (Clay · Inflate · Smooth · Move · Flatten · Crease · Pinch · Mask · Detail, symmetry, pen pressure)
+- **Quad Remesh** — even quads that keep the shape; the desktop app runs the AutoRemesher 1.2.0 engine
+- **Cloth** — real-time cloth: fabric presets, wind, collision, sewing, pins, freeze by selection; frozen parts can move or follow another object
+- **Instances · Proxy · Groups** — Clone makes instances, display Full / Low Poly / Box / Wire Box, Scatter as GPU instances, Save as Proxy (.s3dproxy), Group menu (Ctrl+G · Open · Close · Add · Detach · Explode), auto Lights / Cameras layers
 - **Copy** — Shift+drag, then set a count: fill between original and copy / more at the same spacing
-- **Materials** — Material Editor (M): PBR presets (matte · glossy · metal · glass · light), measured metal types, transmission, Roughness / Bump / Normal / Opacity maps, rendered previews, Random mapping, Color correct
+- **Materials** — Material Editor (M) and **Node Material Editor** (Shift+M): PBR presets (matte · glossy · metal · mirror · glass · light), metal types whose colour you can change in Diffuse, **Coating** (amount %, colour, gloss roughness), transmission, **SSS**, **Displacement**, Roughness / Bump / Normal / Opacity maps, procedural **Noise · Gradient · Cell Pattern**, **Dirt** and **Distance** maps, Multi material with Material IDs, My Materials library, rendered previews, Random mapping, Color correct
 - **Mapping modifier** — Box · Box Blur (soft seams) · Plane (Bend · Lattice) · Cylinder · Sphere · Spline
-- **GI Render** (F9) — GPU path tracing: soft shadows, bounced light, reflections, refraction · **Lights**: Rect · Disk · Sphere · Spot with IES
-- **Cameras** — Interior / Exterior / Product presets, 2-point perspective (vertical correction), Safe Frame ratios
-- **Animation** — timeline, ● REC auto key, keys for move · rotate · scale · parameters · cameras, box-select / move / copy keys, RAM preview
-- **Import · Export** — pick a format in File ▸ Import… / Export…: GLB (with animation) · FBX · OBJ · STL · PLY, video (MP4/WebM) · PNG sequence
+- **GI Render** (F9) — GPU path tracing: soft shadows, bounced light, reflections, refraction, HDRI environment, AI denoise, LUT, 4K and print sizes (A4–A0, DPI) · **Lights**: Rect · Disk · Sphere · Spot with IES
+- **Cameras** — Perspective / Orthographic, Camera Clipping (Near / Far), Interior / Exterior / Product presets, 2-point perspective (vertical correction), Safe Frame ratios
+- **Animation** — timeline, ● REC auto key, keys for move · rotate · scale · parameters · cameras, Modify Poly shape keys, box-select / move / copy keys, RAM preview
+- **Units** — m / cm / mm for length fields, transforms and the grid
+- **Import · Export** — pick a format in File ▸ Import… / Export…: GLB (with animation) · FBX · OBJ · STL · PLY, video (MP4/WebM) · PNG sequence; file dialog with bookmarked folders
 - **Auto Dim · Drawing** — CAD-style dimensions on 3D objects (⚡ automatic, editable, PNG / PDF), drawing sheet with aligned orthographic views (KS 3rd angle · 1st angle), hidden lines, centre lines, an automatic isometric view and dimension snapping
-- **AI Render 1.3 (nodes)** — connect view capture · GI render · loaded images · references (material · mood · object · person) · prompt · image / video generators on a node canvas; results side by side with A / B compare; the timeline ◉ Capture records your view moves as a video source
+- **AI Render 1.3 (nodes)** (F10) — connect view capture · GI render · loaded images · references (material · mood · object · person) · prompt · image / video generators on a node canvas; results side by side with A / B compare; the timeline ◉ Capture records your view moves as a video source
 - **AI Render** — images and videos in one window
   - Google Gemini (image) · **Google Veo (video)**
   - **Higgsfield API** (key) · **Higgsfield Login** (plan credits, exe only) — model lists load automatically
-  - AI video from the animation capture (first / last frame + reference clip), before/after compare, viewport overlay
+  - AI video from the animation capture (first / last frame + reference clip), before/after compare, viewport overlay, edit marks, 1–4 images per run
 
-| Animation | AI video |
+| Node Material Editor | Clay Modeling |
 |---|---|
-| ![Animation](docs/images/anim_en.jpg) | ![AI video](docs/images/aivid_en.jpg) |
+| ![Node Material Editor](docs/images/nodes_en.jpg) | ![Clay Modeling](docs/images/clay_en.jpg) |
+| **Animation** | **AI Render (nodes)** |
+| ![Animation](docs/images/anim_en.jpg) | ![AI Render](docs/images/aivid_en.jpg) |
 
 ## Help
 
@@ -63,7 +73,7 @@ Free to use as a **Windows program (SMART3D.exe)** that runs without installatio
 **Freeware** — free for personal and commercial work. Everything you create with the program is yours.
 Selling, modifying / redistributing or reverse-engineering the program itself is not allowed. See [LICENSE.md](LICENSE.md).
 
-Open-source components: [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md) (three.js, three-bvh-csg, three-mesh-bvh, Electron — MIT)
+Open-source components: [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md) (three.js, three-bvh-csg, three-mesh-bvh, three-gpu-pathtracer, oidn-web, Electron, AutoRemesher — MIT)
 
 3ds Max is a trademark of Autodesk, Inc. SMART 3D is an independent product, not affiliated with Autodesk. Google, Gemini, Veo, Higgsfield and Claude (Anthropic) are trademarks of their respective owners.
 

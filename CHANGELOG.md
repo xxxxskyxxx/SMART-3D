@@ -3,6 +3,7 @@
 ## v1.4 — 2026-11
 
 ### English
+- Feature guide (Help) updated for 1.4: new pages for Instances · Proxy · Group, Selection tools, Clay Modeling · Quad Remesh, Cloth and the Node Material Editor, new pictures, and the 1.4 material / camera / animation features.
 - Dot Select works on every selected part at once (each pair of neighbouring polygons / vertices sets its own direction).
 - View Select: the View Angle spinner updates the selection live while dragging.
 - GI: with “Environment light off” the HDRI background stays visible (it no longer goes black).
@@ -51,6 +52,7 @@
 - Version 1.4
 
 ### 한국어
+- 기능 가이드(도움말) 1.4 업데이트: Instance · Proxy · Group, 선택 도구, Clay Modeling · Quad Remesh, Cloth, 노드 재질 편집기 페이지 추가, 새 그림, 1.4 재질 · 카메라 · 애니메이션 기능 설명.
 - Dot Select: 여러 곳이 선택돼 있어도 선택된 부분마다 모두 적용 (이웃한 폴리곤 · 점 2개씩이 각자의 방향).
 - View Select: View Angle 값을 드래그하면 선택이 바로 바뀌어 보임.
 - GI: '환경광 끄기'를 켜도 배경 HDRI는 보이게 (검게 나오지 않음).
