@@ -1,5 +1,93 @@
 # Changelog
 
+## v1.5 — 2026-11
+
+### English
+- **Road** (toolbar ▸ Road) — roads with Korean road rules. Draw the centre line (orange dashes) with a preset (2 · 4 · 6 · 8 lanes, one-way 2, highway 4 · 6); set left / right lane counts, lane width, design speed (lane dashes 3 m/5 m or 10 m/10 m), shoulders and edge lines, bus lanes (blue) and highways (median + 0.5 m side strip + white line).
+- Road **centre lines**: double · single · dashed · solid+dashed · U-turn zone · none, per section from a picked point to the next.
+- Road **junctions**: crossings, T and L joins are built automatically with rounded corners, edge lines that follow the curves, traffic islands (15 cm kerb) or hatched safety zones, island crossings, crosswalks and stop lines; the junction surface is an even grid with a smooth centre point, so it never tears when heights change. Drag a crosswalk to move it.
+- **Lanes per segment**: add points with Refine, pick segments and add / remove left or right lanes — the road widens and narrows smoothly over the lane change length and lane dashes run to the narrowing point.
+- **Road marks**: combine Straight · Left · Right · U-turn · No entry · Square (e.g. straight+left, left+U-turn) or use single marks (crosswalk ahead, yield, diagonal arrows, speed). Hover a lane to preview, click to place one per lane; click a placed mark to change it, drag to move, right-click / Delete to remove (the selected mark is shown in translucent sky blue).
+- **Roads on terrain**: the Surface tool sets every connected road onto the clicked terrain at once (offset, no poke-through, sample spacing) and new roads follow the same surface; or keep the line height for overpasses and ramps (raise, road thickness). Connected roads are edited together.
+- **Draw crosswalks**: two points across a road — stripes fit the road, stop lines on both sides, centre line and lanes are cut.
+- **Clay+**: new brushes Clay Buildup · Draw · Scrape (Alt = fill) · Polish · Layer · Carve · Clip on a 2-column brush bar; strokes Free (spacing, lazy mouse) · Stamp · Drag size · Line; 6 alphas that turn with the stroke; radial symmetry (2–32) with a clear Off for every symmetry; box / lasso masks with grow · shrink · blur · sharpen · cavity; sculpt layers with 0–300 % strength (saved with the scene); Smooth all.
+- Clay **Soft area**: set how far in from the brush edge the force fades; the cursor shows a sky-blue dashed ring for full strength and an orange gradient for the fade.
+- Clay **Dynamic detail**: stretched faces are split while you sculpt, so pulled-out shapes keep an even density.
+- Clay **Detail −** (or Alt+click) merges subdivided faces back, newest level first; “Undo subdivision” steps back everywhere.
+- Clay **Clip**: no brush circle — click the start, a dashed line follows the mouse, click the end; the arrow side is cut flat (Alt = other side, Esc = cancel). Box / lasso mask outlines are visible again while dragging.
+- Clay panel: buttons that cannot act right now are hidden (e.g. mask edits before a mask exists).
+- **FloorGen**: 10 new patterns — Double Herringbone · Brick · Stack · Checkerboard · Mosaic · Chantilly · Basket Weave · Double Basket · Versailles · Hexagon — with pattern icons and matching board proportions.
+- FloorGen now works like the 3ds Max FloorGen: every flat region is covered, holes · L-shapes · curved outlines · segmented planes are cut into clean single boards (no stray lines, points or inner walls); per-board random Material IDs, Random UV on/off, Rotate ±°, Real-World UV + UV Size, Max Boards and a board count.
+- **Modify Poly ▸ Polygon Shift+drag**: pushed into existing faces, the parts left with no thickness disappear on both sides and only faces that still have thickness stay (half way down = half-height box, onto another box = joined solid); points welded, T-junctions closed, inside-out shells fixed, one undo step.
+- **Claude 3D** (hidden: middle-click the SMART 3D logo): drop images or a multi-view sheet, add an optional prompt and press Create — Claude (through the Claude Code installed and logged in on your PC, or an Anthropic API key) writes a fabrication-minded parts plan in cm and SMART 3D builds it as Modify Poly parts for architecture · interiors · furniture · products. Options: real-world SmartUV per part, materials, lights, GI render; products get an editable 1.5 mm edge chamfer modifier; "fix the previous result" rebuilds from a follow-up prompt; pick a texture folder and Claude assigns your PBR texture sets to the materials at real-world size.
+- **Sun Sky**: creating a Sun light turns the Environment into a sky whose colour follows the sun elevation (blue day · warm low sun · sunset · night, with a sun glow); it lights GI renders, shows as their background and as the viewport background. A loaded HDRI always takes priority. Switches under GI Render ▸ Environment · HDRI.
+- Claude 3D **lighting by category**: products · furniture · props get a product photo studio (seamless sweep backdrop floor + key · fill · rim · top softboxes aimed at the object); interiors keep the interior / exterior lights in the plan (or add an outside Sun + Sky when there are none); architecture renders with Sun + Sky or your HDRI. Ring and bent tubes are built as one welded tube with UVs unrolled straight along the length.
+- **AI · SVG import** (File ▸ Import ▸ AI · SVG, or drop on the viewport): Illustrator .ai (PDF-compatible or old PostScript) and .svg paths come in at real size as one Modify Spline object.
+- **Optimize Shape** (modifier: Add Modifier ▸ Optimize Shape · Modifiers ▸ Optimize Shape): rebuilds splines with the fewest points — corners and the ends of straight lines are kept, curves are re-fitted as clean beziers; Precision and Corner angle settings. Traced / pixel-step outlines (thousands of tiny stair steps) are smoothed first, so they also become clean curves.
+- **VectorGen** (Create ▸ Shapes ▸ VectorGen): opens an image (logo · artwork · photo) straight away, traces the outlines of its colour areas and makes real-size spline objects — presets, colours, precision, corner angle, specks, blur, resolution, leave out background, one object per colour, fewer points.
+- **Optimize Shape ▸ Lines straight · curves 1–3 points** (new option, on for VectorGen objects): straight parts of traced, slightly wobbly outlines become single lines with no points in between; curves get 1–3 evenly spaced points. The Optimize Shape block in the Modify Spline panel was removed — use the modifier.
+- **Optimize Shape**: curves (arcs) get evenly spread points (one in the middle · two evenly spaced …) so the original curve is kept; small pieces such as letters are judged at their own size; new **Remove overlaps · join ends** option.
+- **File ▸ Import… / Export…** open the open / save file window straight away; the format is picked in the window's file type list (Export: 'Selected only').
+- **Voxel modifier** (Modifiers ▸ Voxel): fills a 3D object with equal boxes — Divisions (cells along the longest side), Box Size % (gaps), Fill Inside; pick a Source object and turn Box Mode off to place that object in every box, fitted to its size (updates when the source changes).
+- **Scale gizmo planes**: drag the XY · YZ · ZX bands to scale two axes together; **Shift+Scale** on Modify Poly edges / polygons builds new faces first and then scales them (an in-plane shrink works like Inset). Right-click menu: Display moved above Transform, display modes (Full · Low Poly · Box · Wire Box) in a ‘Display mode ▸’ submenu; Clone · Mirror · RTransform · Rnd Color · Drop Z0 · Delete left the right-click menu (they are on the toolbar / keyboard).
+- **Gravity** (Create ▸ Geometry ▸ Gravity — a helper icon in the scene): rigid and soft body simulation on the Grid floor. Put objects in the Soft / Hard lists (+ Add, then click them or drag a box in the viewport) or leave both empty to simulate every scene object as hard; hard presets wood · plastic · steel · aluminium · glass · stone · hard rubber · styrofoam set the weight, soft presets jelly · rubber · sponge · cushion · clay plus a softness slider set how they squash and wobble. Complex objects are simulated through a light particle proxy of their surface; objects not listed can act as fixed colliders; Stop keeps the result, ⟲ Reset goes back.
+- **SmartUV modifier** (Modifiers ▸ SmartUV, works on any 3D object; the UV editor opens by itself): pick vertices · edges · faces · Elements in the viewport or the UV editor, mark seams on edges (Mark / Clear, Auto Seam by angle and material ID, UV borders→Seam, orange seam lines) and **Pelt** along them — LSCM unfold, automatic ARAP relax, equal texel size, upright orientation and packing in one click; closed parts and tubes are cut automatically, and islands that join without stretching are **auto-stitched** (seams you mark are always kept).
+- **Modify Poly selection passes up the stack** (like 3ds Max): picked vertices · edges · faces drive the modifiers above — e.g. Noise only on the picked faces, SmartUV pelts along the picked edges.
+- **Modify Poly ▸ Edge ▸ Hard**: selects every edge between faces with different smoothing groups.
+- SmartUV mapping: **Quick Peel** · Flatten · Planar · Relax · Rectify (quad grids into clean rectangles) · Stitch · **Loop UV** (pick one edge — the faces along its loop are laid out straight) · **Split UV** (FloorGen boards and other repeated objects: every flat face unfolded, long side horizontal or vertical, rows with even gaps in a square).
+- SmartUV **Arrange**: Pack · Pack Together · Match texel · Orient (auto / horizontal / vertical / world up) · Stack same islands · Random layout · gap · optional 90° turns · Real-world UV.
+- SmartUV **texture on the object**: move · rotate · scale · flip buttons, **align to edge** (the picked edge runs along texture U / V), world up, and 🖐 drag the texture right on the object (Shift = rotate, Ctrl = scale).
+- SmartUV **UV Editor**: Vertex · Edge · Polygon · Element (UV island split by seams, double-click) selection shared with the viewport, mark / clear seams, box select, drag to move, rotate / flip / Align U-V / edge→horizontal / Stitch / Relax / Pack, zoom and pan; plus a numbered **checker map** to check stretching and direction.
+- SmartUV **Cut**: split the UVs along the selected edges or the border edges of the selected faces (stays in place as its own island); **Stitch with faces selected** joins every island that meets the selection border automatically (best-fit turn · scale · move, then welded).
+- SmartUV editor **align icons**: left · centre · right · top · middle · bottom · centre — whole islands keep their shape; several islands align to each other, one island to the 0–1 tile.
+- SmartUV editor **transform box**: selected UVs get a box with corner / side handles to scale (Shift = keep ratio, Alt = from centre) and a top handle to rotate (Shift = 15° steps); edges picked for edge alignment show as thick red lines in the viewport.
+- **Modify Poly ▸ Vertex ▸ Vertex Clean**: removes selected vertices that sit on a straight edge with no other edge attached (points left in the middle of an edge) — the shape stays the same.
+- The command panel keeps its scroll position while you sculpt or edit (no more creeping down after every stroke).
+- Help: new Road, SmartUV and Claude 3D chapters, Clay 1.5 and FloorGen / Shift+drag notes.
+
+### 한국어
+- **AI · SVG 가져오기** (File ▸ Import ▸ AI · SVG, 또는 뷰포트에 끌어다 놓기): 일러스트레이터 .ai(PDF 호환 · 옛 PostScript)와 .svg의 선을 실제 크기의 Modify Spline 물체 하나로.
+- **Optimize Shape** (수정자: Add Modifier ▸ Optimize Shape · Modifiers ▸ Optimize Shape): 모서리와 직선의 끝점은 지키고 곡선은 깨끗한 베지어로 다시 맞춰 가장 적은 점의 스플라인으로 — 정밀도 · 모서리 각도 설정. 이미지 트레이스처럼 작은 계단 모양으로 된 선(수천 개의 점)도 먼저 매끈하게 정리해서 깨끗한 곡선으로 바꿉니다.
+- **VectorGen** (Create ▸ Shapes ▸ VectorGen): 이미지(로고 · 그림 · 사진)를 바로 열어 색 영역의 윤곽을 따라 실제 크기의 스플라인 물체로 — 프리셋 · 색 수 · 정밀도 · 모서리 각도 · 잡티 · 흐림 · 해상도 · 배경 색 빼기 · 색마다 따로 · 점 줄이기.
+- **Optimize Shape ▸ 직선은 직선만 · 곡선은 점 1~3개** (새 옵션 · VectorGen 물체에는 켜진 채로): 따라 그린 조금 울퉁불퉁한 윤곽도 곧은 부분은 중간 점 없이 하나의 직선, 곡선은 고른 간격의 점 1~3개로. Modify Spline 패널의 Optimize Shape 칸은 없애고 수정자로 통일.
+- **Optimize Shape**: 곡선(호)은 가운데 점 1개 · 고른 간격 2개처럼 점을 고르게 두어 원래 곡선을 지키고, 글자처럼 작은 조각은 그 크기에 맞춰 판단 · 새 옵션 **겹친 선 지우기 · 끝점 잇기**.
+- **File ▸ Import… / Export…**: 형식 고르는 창 없이 바로 파일 열기 · 저장 창 — 형식은 창의 파일 형식 목록에서 (Export: '선택만').
+- **Voxel 모디파이어** (Modifiers ▸ Voxel): 3D 물체를 같은 크기의 박스로 채우기 — 분할 수(긴 변) · 박스 크기 %(틈) · 속 채우기. Source 물체를 Pick하고 박스 모드를 끄면 박스마다 그 물체가 박스 크기에 맞춰 놓여요(소스를 고치면 함께 바뀜).
+- **Scale 기즈모 평면**: XY · YZ · ZX 띠를 끌면 두 축을 함께 크기 조절. Modify Poly Edge / Polygon에서 **Shift+Scale** = 새 면을 만들면서 크기 조절(평면에서 줄이면 Inset처럼). 오른쪽 클릭 메뉴: Display를 Transform 위로, 표시 모드(Full · Low Poly · Box · Wire Box)는 ‘표시 모드 ▸’ 하위 메뉴로. Clone · Mirror · RTransform · Rnd Color · Drop Z0 · Delete는 오른쪽 클릭 메뉴에서 빠짐(툴바 · 키보드로 사용).
+- **Gravity** (Create ▸ Geometry ▸ Gravity — 장면에 놓는 아이콘): Grid 바닥 위 하드 · 소프트 물체 시뮬레이션. Soft / Hard 목록에 물체를 넣거나(+ Add 후 뷰포트에서 클릭 · 드래그) 목록을 비우면 장면의 모든 물체를 하드로 계산. 하드 프리셋 나무 · 플라스틱 · 강철 · 알루미늄 · 유리 · 돌 · 단단한 고무 · 스티로폼(무게), 소프트 프리셋 젤리 · 고무 · 스펀지 · 쿠션 · 점토 + 부드러움으로 눌림 · 출렁임. 복잡한 물체는 표면을 단순화한 가상 입자로 가볍게 계산, 목록에 없는 물체는 고정 충돌체, 멈추면 결과 유지 · ⟲ 처음으로.
+- **Road**(툴바 ▸ Road) — 한국 도로 규칙 도로. 프리셋(2 · 4 · 6 · 8차로, 일방 2, 고속 4 · 6)으로 중앙선(주황 점선)을 그리고 왼쪽 / 오른쪽 차로 수, 차로 폭, 설계속도(차선 점선 3m/5m · 10m/10m), 갓길 · 경계 실선, 버스전용차로(청색), 고속도로(중앙분리대 + 측대 0.5m + 백색 실선)를 설정해요.
+- 도로 **중앙선**: 2줄 · 1줄 · 점선 · 실선+점선 · 유턴구역선 · 없음 — 고른 점부터 다음 지정 점까지 구간별로.
+- 도로 **교차로**: 가로지르기 · 3거리 · ㄱ자가 자동으로 — 둥근 모서리, 곡선을 따라가는 바깥 실선, 교통섬(연석 15cm) · 빗금 안전지대, 섬 보행선, 횡단보도 · 정지선. 교차로 면은 고른 격자 + 중심 smooth 점이라 높이를 바꿔도 찢어지지 않아요. 횡단보도는 드래그로 이동.
+- **구간별 차로**: Refine으로 점을 넣고 구간을 골라 왼쪽 / 오른쪽 차로 추가 · 제거 — 차로 변이 구간만큼 자연스럽게 넓어지고 좁아지며 차선 점선은 좁아지는 곳까지.
+- **노면표시**: 직진 · 좌 · 우 · 유턴 · 금지 · 직각을 조합(직진+좌, 좌+유턴 …)하거나 단일 표시(횡단보도 예고, 양보, 비스듬 화살표, 속도). 차로에 마우스 = 미리보기, 클릭 = 차로마다 배치, 놓인 표시 클릭 = 종류 바꾸기 · 드래그 = 이동 · 우클릭 / Delete = 삭제(선택한 표시는 반투명 하늘색).
+- **지형 위 도로**: Surface 도구로 지형을 클릭하면 이어진 도로 전체가 한 번에 앉아요(간격 · 관통 방지 · 샘플 간격), 새 도로도 같은 Surface 위에. 선 높이 그대로(고가 · 경사로, 높이 올리기 · 도로 두께)도 가능. 연결된 도로는 함께 수정.
+- **횡단보도 그리기**: 도로를 가로질러 두 점 — 줄무늬가 도로에 맞고 양쪽 정지선, 중앙선 · 차선이 끊겨요.
+- **Clay+**: 새 브러시 쌓아올리기 · 그리기 · 깎기(Alt = 채우기) · 다듬기 · 층 · 새기기 · 자르기(2열 브러시 바), 스트로크 자유(간격 · 손떨림 보정) · 도장 · 끌어 크기 · 직선, 진행 방향을 따라 도는 알파 6종, 방사 대칭(2~32)과 모든 대칭을 끄는 끄기, 사각 / 올가미 마스크와 넓히기 · 좁히기 · 흐리게 · 선명하게 · 오목한 곳, 조형 레이어(세기 0~300%, 장면에 저장), 전체 부드럽게.
+- Clay **부드러운 영역**: 브러시 끝에서 안쪽으로 힘이 줄어드는 폭 — 커서에 100% 힘은 하늘색 점선, 줄어드는 곳은 주황 그러데이션.
+- Clay **동적 분할**: 조형하며 늘어난 면을 바로 나눠 끌어낸 형태도 고른 밀도로.
+- Clay **Detail −**(또는 Alt+클릭)은 나눈 면을 최근 단계부터 다시 합치고, “분할 되돌리기”는 전체에서 한 단계.
+- Clay **자르기**: 브러시 원 없이 시작점 클릭 → 점선이 마우스를 따라오고 → 끝점 클릭, 화살표 쪽이 평평하게 잘려요(Alt = 반대쪽, Esc = 취소). 사각 / 올가미 마스크 점선도 다시 보여요.
+- Clay 패널: 지금 쓸 수 없는 버튼은 숨겨요(예: 마스크가 없을 때 마스크 편집).
+- **FloorGen**: 새 패턴 10종 — 더블 헤링본 · 브릭 · 스택 · 체커보드 · 모자이크 · 샹티이 · 바스켓 위브 · 더블 바스켓 · 베르사유 · 육각형(패턴 아이콘, 패턴에 맞는 판 비율).
+- FloorGen이 3ds Max FloorGen과 같은 방식: 평평한 영역을 모두 덮고 구멍 · ㄱ자 · 곡선 외곽 · Segment Plane에서도 판이 깨끗한 한 장으로(불필요한 선 · 점 · 안쪽 벽 없음). 판마다 랜덤 재질 ID, UV 랜덤 켜기/끄기, Rotate ±°, 실제 크기 UV + UV Size, Max Boards, 판 개수 표시.
+- **Modify Poly ▸ Polygon Shift+드래그**: 면이 있는 쪽으로 밀면 두께가 없어진 부분은 양쪽 다 지워지고 두께가 있는 면만 남아요(반만 밀면 반 높이 상자, 옆 상자에 닿으면 하나로). 점 합치기 · T자 모서리 잇기 · 뒤집힌 면 바로잡기, 실행 취소 한 번.
+- **Claude 3D** (숨겨진 기능: SMART 3D 로고를 휠 버튼으로 클릭): 이미지나 여러 각도 시트를 넣고(프롬프트는 선택) Create — Claude(내 PC에 설치 · 로그인한 Claude Code 또는 Anthropic API 키)가 실제 제작을 고려한 cm 단위 부품 계획을 만들고 SMART 3D가 Modify Poly 부품으로 만들어요 (건축 · 인테리어 · 가구 · 제품). 옵션: 부품마다 실제 크기 SmartUV · 재질 · 조명 · GI 렌더, 제품은 모서리 Chamfer 1.5mm 모디파이어(수정 가능), "이전 결과 고치기"로 이어서 수정, 텍스처 폴더를 고르면 Claude가 내 PBR 텍스처 세트를 재질마다 실제 크기로 적용.
+- **Sun 하늘(Sky)**: Sun 조명을 만들면 Environment가 태양 고도에 따라 색이 바뀌는 하늘이 돼요(파란 낮 · 따뜻한 낮은 해 · 노을 · 밤, 해 빛무리). GI 렌더의 빛 · 배경과 뷰포트 배경에 쓰이고, HDRI를 불러오면 HDRI가 우선이에요. GI 렌더 ▸ 환경 · HDRI에서 켜고 끄기.
+- Claude 3D **종류별 조명**: 제품 · 가구 · 소품은 제품 사진 스튜디오(이음새 없는 스윕 배경 바닥 + 물체를 향한 키 · 필 · 림 · 탑 소프트박스), 인테리어는 계획의 실내 · 외부 조명을 그대로(없으면 외부 Sun + Sky), 건축은 Sun + Sky 또는 HDRI로 렌더. 링 · 휜 파이프는 점이 모두 이어진 하나의 관으로 만들고 UV를 길이 방향으로 곧게 펴요.
+- **SmartUV 모디파이어** (Modifiers ▸ SmartUV, 모든 3D 물체에 사용 · 올리면 UV 에디터 자동 열림): 뷰포트나 UV 에디터에서 점 · 엣지 · 면 · Element 선택, 엣지에 Seam 지정(지정 / 해제, 각도 · 재질 ID로 Auto Seam, UV 경계→Seam, 주황 Seam 선) 후 **Pelt** — LSCM 펼치기 · 자동 ARAP Relax · 같은 Texel 크기 · 바로 선 방향 · 배치까지 한 번에. 닫힌 곳 · 통 모양은 자동으로 자르고, 늘어나지 않게 붙는 섬은 **자동 Stitch** (직접 지정한 Seam은 그대로).
+- **Modify Poly 선택이 위 모디파이어로 전달** (3ds Max처럼): 고른 점 · 엣지 · 면에만 적용 — 예: 고른 면에만 Noise, 고른 엣지로 SmartUV Pelt.
+- **Modify Poly ▸ Edge ▸ Hard**: 스무딩 그룹이 서로 다른 면 사이 엣지를 한 번에 선택.
+- SmartUV 매핑: **Quick Peel** · Flatten · Planar · Relax · Rectify(사각 격자를 반듯한 직사각형으로) · Stitch · **Loop UV**(엣지 하나를 고르면 그 루프의 면들을 직선으로) · **Split UV**(FloorGen 판 같은 반복 물체: 평평한 면을 각각 펼쳐 길이 방향을 가로 / 세로로, 일정 간격 줄 맞춤으로 정사각 영역에).
+- SmartUV **Arrange**: Pack · Pack Together · Texel 맞추기 · 방향 맞추기(자동 / 가로 / 세로 / 월드 위쪽) · 같은 섬 겹치기 · 랜덤 배치 · 간격 · 90° 회전 선택 · 실제 크기 UV.
+- SmartUV **물체 위 텍스처**: 이동 · 회전 · 크기 · 뒤집기 버튼, **엣지 기준 정렬**(고른 엣지를 텍스처 가로 / 세로에), 월드 위쪽, 🖐 물체 위에서 텍스처 직접 끌기(Shift = 회전, Ctrl = 크기).
+- SmartUV **UV 에디터**: 뷰포트와 같은 Vertex · Edge · Polygon · Element(Seam으로 나뉜 섬, 더블클릭) 선택, Seam 지정 / 해제, 박스 선택, 드래그 이동, 회전 / 뒤집기 / 정렬 U·V / 엣지→가로 / Stitch / Relax / Pack, 확대 · 이동 + 번호 **체커 맵**으로 늘어남 · 방향 확인.
+- SmartUV **Cut**: 선택한 엣지 또는 선택한 면의 경계 엣지를 따라 UV를 잘라 분리 (자리는 그대로, 따로 움직이는 섬). **면을 선택하고 Stitch**하면 그 경계 엣지에 맞닿은 섬들이 회전 · 크기 · 위치를 맞춰 자동으로 이어붙어요.
+- SmartUV 에디터 **정렬 아이콘**: 왼쪽 · 가로 가운데 · 오른쪽 · 위 · 세로 가운데 · 아래 · 가운데 — UV 모양은 그대로 섬을 통째로, 여러 섬은 서로, 섬 하나는 0–1 영역 기준.
+- SmartUV 에디터 **변환 상자**: UV를 선택하면 모서리 · 변 핸들로 크기(Shift = 비율 유지, Alt = 가운데 기준), 위 핸들로 회전(Shift = 15°). 엣지 기준 정렬용으로 고른 엣지는 뷰포트에 굵은 빨간 선으로 보여요.
+- **Modify Poly ▸ Vertex ▸ Vertex Clean**: 선택한 점 중 직선 엣지 위에 다른 엣지 연결 없이 놓인 점(모서리 중간에 남은 점)을 지워요 — 모양은 그대로.
+- 조형 · 편집 중에도 오른쪽 패널의 스크롤 위치가 그대로 유지돼요(브러시마다 아래로 밀리던 문제 수정).
+- 도움말: Road · SmartUV · Claude 3D 장 추가, Clay 1.5 · FloorGen · Shift+드래그 설명.
+
 ## v1.4 — 2026-11
 
 ### English
