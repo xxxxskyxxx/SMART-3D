@@ -6,6 +6,7 @@
 - **One exe**: SMART3D_v1.6.exe holds every language (the first start follows the Windows language, then the language picked with 🌐); the HTML version is one zip with both html files and both help files.
 - **Particles viewport display**: Box (a box per particle) · Simple (the source with fewer faces) · Full; ‘Auto Simple when there are many faces’ (on) shows heavy sources as Simple above 60,000 faces and as Boxes when Simple is still too heavy. GI render · export · convert · bake always use the Full shapes. Changing the display does not re-simulate.
 - **VectorGen · Optimize Shape curves**: with ‘Lines straight · curves with the fewest points’ (on for VectorGen) a curve gets points only where it meets a line and where its direction is exactly horizontal / vertical — the round middle of an arc, the 4 points of a circle or oval — and each piece is one cubic with level / upright handles. The gently bowed side of an oval is no longer taken for a line, and a line stops where the curve really leaves it. Normal mode: the even point spacing for curves works again (the end tangent pointed the wrong way), so curves get fewer points.
+- **Claude 3D**: desktop exe only, through your own Claude Code (Claude subscription) — the API key button is gone; in the HTML version the feature is hidden (a claude.ai login cannot be used by a web page).
 - **Spinners**: right-click the ▲▼ arrows of a number box → the default value (object · modifier · keyboard-entry · Road · SmartUV · Particles · Gravity values); Segs · Sides → their minimum. A right-button press no longer steps the value first.
 - **Fix**: releasing a gizmo drag threw an error (the 1.5 scale-plane handles have no shaft), which stopped the mouse-up handling — the Shift+drag clone options appear again.
 - **Fix (English build)**: road and clay layer names were escaped with the wrong function.
@@ -20,6 +21,7 @@
 - **exe 하나**: SMART3D_v1.6.exe 하나에 모든 언어(처음 실행은 Windows 언어, 그 뒤에는 🌐로 고른 언어), HTML 버전도 html 두 개 · 도움말 두 개가 든 zip 하나.
 - **Particles 뷰포트 표시**: Box(입자마다 크기 상자) · Simple(면을 줄인 소스) · Full, ‘면이 많으면 자동으로 Simple’(켜짐) = 면 6만 개 초과 시 Simple, 그래도 많으면 Box. GI 렌더 · 내보내기 · 변환 · 굳히기는 언제나 Full, 표시를 바꿔도 다시 시뮬레이션하지 않음.
 - **VectorGen · Optimize Shape 곡선**: ‘직선은 직선만 · 곡선은 꼭 필요한 점만’(VectorGen은 켜짐)에서 곡선은 직선과 만나는 곳과 방향이 정확히 가로 · 세로가 되는 곳(둥근 부분의 가운데 · 원과 타원의 4점)에만 점, 그 사이는 가로 · 세로 핸들의 곡선 하나. 타원의 완만한 옆면을 직선으로 잘못 보던 문제 · 직선이 곡선 안쪽까지 들어가 곡선이 부풀던 문제 수정. 일반 모드: 곡선의 고른 점 배치가 다시 동작(끝 방향이 반대로 들어가던 오류) — 점이 더 줄어요.
+- **Claude 3D**: 데스크톱 exe 전용 — 내 Claude Code(Claude 구독)로만 연결, API 키 버튼 없앰. HTML 버전에서는 기능을 숨김(웹페이지는 claude.ai 로그인을 쓸 수 없음).
 - **스피너**: 숫자 칸 ▲▼ 우클릭 = 기본값(물체 · 모디파이어 · Keyboard Entry · Road · SmartUV · Particles · Gravity 값), Segs · Sides = 최소값. 오른쪽 버튼을 누를 때 값이 한 칸 바뀌던 동작 없앰.
 - **수정**: 기즈모 드래그를 놓을 때 오류(1.5 Scale 평면 핸들)로 마우스 놓기 처리가 멈추던 문제 — Shift+드래그 복사 옵션 창이 다시 떠요.
 - **수정(영어판)**: Road · Clay 레이어 이름 표시에 잘못된 함수가 쓰이던 문제.
