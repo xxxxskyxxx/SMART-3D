@@ -22,7 +22,7 @@
 
 ## 주요 기능
 
-**1.6 새 기능** — exe 하나에 5개 언어, 메뉴 줄 오른쪽 🌐 버튼으로 한국어 · English · 日本語 · 简体中文 · Español을 바로 바꾸는 **언어 전환**(하던 장면 그대로), GitHub에서 새 버전을 확인하고 exe가 직접 받아 SHA-256 검사 후 실행까지 해 주는 **자동 업데이트**, 사각 · 원 · 구 이미터와 소스 물체(뷰포트 표시 Box / Simple / Full) · 회전 · 충돌을 갖춘 간단한 **Particles**, 스피너 ▲▼ 우클릭 = 기본값, 등각 투상도 치수를 물체 밖으로 빼고 투상도마다 선 / 셰이드+선을 고르는 **도면**, IES 파일의 배광 모양 · 세기 · 색온도를 그대로 쓰는 **IES 조명**. 전체 목록: [릴리스 노트](https://github.com/xxxxskyxxx/SMART-3D/releases/latest).
+**1.6 새 기능** — exe 하나에 5개 언어, 메뉴 줄 오른쪽 🌐 버튼으로 한국어 · English · 日本語 · 简体中文 · Español을 바로 바꾸는 **언어 전환**(하던 장면 그대로), GitHub에서 새 버전을 확인하고 exe가 직접 받아 SHA-256 검사 후 실행까지 해 주는 **자동 업데이트**, 사각 · 원 · 구 이미터와 소스 물체(뷰포트 표시 Box / Simple / Full) · 회전 · 충돌을 갖춘 간단한 **Particles**, 스피너 ▲▼ 우클릭 = 기본값, 등각 투상도 치수를 물체 밖으로 빼고 투상도마다 선 / 셰이드+선을 고르는 **도면**, IES 파일의 배광 모양 · 세기 · 색온도를 그대로 쓰는 **IES 조명**, 더 단순해진 **편집 UI**(Modify Poly · Spline 명령은 버튼만 · 옵션은 마우스 옆 창, 뷰 나누기 경계 드래그, Mirror3D / R Clone Gizmo 이동). 전체 목록: [릴리스 노트](https://github.com/xxxxskyxxx/SMART-3D/releases/latest).
 
 **1.5 새 기능** — 한국 도로 규칙 **Road** 도구(차로 · 교차로 · 횡단보도 · 노면표시 · 지형 위 도로), **Clay+**(새 브러시 · 스트로크 · 알파 · 방사 대칭 · 레이어 · 부드러운 영역 · 동적 분할 · 자르기), 패턴 13종과 깨끗한 절단의 **FloorGen**, Seam · Pelt · 자동 Stitch · Cut / Stitch · Loop / Split UV · Arrange · 변환 상자와 정렬 아이콘이 있는 UV 에디터의 **SmartUV**, 하드 · 소프트 물체 **Gravity** 시뮬레이션, 태양 고도를 따르는 **Sun 하늘**, 종류별 조명까지 만드는 **Claude 3D**(이미지 → 모델), 평면 핸들과 Shift+Scale 새 면의 Scale 기즈모, 박스나 소스 물체로 채우는 **Voxel** 모디파이어, **AI · SVG 가져오기**와 가장 적은 점으로 정리하는 **Optimize Shape**, 이미지를 스플라인으로 만드는 **VectorGen**, 두께 없는 면을 정리하는 Polygon Shift+드래그. 전체 목록: [릴리스 노트](https://github.com/xxxxskyxxx/SMART-3D/releases/latest) · [CHANGELOG](CHANGELOG.md)
 

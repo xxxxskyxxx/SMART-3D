@@ -3,6 +3,15 @@
 ## v1.6 — 2026-11
 
 ### English
+- **Modify Poly panel — buttons only, options next to the mouse**: Edge ▸ Edit Edges has Chamfer · Connect · Bridge · Extend · Add Edge · Remove · Split · Circle; Border ▸ Edit Borders: Extend · Bridge · Circle · Cap · Delete; Polygon ▸ Edit Polygons: Extrude · Inset · Bevel · Bridge · Circle · Flip · Detach · Delete. The value boxes are gone from the panel: pressing a command opens its option box right next to the mouse (type a value or drag up/down in the viewport, drag the box by its title, Enter = apply · Esc = cancel). Hotkeys and the right-click menu open it next to the mouse as well. Chamfer’s Min Angle moved into its box.
+- **Modify Spline panel**: Geometry is now Edit Vertex (Attach · Refine · Trim · Fillet · Connect · Break · Close · Delete, + Vertex Type rollout) · Edit Segment (Attach · Refine · Trim · Divide · Detach · Delete) · Edit Spline (Attach · Trim · Outline · Reverse · Close · Detach · Delete). Fillet · Divide · Outline use the same option box (live preview, Enter / Esc).
+- **Modify Poly · Edit Geometry merged**: Attach · Cap All Holes · Collapse · Smart Loop now sit inside each level’s Edit rollout (Edit Vertices · Edges · Borders · Polygons · Elements); the Edit Geometry rollout shows only at the object level.
+- **Modify Spline · Dot Select**: the Selection rollout gets Dot + Dot Select — in Vertex · Segment it selects every (Dot+1)-th vertex / segment along each spline, counted from the first one picked (once around a closed spline; disabled at the Spline level). Edit ▸ Dot Select works on splines too.
+- **View Split divider**: with two views, hover the border between them for a ↔ cursor and drag to resize (double-click = half and half; the size is remembered).
+- **Transform center**: the toolbar default is now Pivot Center (축 중심).
+- **Mirror3D · R Clone Gizmo**: Gizmo in the stack (key 1) or ✥ Move Gizmo moves the mirror center / rotation center with the viewport gizmo; orange lines show the mirror plane / rotation axis; Reset center goes back to the Pivot. Undo / redo keeps the gizmo mode on the right object.
+- **Fix — Spline Trim**: crossing points are now exact, so a cut end sits exactly on the other line, and a line end that touches a line (T junction) counts as a cutting point — trimming the line a cut piece ends on no longer runs past that point to the corner.
+- **Viewport hint** moved under the view / shading buttons so they no longer overlap.
 - **One exe**: SMART3D_v1.6.exe holds every language (the first start follows the Windows language, then the language picked with 🌐); the HTML version is one zip with both html files and both help files.
 - **Particles viewport display**: Box (a box per particle) · Simple (the source with fewer faces) · Full; ‘Auto Simple when there are many faces’ (on) shows heavy sources as Simple above 60,000 faces and as Boxes when Simple is still too heavy. GI render · export · convert · bake always use the Full shapes. Changing the display does not re-simulate.
 - **VectorGen · Optimize Shape curves**: with ‘Lines straight · curves with the fewest points’ (on for VectorGen) a curve gets points only where it meets a line and where its direction is exactly horizontal / vertical — the round middle of an arc, the 4 points of a circle or oval — and each piece is one cubic with level / upright handles. The gently bowed side of an oval is no longer taken for a line, and a line stops where the curve really leaves it. Normal mode: the even point spacing for curves works again (the end tangent pointed the wrong way), so curves get fewer points.
@@ -18,6 +27,15 @@
 - **IES lights**: loading an IES file applies its light shape with vertical and horizontal angles in GI renders (candela values are no longer squared), its intensity (peak candela ÷ 100 = Intensity) and its colour temperature (Color); the light icon shows the photometric curve.
 
 ### 한국어
+- **Modify Poly 패널 — 명령은 버튼만, 옵션은 마우스 옆 창**: Edge ▸ Edit Edges에 Chamfer · Connect · Bridge · Extend · Add Edge · Remove · Split · Circle, Border ▸ Edit Borders: Extend · Bridge · Circle · Cap · Delete, Polygon ▸ Edit Polygons: Extrude · Inset · Bevel · Bridge · Circle · Flip · Detach · Delete. 패널의 숫자 칸을 없애고, 명령을 누르면 마우스 바로 옆에 옵션 창(값 입력 · 뷰포트 위/아래 드래그 · 머리줄 드래그로 이동 · Enter = 적용 · Esc = 취소). 단축키 · 우클릭 메뉴로 실행해도 마우스 옆에 떠요. Chamfer의 Min Angle은 옵션 창으로.
+- **Modify Spline 패널**: Geometry → Edit Vertex(Attach · Refine · Trim · Fillet · Connect · Break · Close · Delete, + Vertex Type 롤아웃) · Edit Segment(Attach · Refine · Trim · Divide · Detach · Delete) · Edit Spline(Attach · Trim · Outline · Reverse · Close · Detach · Delete). Fillet · Divide · Outline도 같은 옵션 창(바로 미리보기, Enter / Esc).
+- **Modify Poly · Edit Geometry 합치기**: Attach · Cap All Holes · Collapse · Smart Loop를 각 레벨의 Edit 창(Edit Vertices · Edges · Borders · Polygons · Elements) 안으로, Edit Geometry 창은 물체 레벨에서만.
+- **Modify Spline · Dot Select**: Selection 칸에 Dot + Dot Select — Vertex · Segment에서 먼저 고른 점 · 세그먼트부터 선을 따라 Dot 개수만큼 건너뛰며 선택(닫힌 선은 한 바퀴, Spline 레벨은 비활성). Edit ▸ Dot Select 명령도 스플라인에서 동작.
+- **뷰 나누기 경계**: 뷰가 2개일 때 가운데 경계에 마우스를 올리면 ↔ 화살표, 드래그로 좌우 크기 조절(더블클릭 = 반반, 크기 기억).
+- **기준점**: 툴바 기본값을 축 중심(Pivot)으로.
+- **Mirror3D · R Clone Gizmo**: 스택의 Gizmo(숫자키 1)나 ✥ Gizmo 이동 버튼으로 대칭 중심 · 회전 중심을 뷰포트 기즈모로 이동, 주황 선 = 대칭 평면 / 회전 축, 중심 되돌리기 = Pivot. 되돌리기 · 다시 하기 후에도 Gizmo 모드가 같은 물체를 따라가요.
+- **수정 — Spline Trim**: 교차점을 정확히 계산해 잘린 끝이 상대 선 위에 정확히 놓이고, 다른 선의 끝이 닿은 곳(T자)도 자르는 기준이 돼요 — 잘린 선이 닿아 있는 선을 다시 Trim할 때 그 점을 지나 모서리까지 지워지던 문제 해결.
+- **뷰포트 안내 문구**를 뷰 · 표시 버튼 아래로 옮겨 겹치지 않게.
 - **exe 하나**: SMART3D_v1.6.exe 하나에 모든 언어(처음 실행은 Windows 언어, 그 뒤에는 🌐로 고른 언어), HTML 버전도 html 두 개 · 도움말 두 개가 든 zip 하나.
 - **Particles 뷰포트 표시**: Box(입자마다 크기 상자) · Simple(면을 줄인 소스) · Full, ‘면이 많으면 자동으로 Simple’(켜짐) = 면 6만 개 초과 시 Simple, 그래도 많으면 Box. GI 렌더 · 내보내기 · 변환 · 굳히기는 언제나 Full, 표시를 바꿔도 다시 시뮬레이션하지 않음.
 - **VectorGen · Optimize Shape 곡선**: ‘직선은 직선만 · 곡선은 꼭 필요한 점만’(VectorGen은 켜짐)에서 곡선은 직선과 만나는 곳과 방향이 정확히 가로 · 세로가 되는 곳(둥근 부분의 가운데 · 원과 타원의 4점)에만 점, 그 사이는 가로 · 세로 핸들의 곡선 하나. 타원의 완만한 옆면을 직선으로 잘못 보던 문제 · 직선이 곡선 안쪽까지 들어가 곡선이 부풀던 문제 수정. 일반 모드: 곡선의 고른 점 배치가 다시 동작(끝 방향이 반대로 들어가던 오류) — 점이 더 줄어요.
