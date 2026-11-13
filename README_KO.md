@@ -61,7 +61,7 @@
 | **애니메이션** | **AI Render (노드)** |
 | ![애니메이션](docs/images/anim_ko.jpg) | ![AI Render](docs/images/aivid_ko.jpg) |
 | **Road (1.5)** | **FloorGen (1.5)** |
-| ![Road](docs/images/road_ko.jpg) | ![FloorGen](docs/images/floorgen.jpg) |
+| ![Road](docs/images/road_ko.jpg) | ![FloorGen](docs/images/floorgen_ko.jpg) |
 | **SmartUV (1.5)** | **Gravity (1.5)** |
 | ![SmartUV](docs/images/smartuv_ko.jpg) | ![Gravity](docs/images/gravity_ko.jpg) |
 

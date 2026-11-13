@@ -61,7 +61,7 @@ Both contain all five languages — 한국어 · English · 日本語 · 简体�
 | **Animation** | **AI Render (nodes)** |
 | ![Animation](docs/images/anim_en.jpg) | ![AI Render](docs/images/aivid_en.jpg) |
 | **Road (1.5)** | **FloorGen (1.5)** |
-| ![Road](docs/images/road_en.jpg) | ![FloorGen](docs/images/floorgen.jpg) |
+| ![Road](docs/images/road_en.jpg) | ![FloorGen](docs/images/floorgen_en.jpg) |
 | **SmartUV (1.5)** | **Gravity (1.5)** |
 | ![SmartUV](docs/images/smartuv_en.jpg) | ![Gravity](docs/images/gravity_en.jpg) |
 
