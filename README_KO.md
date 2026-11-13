@@ -11,21 +11,25 @@
 
 **[⬇ Releases 페이지에서 받기](https://github.com/xxxxskyxxx/SMART-3D/releases/latest)**
 
-| 파일 | 언어 | 설명 |
-|---|---|---|
-| `SMART3D_KO_v1.5.exe` | 한국어 | Windows 실행 파일 — 더블클릭으로 바로 실행 (설치 필요 없음) |
-| `SMART3D_EN_v1.5.exe` | English | Windows executable (English UI) |
-| `SMART-3D_KO_v1.5_html.zip` | 한국어 | 브라우저(Chrome·Edge)에서 여는 HTML 버전 + 도움말 |
-| `SMART-3D_EN_v1.5_html.zip` | English | HTML version (English UI) + help |
+| 파일 | 설명 |
+|---|---|
+| `SMART3D_v1.6.exe` | Windows 실행 파일 — 더블클릭으로 바로 실행 (설치 필요 없음) · 모든 언어가 한 파일에 |
+| `SMART-3D_v1.6_html.zip` | 브라우저(Chrome·Edge)에서 여는 HTML 버전 + 그림 도움말(한국어 · English) |
+
+두 파일 모두 한국어 · English · 日本語 · 简体中文 · Español 5개 언어가 들어 있어요 — 메뉴 줄 오른쪽 🌐 버튼으로 바꾸기 (exe는 처음 실행 때 Windows 언어로 시작). 1.6부터는 새 버전이 나오면 프로그램이 알아서 알려 줘요(Help ▸ 업데이트 확인…).
 
 > **처음 실행할 때** Windows가 “PC 보호” 창을 띄우면 **추가 정보 → 실행**을 누르세요. (코드 서명 인증서가 없는 개인 배포 프로그램이라 나오는 안내입니다.)
 
 ## 주요 기능
 
+**1.6 새 기능** — exe 하나에 5개 언어, 메뉴 줄 오른쪽 🌐 버튼으로 한국어 · English · 日本語 · 简体中文 · Español을 바로 바꾸는 **언어 전환**(하던 장면 그대로), GitHub에서 새 버전을 확인하고 exe가 직접 받아 SHA-256 검사 후 실행까지 해 주는 **자동 업데이트**, 사각 · 원 · 구 이미터와 소스 물체(뷰포트 표시 Box / Simple / Full) · 회전 · 충돌을 갖춘 간단한 **Particles**, 스피너 ▲▼ 우클릭 = 기본값, 등각 투상도 치수를 물체 밖으로 빼고 투상도마다 선 / 셰이드+선을 고르는 **도면**, IES 파일의 배광 모양 · 세기 · 색온도를 그대로 쓰는 **IES 조명**. 전체 목록: [릴리스 노트](https://github.com/xxxxskyxxx/SMART-3D/releases/latest).
+
 **1.5 새 기능** — 한국 도로 규칙 **Road** 도구(차로 · 교차로 · 횡단보도 · 노면표시 · 지형 위 도로), **Clay+**(새 브러시 · 스트로크 · 알파 · 방사 대칭 · 레이어 · 부드러운 영역 · 동적 분할 · 자르기), 패턴 13종과 깨끗한 절단의 **FloorGen**, Seam · Pelt · 자동 Stitch · Cut / Stitch · Loop / Split UV · Arrange · 변환 상자와 정렬 아이콘이 있는 UV 에디터의 **SmartUV**, 하드 · 소프트 물체 **Gravity** 시뮬레이션, 태양 고도를 따르는 **Sun 하늘**, 종류별 조명까지 만드는 **Claude 3D**(이미지 → 모델), 평면 핸들과 Shift+Scale 새 면의 Scale 기즈모, 박스나 소스 물체로 채우는 **Voxel** 모디파이어, **AI · SVG 가져오기**와 가장 적은 점으로 정리하는 **Optimize Shape**, 이미지를 스플라인으로 만드는 **VectorGen**, 두께 없는 면을 정리하는 Polygon Shift+드래그. 전체 목록: [릴리스 노트](https://github.com/xxxxskyxxx/SMART-3D/releases/latest) · [CHANGELOG](CHANGELOG.md)
 
 - **모델링** — 기본 도형·스플라인, Modify Poly / Modify Spline 편집(Extrude, Inset, Bevel, Chamfer, Bridge, Connect, Trim 등), 모디파이어 스택(Multi Select, Projection Spline, Pattern 표면 타일링(삼각·사각·육각), Shell, Noise …), Boolean, Mirror, Mask 물체, SMART Utils ▸ Drop Surface. **SmartGrid**로 표면 위에 바로 만들기, 만들고 나면 Modify로 자동 이동(만들기 버튼 우클릭 = 연속 만들기 ∞)
 - **선택** — Select Similar(크기가 달라도 구성이 같은 물체 · 같은 요소), Dot Select(줄을 따라 N개씩 건너뛰기, 선택한 여러 곳에 한 번에), View Select(뷰를 향하는 폴리곤을 각도로 선택, 드래그하면 바로 반영), 스무딩 그룹 번호 더블클릭으로 그 면 선택
+- **언어 · 업데이트 (1.6)** — 메뉴 줄 🌐 버튼: 한국어 · English · 日本語 · 简体中文 · Español, 고른 언어는 기억하고 바꿔도 장면은 그대로. 시작할 때 자동으로 새 버전 확인(Help ▸ 업데이트 확인… · 시작할 때 업데이트 확인), exe는 새 버전을 같은 폴더에 받아 SHA-256 검사 후 장면을 이어서 열고 이전 exe도 지울 수 있어요
+- **Particles (1.6)** — Create ▸ Geometry ▸ Particles: 사각 · 원(0–180°) · 구(0–360°) 이미터, 개수 · 수명 · 속도 · 중력 · 공기 저항, 기본 모양 또는 소스 물체 여러 개, 크기 · 회전 랜덤과 회전 속도, 바닥 · 선택 물체와 충돌(튕기기 · 붙기 · 사라지기), 프레임을 Modify Poly로 굳히기
 - **Road (1.5)** — 한국 도로 규칙으로 중앙선을 그려 도로 만들기: 차로 수 · 폭, 중앙선 종류, 갓길, 고속도로 중앙분리대, 버스전용차로, 둥근 모서리의 교차로 · 3거리 · ㄱ자, 교통섬, 횡단보도 · 정지선 자동, 구간별 차로(자연스러운 변이), 차로마다 조합하는 노면표시, 지형 위 도로 · 높이 있는 도로
 - **Clay Modeling** — 물체를 점토처럼 조형(쌓기 · 부풀리기 · 부드럽게 · 당기기 · 평평하게 · 홈 · 모으기 · 마스크 · 부분 분할, 대칭, 펜 압력). **1.5**: 쌓아올리기 · 그리기 · 깎기 · 다듬기 · 층 · 새기기 · 자르기 브러시, 스트로크 · 알파, 방사 대칭, 사각 · 올가미 마스크, 조형 레이어, 부드러운 영역, 동적 분할, 분할 되돌리기
 - **FloorGen (1.5)** — 평평한 면이나 닫힌 스플라인에 바닥재: 일자 · 헤링본 · 쉐브런 · 더블 헤링본 · 브릭 · 스택 · 체커보드 · 모자이크 · 샹티이 · 바스켓 위브 · 더블 바스켓 · 베르사유 · 육각형, 구멍 · Segment Plane도 깨끗하게 절단, 판마다 랜덤 재질 ID · UV · Rotate

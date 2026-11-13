@@ -11,21 +11,25 @@ Free to use as a **Windows program (SMART3D.exe)** that runs without installatio
 
 **[⬇ Get it from the Releases page](https://github.com/xxxxskyxxx/SMART-3D/releases/latest)**
 
-| File | Language | Description |
-|---|---|---|
-| `SMART3D_EN_v1.5.exe` | English | Windows executable — double-click to run (no installation) |
-| `SMART3D_KO_v1.5.exe` | Korean | Windows executable (Korean UI) |
-| `SMART-3D_EN_v1.5_html.zip` | English | HTML version for Chrome / Edge + help |
-| `SMART-3D_KO_v1.5_html.zip` | Korean | HTML version (Korean UI) + help |
+| File | Description |
+|---|---|
+| `SMART3D_v1.6.exe` | Windows executable — double-click to run (no installation) · all languages in one file |
+| `SMART-3D_v1.6_html.zip` | HTML version for Chrome / Edge + picture help (English · Korean) |
+
+Both contain all five languages — 한국어 · English · 日本語 · 简体中文 · Español — switch from the 🌐 button at the right of the menu bar (the exe starts in your Windows language the first time). From 1.6 the program checks for new versions by itself (Help ▸ Check for Updates…).
 
 > **First run:** if Windows shows “Windows protected your PC”, click **More info → Run anyway**. (It appears because this independent program is not code-signed.)
 
 ## Features
 
+**What’s new in 1.6** — **Languages**: one exe for 한국어 · English · 日本語 · 简体中文 · Español, switched from the 🌐 button at the right of the menu bar (your scene stays open), **Automatic update**: the app checks GitHub for a new version and the exe downloads, verifies (SHA-256) and starts it for you, **Particles** (rect · circle · sphere emitters, source objects with Box / Simple / Full viewport display, rotation, collisions on the timeline), right-click a spinner’s ▲▼ for its default value, **Drawing** with isometric dimensions kept outside the object and Lines / Shade + Lines per view, **IES lights** that apply the file’s light shape · intensity · colour temperature. Full list: [release notes](https://github.com/xxxxskyxxx/SMART-3D/releases/latest).
+
 **What’s new in 1.5** — **Road** tool with Korean road rules (lanes, junctions, crosswalks, road marks, on terrain), **Clay+** (new brushes, strokes · alphas, radial symmetry, layers, soft area, dynamic detail, clip), **FloorGen** with 13 parquet patterns and clean cuts, **SmartUV** (seams · Pelt · auto stitch · Cut / Stitch · Loop / Split UV · Arrange · UV editor with transform box and align icons), **Gravity** rigid / soft body simulation, **Sun Sky** environment, **Claude 3D** (image → model with studio / interior / architecture lighting), Scale gizmo plane handles with Shift+Scale new faces, a **Voxel** modifier (fill with boxes or any source object), **AI · SVG import** with **Optimize Shape** (clean splines with the fewest points), **VectorGen** (image → splines in Create ▸ Shapes), and Shift+drag polygon extrude that cleans up faces with no thickness. Full list: [Release notes](https://github.com/xxxxskyxxx/SMART-3D/releases/latest) · [CHANGELOG](CHANGELOG.md)
 
 - **Modeling** — primitives and splines, Modify Poly / Modify Spline editing (Extrude, Inset, Bevel, Chamfer, Bridge, Connect, Trim…), modifier stack (Multi Select, Projection Spline, Pattern surface tiling (tri · quad · hex), Shell, Noise…), Boolean, Mirror, Mask objects, SMART Utils ▸ Drop Surface; **SmartGrid** builds right on a surface, a new object switches to Modify (right-click a create button for continuous create ∞)
 - **Selection** — Select Similar (objects with the same structure at any size, or matching elements), Dot Select (every N along a line, on every selected part), View Select (polygons facing the view within an angle, live while dragging), select a smoothing group by double-clicking its number
+- **Languages · update (1.6)** — 🌐 button in the menu bar: 한국어 · English · 日本語 · 简体中文 · Español, the choice is remembered and the scene stays open when you switch; automatic update check at start (Help ▸ Check for Updates… · Check for Updates at Start), the exe downloads the new version next to itself, checks SHA-256, reopens your scene in it and can delete the old exe
+- **Particles (1.6)** — Create ▸ Geometry ▸ Particles: rect · circle (0–180°) · sphere (0–360°) emitters, count · life · speed · gravity · drag, built-in shapes or several source objects, random size · rotation · spin, collisions with the floor and picked objects (bounce · stick · die), bake a frame into a Modify Poly
 - **Road (1.5)** — draw road centre lines with Korean road rules: lane counts and widths, centre line types, shoulders, highway median, bus lanes, junctions · T · L with rounded corners, traffic islands, automatic crosswalks and stop lines, lanes per segment with smooth tapers, composable road marks placed per lane, roads on terrain or with their own height
 - **Clay Modeling** — sculpt any object like clay (Clay · Inflate · Smooth · Move · Flatten · Crease · Pinch · Mask · Detail, symmetry, pen pressure); **1.5**: Clay Buildup · Draw · Scrape · Polish · Layer · Carve · Clip brushes, strokes and alphas, radial symmetry, box / lasso masks, sculpt layers, soft area, dynamic detail and un-subdivide
 - **FloorGen (1.5)** — floor boards on any flat face or closed spline: Straight · Herringbone · Chevron · Double Herringbone · Brick · Stack · Checkerboard · Mosaic · Chantilly · Basket Weave · Double Basket · Versailles · Hexagon; holes and segmented planes cut cleanly, random Material IDs · UV · Rotate per board

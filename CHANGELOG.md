@@ -1,5 +1,33 @@
 # Changelog
 
+## v1.6 — 2026-11
+
+### English
+- **One exe**: SMART3D_v1.6.exe holds every language (the first start follows the Windows language, then the language picked with 🌐); the HTML version is one zip with both html files and both help files.
+- **Particles viewport display**: Box (a box per particle) · Simple (the source with fewer faces) · Full; ‘Auto Simple when there are many faces’ (on) shows heavy sources as Simple above 60,000 faces and as Boxes when Simple is still too heavy. GI render · export · convert · bake always use the Full shapes. Changing the display does not re-simulate.
+- **Spinners**: right-click the ▲▼ arrows of a number box → the default value (object · modifier · keyboard-entry · Road · SmartUV · Particles · Gravity values); Segs · Sides → their minimum. A right-button press no longer steps the value first.
+- **Fix**: releasing a gizmo drag threw an error (the 1.5 scale-plane handles have no shaft), which stopped the mouse-up handling — the Shift+drag clone options appear again.
+- **Fix (English build)**: road and clay layer names were escaped with the wrong function.
+- **Help**: all pictures retaken on the 1.6 screen (KO · EN), new sections Language · automatic update and Particles; in-app help gets Particles display and Language · update · spinners.
+- **Languages**: a 🌐 button at the right of the menu bar (and Help ▸ Language…) switches between 한국어 · English · 日本語 · 简体中文 · Español. Korean ↔ the others moves between smart3d.html and smart3d_en.html and carries the open scene over; 日本語 · 简体中文 · Español are translated live over the English UI (menus, panels, dialogs, messages). The choice is remembered. Both html files are in every download and inside both exes.
+- **Automatic update**: 6 s after start the app checks the latest GitHub release (switch: Help ▸ Check for Updates at Start; manual: Help ▸ Check for Updates…); a ⬆ badge and a window show the new version and its notes. In the exe, Update now downloads the matching exe next to the current one, verifies its size and SHA-256 (update.json), saves the scene, starts the new version, reopens the scene and can delete the old exe. The HTML version opens the download page. Skip this version · Later.
+- **Particles** (Create ▸ Geometry ▸ Particles): a simple particle system that follows the timeline — Rect · Circle (spread 0–180°) · Sphere (emit range 0–360°) emitters; count · start / end frame · life · seed; speed · gravity · air drag · random start position; box · sphere · tetra · plane or several source objects (mixed at random) with size + random size and shrink at the end of life; random start rotation · spin · align to flight direction; collisions with the Grid floor and picked objects along the face normal (bounce · stick · die); bake the current frame into a Modify Poly.
+- **Drawing**: isometric dimensions are pushed outside the object with extension lines that start outside it; every view gets **Lines | Shade + Lines** buttons under its name (PNG · PDF save keeps the shading).
+- **IES lights**: loading an IES file applies its light shape with vertical and horizontal angles in GI renders (candela values are no longer squared), its intensity (peak candela ÷ 100 = Intensity) and its colour temperature (Color); the light icon shows the photometric curve.
+
+### 한국어
+- **exe 하나**: SMART3D_v1.6.exe 하나에 모든 언어(처음 실행은 Windows 언어, 그 뒤에는 🌐로 고른 언어), HTML 버전도 html 두 개 · 도움말 두 개가 든 zip 하나.
+- **Particles 뷰포트 표시**: Box(입자마다 크기 상자) · Simple(면을 줄인 소스) · Full, ‘면이 많으면 자동으로 Simple’(켜짐) = 면 6만 개 초과 시 Simple, 그래도 많으면 Box. GI 렌더 · 내보내기 · 변환 · 굳히기는 언제나 Full, 표시를 바꿔도 다시 시뮬레이션하지 않음.
+- **스피너**: 숫자 칸 ▲▼ 우클릭 = 기본값(물체 · 모디파이어 · Keyboard Entry · Road · SmartUV · Particles · Gravity 값), Segs · Sides = 최소값. 오른쪽 버튼을 누를 때 값이 한 칸 바뀌던 동작 없앰.
+- **수정**: 기즈모 드래그를 놓을 때 오류(1.5 Scale 평면 핸들)로 마우스 놓기 처리가 멈추던 문제 — Shift+드래그 복사 옵션 창이 다시 떠요.
+- **수정(영어판)**: Road · Clay 레이어 이름 표시에 잘못된 함수가 쓰이던 문제.
+- **도움말**: 모든 그림을 1.6 화면으로 다시 촬영(한/영), 언어 · 자동 업데이트와 Particles 항목 추가, 프로그램 안 도움말에 Particles 표시 · 언어 · 업데이트 · 스피너 추가.
+- **언어 전환**: 메뉴 줄 오른쪽 🌐 버튼(Help ▸ 언어 · Language…)으로 한국어 · English · 日本語 · 简体中文 · Español 전환. 한국어 ↔ 다른 언어는 smart3d.html ↔ smart3d_en.html 이동 + 열린 장면 그대로 이어서 열기, 日本語 · 简体中文 · Español은 영어 화면 위에 실시간 번역(메뉴 · 패널 · 창 · 메시지), 고른 언어 기억. 모든 다운로드와 두 exe에 html 두 개 모두 포함.
+- **자동 업데이트**: 시작 6초 뒤 GitHub 최신 릴리스 확인(끄기: Help ▸ 시작할 때 업데이트 확인 · 직접: Help ▸ 업데이트 확인…), 새 버전이면 ⬆ 표시와 새 기능 창. exe는 지금 업데이트 = 같은 폴더에 새 exe 받기 → 크기 · SHA-256 검사(update.json) → 장면 저장 → 새 버전 실행 → 장면 이어서 열기 → 이전 exe 지우기(선택). HTML 버전은 다운로드 페이지 열기. 이 버전 건너뛰기 · 나중에.
+- **Particles** (Create ▸ Geometry ▸ Particles): 타임라인을 따라 움직이는 간단한 파티클 — 사각 · 원(퍼짐 0–180°) · 구(방출 범위 0–360°) 이미터, 개수 · 시작 / 끝 프레임 · 수명 · 시드, 속도 · 중력 · 공기 저항 · 시작 위치 랜덤, 상자 · 구 · 사면체 · 판 또는 소스 물체 여러 개(랜덤 섞기)와 크기 · 크기 랜덤 · 수명 끝 축소, 시작 회전 랜덤 · 회전 속도 · 진행 방향 정렬, Grid 바닥과 선택 물체의 면 노말 기준 충돌(튕기기 · 붙기 · 사라지기), 지금 프레임을 Modify Poly로 굳히기.
+- **도면**: 등각 투상도 치수를 물체 밖으로, 지지선은 물체 밖에서 시작 · 투상도마다 이름 아래 **선 | 셰이드+선** 버튼(PNG · PDF 저장에도 셰이드 적용).
+- **IES 조명**: IES 파일의 배광 모양(세로 · 가로 각도 모두, 칸델라 제곱 오류 수정) · 세기(최대 칸델라 ÷ 100 = Intensity) · 색온도(Color)를 그대로 적용, 조명 아이콘에 배광 곡선 표시.
+
 ## v1.5 — 2026-11
 
 ### English
