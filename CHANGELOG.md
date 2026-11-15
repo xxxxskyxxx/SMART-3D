@@ -1,8 +1,22 @@
 # Changelog
 
-## v1.6 — 2026-11
+## v1.6.1 — 2026-11
 
 ### English
+- **Drawing planes**: the Left · Back · Bottom views had a left-handed drawing frame, so lines and shapes drawn there went backwards and down; every ortho view now draws on its own plane exactly where you click (objects made in those views also face the right way).
+- **Line — close at the start point**: while drawing a Line, moving the mouse near the first point snaps the line end onto it (snap marker) and shows **Close**; a click finishes a closed spline.
+- **Extrude · Shell on splines ▸ Axis**: Auto (default for new modifiers) = perpendicular to the plane the spline lies in — the Z of the view it was drawn in — or local X · Y · Z; the panel shows the direction in use. Splines that are not at local Z = 0 get their caps in the right place. Older scenes keep their result.
+- **Projection Spline**: Weld no longer moves corners — a point is only slid onto the projected line when all of its faces lie in one plane (boxes and other hard-edged objects keep their exact shape; flat grids still get clean topology).
+- **Modify Spline ▸ Edit Vertex ▸ Weld**: merges the selected vertices within the Threshold into one point (option box next to the mouse, live preview, Enter / Esc). Open ends are joined into one spline, the first and last vertex of one spline close it, neighbouring vertices are merged, others meet at their average.
+- **Edit Pivot**: the pivot axes (X red · Y green · Z blue, with letters) stay on screen at a constant size while Edit Pivot is on, and follow live as you move or rotate the pivot.
+- **3D Boolean ▸ Subtract with a zero-thickness object** (a Plane, an open or wavy mesh): the solid is split into separate pieces along that surface and every cut face has the surface’s exact shape (the sheet is thickened by a hair for the cut, then the cut faces are snapped back onto it; slivers with no volume are removed). Union · Intersect with open meshes still imprint.
+- **2D Boolean ▸ Subtract with an open spline**: a closed spline is split along the line into separate closed splines (both line ends should go past the outline); together with closed operands the holes are cut first. When the line does not cross, nothing changes and a message says so.
+- **Smart Loop + Ctrl+Alt**: adds a loop shaped like the end edge loop nearer the mouse — every ring edge is cut at the same distance from that side (50% of the hovered edge) instead of the same %; sky-blue preview, hint in the viewport.
+- **Cloth — triangle size**: changing the triangle size (or Use original mesh) maps the current simulated shape onto the new triangles, running or stopped — no jump back to the start and no bounce.
+- **Cloth — concave shapes**: a cloth made from a concave face (a closed Line turned into Modify Poly …) keeps its outline — faces are triangulated properly (with Delaunay flips for even triangles) instead of the fan that filled in the notches.
+- **Cloth — thickness**: Cloth thickness stays a simulation value (nothing is drawn thicker); overlapping cloth and objects keep that distance and self collision is checked more often, so the back does not push through the front.
+- **Drawing paper**: Paper in the drawing bar — Screen (free) · A4 · A3 · A2 · A1 · A0, landscape / portrait. The sheet becomes that paper and the views are refitted at a standard scale (1:1 · 1:2 · 1:5 · 1:10 …); the title block shows paper and scale; wheel zoom · middle-drag pan · ⤢ Fit; PDF with the real paper size, PNG at print resolution (A4 300 dpi · A0 120 dpi).
+- **Help**: new section 1.6.1 (KO · EN) with pictures, the drawing paper in Auto Dim · Drawing, in-app help 1.6.1 (also 日本語 · 简体中文 · Español).
 - **Modify Poly panel — buttons only, options next to the mouse**: Edge ▸ Edit Edges has Chamfer · Connect · Bridge · Extend · Add Edge · Remove · Split · Circle; Border ▸ Edit Borders: Extend · Bridge · Circle · Cap · Delete; Polygon ▸ Edit Polygons: Extrude · Inset · Bevel · Bridge · Circle · Flip · Detach · Delete. The value boxes are gone from the panel: pressing a command opens its option box right next to the mouse (type a value or drag up/down in the viewport, drag the box by its title, Enter = apply · Esc = cancel). Hotkeys and the right-click menu open it next to the mouse as well. Chamfer’s Min Angle moved into its box.
 - **Modify Spline panel**: Geometry is now Edit Vertex (Attach · Refine · Trim · Fillet · Connect · Break · Close · Delete, + Vertex Type rollout) · Edit Segment (Attach · Refine · Trim · Divide · Detach · Delete) · Edit Spline (Attach · Trim · Outline · Reverse · Close · Detach · Delete). Fillet · Divide · Outline use the same option box (live preview, Enter / Esc).
 - **Modify Poly · Edit Geometry merged**: Attach · Cap All Holes · Collapse · Smart Loop now sit inside each level’s Edit rollout (Edit Vertices · Edges · Borders · Polygons · Elements); the Edit Geometry rollout shows only at the object level.
@@ -12,6 +26,35 @@
 - **Mirror3D · R Clone Gizmo**: Gizmo in the stack (key 1) or ✥ Move Gizmo moves the mirror center / rotation center with the viewport gizmo; orange lines show the mirror plane / rotation axis; Reset center goes back to the Pivot. Undo / redo keeps the gizmo mode on the right object.
 - **Fix — Spline Trim**: crossing points are now exact, so a cut end sits exactly on the other line, and a line end that touches a line (T junction) counts as a cutting point — trimming the line a cut piece ends on no longer runs past that point to the corner.
 - **Viewport hint** moved under the view / shading buttons so they no longer overlap.
+
+### 한국어
+- **그리기 평면**: Left · Back · Bottom 뷰의 그리기 좌표가 왼손 좌표라 Line · 도형이 뒤 · 아래로 그려지던 문제 — 모든 평면 뷰가 그 뷰의 평면에, 클릭한 자리에 그대로 그려요(그 뷰에서 만든 물체 방향도 바르게).
+- **Line — 시작점에서 닫기**: Line을 그리다 마우스가 첫 점 가까이 가면 선 끝이 첫 점에 붙고(스냅 표시) **Close**가 보여요 — 클릭하면 닫힌 스플라인으로 끝나요.
+- **Extrude · Shell (스플라인) ▸ Axis**: Auto(새 모디파이어 기본) = 스플라인이 놓인 평면에 수직 — 그린 뷰의 Z 방향, 또는 로컬 X · Y · Z. 패널에 지금 쓰는 방향 표시, 로컬 Z = 0에 있지 않은 스플라인도 뚜껑 위치가 맞아요. 예전 장면은 결과 그대로.
+- **Projection Spline**: Weld가 모서리를 옮기지 않아요 — 점이 붙은 면이 모두 한 평면일 때만 투영선 위로 밀어요(박스처럼 각진 물체는 모양 그대로, 평평한 격자는 깔끔한 토폴로지).
+- **Modify Spline ▸ Edit Vertex ▸ Weld**: 선택한 점 중 Threshold 거리 안의 점을 한 점으로(마우스 옆 옵션 창 · 바로 미리보기 · Enter / Esc). 열린 끝점끼리는 한 선으로 잇고, 같은 선의 처음 · 끝은 닫고, 이웃한 점은 합치고, 나머지는 평균 위치로 모아요.
+- **Edit Pivot**: Edit Pivot을 켜면 축(X 빨강 · Y 초록 · Z 파랑, 글자 포함)이 화면에서 같은 크기로 계속 보이고, 축을 옮기거나 돌리면 바로 따라와요.
+- **3D Boolean ▸ Subtract (두께 없는 물체)**: Plane · 열린 메시 · 물결 면을 빼면 물체가 그 면을 따라 여러 조각으로 나뉘고, 잘린 면은 그 면 모양 그대로(자를 때만 아주 얇게 두께를 준 뒤 잘린 면을 원래 면 위로 붙이고, 부피 없는 조각은 지움). Union · Intersect는 전처럼 자국만 새겨요.
+- **2D Boolean ▸ Subtract (열린 스플라인)**: 닫힌 스플라인을 그 선을 따라 닫힌 스플라인 여러 개로 나눠요(선의 양 끝이 경계 밖까지). 닫힌 스플라인과 함께 빼면 구멍을 먼저 뚫고 나눠요. 선이 가로지르지 않으면 바꾸지 않고 안내.
+- **Smart Loop + Ctrl+Alt**: 마우스에 가까운 쪽 끝 엣지 루프와 같은 모양으로 루프 추가 — 링의 엣지마다 같은 %가 아니라 그쪽에서 같은 거리(가리킨 엣지의 50%)에서 잘라요, 하늘색 미리보기 · 뷰포트 안내.
+- **Cloth — 삼각형 크기**: 삼각형 크기(또는 원래 메시 쓰기)를 바꾸면 지금 시뮬레이션 모양을 새 삼각형에 옮겨 그대로 이어져요 — 실행 중 · 멈춘 상태 모두, 처음으로 튕기거나 되돌아가지 않음.
+- **Cloth — 오목한 모양**: 오목한 면(닫힌 Line → Modify Poly 등)으로 만든 천이 원래 외곽 그대로 — 면을 부채꼴로 나눠 오목한 곳이 채워지던 문제를 바른 삼각 분할(Delaunay 뒤집기로 고른 삼각형)로 수정.
+- **Cloth — 천 두께**: 천 두께는 시뮬레이션 값(실제로 두껍게 그리지 않음) — 겹친 천 · 물체와 그 거리만큼 떨어지고 자기 충돌을 더 자주 계산해 뒷면이 앞면으로 파고들지 않아요.
+- **도면 용지**: 도면 막대의 용지 — 화면(자유) · A4 · A3 · A2 · A1 · A0, 가로 / 세로. 고르면 시트가 그 용지가 되고 투상도를 표준 척도(1:1 · 1:2 · 1:5 · 1:10 …)로 다시 맞춤, 표제란에 용지 · 척도, 휠 확대 · 가운데 드래그 이동 · ⤢ 맞춤, PDF = 실제 용지 크기, PNG = 인쇄 해상도(A4 300 dpi · A0 120 dpi).
+- **도움말**: 1.6.1 항목(한/영, 그림 포함), Auto Dim · 도면에 용지, 프로그램 안 도움말 1.6.1(日本語 · 简体中文 · Español 포함).
+- **Modify Poly 패널 — 명령은 버튼만, 옵션은 마우스 옆 창**: Edge ▸ Edit Edges에 Chamfer · Connect · Bridge · Extend · Add Edge · Remove · Split · Circle, Border ▸ Edit Borders: Extend · Bridge · Circle · Cap · Delete, Polygon ▸ Edit Polygons: Extrude · Inset · Bevel · Bridge · Circle · Flip · Detach · Delete. 패널의 숫자 칸을 없애고, 명령을 누르면 마우스 바로 옆에 옵션 창(값 입력 · 뷰포트 위/아래 드래그 · 머리줄 드래그로 이동 · Enter = 적용 · Esc = 취소). 단축키 · 우클릭 메뉴로 실행해도 마우스 옆에 떠요. Chamfer의 Min Angle은 옵션 창으로.
+- **Modify Spline 패널**: Geometry → Edit Vertex(Attach · Refine · Trim · Fillet · Connect · Break · Close · Delete, + Vertex Type 롤아웃) · Edit Segment(Attach · Refine · Trim · Divide · Detach · Delete) · Edit Spline(Attach · Trim · Outline · Reverse · Close · Detach · Delete). Fillet · Divide · Outline도 같은 옵션 창(바로 미리보기, Enter / Esc).
+- **Modify Poly · Edit Geometry 합치기**: Attach · Cap All Holes · Collapse · Smart Loop를 각 레벨의 Edit 창(Edit Vertices · Edges · Borders · Polygons · Elements) 안으로, Edit Geometry 창은 물체 레벨에서만.
+- **Modify Spline · Dot Select**: Selection 칸에 Dot + Dot Select — Vertex · Segment에서 먼저 고른 점 · 세그먼트부터 선을 따라 Dot 개수만큼 건너뛰며 선택(닫힌 선은 한 바퀴, Spline 레벨은 비활성). Edit ▸ Dot Select 명령도 스플라인에서 동작.
+- **뷰 나누기 경계**: 뷰가 2개일 때 가운데 경계에 마우스를 올리면 ↔ 화살표, 드래그로 좌우 크기 조절(더블클릭 = 반반, 크기 기억).
+- **기준점**: 툴바 기본값을 축 중심(Pivot)으로.
+- **Mirror3D · R Clone Gizmo**: 스택의 Gizmo(숫자키 1)나 ✥ Gizmo 이동 버튼으로 대칭 중심 · 회전 중심을 뷰포트 기즈모로 이동, 주황 선 = 대칭 평면 / 회전 축, 중심 되돌리기 = Pivot. 되돌리기 · 다시 하기 후에도 Gizmo 모드가 같은 물체를 따라가요.
+- **수정 — Spline Trim**: 교차점을 정확히 계산해 잘린 끝이 상대 선 위에 정확히 놓이고, 다른 선의 끝이 닿은 곳(T자)도 자르는 기준이 돼요 — 잘린 선이 닿아 있는 선을 다시 Trim할 때 그 점을 지나 모서리까지 지워지던 문제 해결.
+- **뷰포트 안내 문구**를 뷰 · 표시 버튼 아래로 옮겨 겹치지 않게.
+
+## v1.6 — 2026-11
+
+### English
 - **One exe**: SMART3D_v1.6.exe holds every language (the first start follows the Windows language, then the language picked with 🌐); the HTML version is one zip with both html files and both help files.
 - **Particles viewport display**: Box (a box per particle) · Simple (the source with fewer faces) · Full; ‘Auto Simple when there are many faces’ (on) shows heavy sources as Simple above 60,000 faces and as Boxes when Simple is still too heavy. GI render · export · convert · bake always use the Full shapes. Changing the display does not re-simulate.
 - **VectorGen · Optimize Shape curves**: with ‘Lines straight · curves with the fewest points’ (on for VectorGen) a curve gets points only where it meets a line and where its direction is exactly horizontal / vertical — the round middle of an arc, the 4 points of a circle or oval — and each piece is one cubic with level / upright handles. The gently bowed side of an oval is no longer taken for a line, and a line stops where the curve really leaves it. Normal mode: the even point spacing for curves works again (the end tangent pointed the wrong way), so curves get fewer points.
@@ -27,15 +70,6 @@
 - **IES lights**: loading an IES file applies its light shape with vertical and horizontal angles in GI renders (candela values are no longer squared), its intensity (peak candela ÷ 100 = Intensity) and its colour temperature (Color); the light icon shows the photometric curve.
 
 ### 한국어
-- **Modify Poly 패널 — 명령은 버튼만, 옵션은 마우스 옆 창**: Edge ▸ Edit Edges에 Chamfer · Connect · Bridge · Extend · Add Edge · Remove · Split · Circle, Border ▸ Edit Borders: Extend · Bridge · Circle · Cap · Delete, Polygon ▸ Edit Polygons: Extrude · Inset · Bevel · Bridge · Circle · Flip · Detach · Delete. 패널의 숫자 칸을 없애고, 명령을 누르면 마우스 바로 옆에 옵션 창(값 입력 · 뷰포트 위/아래 드래그 · 머리줄 드래그로 이동 · Enter = 적용 · Esc = 취소). 단축키 · 우클릭 메뉴로 실행해도 마우스 옆에 떠요. Chamfer의 Min Angle은 옵션 창으로.
-- **Modify Spline 패널**: Geometry → Edit Vertex(Attach · Refine · Trim · Fillet · Connect · Break · Close · Delete, + Vertex Type 롤아웃) · Edit Segment(Attach · Refine · Trim · Divide · Detach · Delete) · Edit Spline(Attach · Trim · Outline · Reverse · Close · Detach · Delete). Fillet · Divide · Outline도 같은 옵션 창(바로 미리보기, Enter / Esc).
-- **Modify Poly · Edit Geometry 합치기**: Attach · Cap All Holes · Collapse · Smart Loop를 각 레벨의 Edit 창(Edit Vertices · Edges · Borders · Polygons · Elements) 안으로, Edit Geometry 창은 물체 레벨에서만.
-- **Modify Spline · Dot Select**: Selection 칸에 Dot + Dot Select — Vertex · Segment에서 먼저 고른 점 · 세그먼트부터 선을 따라 Dot 개수만큼 건너뛰며 선택(닫힌 선은 한 바퀴, Spline 레벨은 비활성). Edit ▸ Dot Select 명령도 스플라인에서 동작.
-- **뷰 나누기 경계**: 뷰가 2개일 때 가운데 경계에 마우스를 올리면 ↔ 화살표, 드래그로 좌우 크기 조절(더블클릭 = 반반, 크기 기억).
-- **기준점**: 툴바 기본값을 축 중심(Pivot)으로.
-- **Mirror3D · R Clone Gizmo**: 스택의 Gizmo(숫자키 1)나 ✥ Gizmo 이동 버튼으로 대칭 중심 · 회전 중심을 뷰포트 기즈모로 이동, 주황 선 = 대칭 평면 / 회전 축, 중심 되돌리기 = Pivot. 되돌리기 · 다시 하기 후에도 Gizmo 모드가 같은 물체를 따라가요.
-- **수정 — Spline Trim**: 교차점을 정확히 계산해 잘린 끝이 상대 선 위에 정확히 놓이고, 다른 선의 끝이 닿은 곳(T자)도 자르는 기준이 돼요 — 잘린 선이 닿아 있는 선을 다시 Trim할 때 그 점을 지나 모서리까지 지워지던 문제 해결.
-- **뷰포트 안내 문구**를 뷰 · 표시 버튼 아래로 옮겨 겹치지 않게.
 - **exe 하나**: SMART3D_v1.6.exe 하나에 모든 언어(처음 실행은 Windows 언어, 그 뒤에는 🌐로 고른 언어), HTML 버전도 html 두 개 · 도움말 두 개가 든 zip 하나.
 - **Particles 뷰포트 표시**: Box(입자마다 크기 상자) · Simple(면을 줄인 소스) · Full, ‘면이 많으면 자동으로 Simple’(켜짐) = 면 6만 개 초과 시 Simple, 그래도 많으면 Box. GI 렌더 · 내보내기 · 변환 · 굳히기는 언제나 Full, 표시를 바꿔도 다시 시뮬레이션하지 않음.
 - **VectorGen · Optimize Shape 곡선**: ‘직선은 직선만 · 곡선은 꼭 필요한 점만’(VectorGen은 켜짐)에서 곡선은 직선과 만나는 곳과 방향이 정확히 가로 · 세로가 되는 곳(둥근 부분의 가운데 · 원과 타원의 4점)에만 점, 그 사이는 가로 · 세로 핸들의 곡선 하나. 타원의 완만한 옆면을 직선으로 잘못 보던 문제 · 직선이 곡선 안쪽까지 들어가 곡선이 부풀던 문제 수정. 일반 모드: 곡선의 고른 점 배치가 다시 동작(끝 방향이 반대로 들어가던 오류) — 점이 더 줄어요.
