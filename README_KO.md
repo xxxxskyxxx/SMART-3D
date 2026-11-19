@@ -13,14 +13,16 @@
 
 | 파일 | 설명 |
 |---|---|
-| `SMART3D_v1.6.1.exe` | Windows 실행 파일 — 더블클릭으로 바로 실행 (설치 필요 없음) · 모든 언어가 한 파일에 |
-| `SMART-3D_v1.6.1_html.zip` | 브라우저(Chrome·Edge)에서 여는 HTML 버전 + 그림 도움말(한국어 · English) |
+| `SMART3D_v1.6.2.exe` | Windows 실행 파일 — 더블클릭으로 바로 실행 (설치 필요 없음) · 모든 언어가 한 파일에 |
+| `SMART-3D_v1.6.2_html.zip` | 브라우저(Chrome·Edge)에서 여는 HTML 버전 + 그림 도움말(한국어 · English) |
 
 두 파일 모두 한국어 · English · 日本語 · 简体中文 · Español 5개 언어가 들어 있어요 — 메뉴 줄 오른쪽 🌐 버튼으로 바꾸기 (exe는 처음 실행 때 Windows 언어로 시작). 1.6부터는 새 버전이 나오면 프로그램이 알아서 알려 줘요(Help ▸ 업데이트 확인…).
 
 > **처음 실행할 때** Windows가 “PC 보호” 창을 띄우면 **추가 정보 → 실행**을 누르세요. (코드 서명 인증서가 없는 개인 배포 프로그램이라 나오는 안내입니다.)
 
 ## 주요 기능
+
+**1.6.2 새 기능** — PC에 설치된 글꼴로 쓰는 **Shapes ▸ Text**(크기 · 자간 · 행간 · 왼쪽 / 가운데 / 오른쪽 정렬, 여러 줄, 바로 Extrude할 수 있는 스플라인 윤곽, 모서리에서도 같은 굵기로 이어지는 두께), **Modify ▸ Bend**(축 · 각도 · 방향 · 기준 · 제한, 옮길 수 있는 Gizmo 중심, 매끈하게 휘도록 축 방향으로 필요한 만큼만 면을 자르는 스마트 분할), **Modify Poly ▸ Repoly**(윤곽이 겹쳐도 면이 형태 밖으로 생기지 않게), **Sun ▸ HDRI와 맞추기**: GI Render에 불러온 HDRI의 태양 방향으로 Sun 조명을 옮기고, HDRI Rotation을 돌리면 함께 돌아요(그림자가 늘 하늘의 해와 맞음).
 
 **1.6.1 새 기능** — 더 단순해진 **편집 UI**(Modify Poly · Spline 명령은 버튼만 · 옵션은 마우스 옆 창 · Edit Geometry를 각 레벨 창 안으로 · 스플라인 Dot Select · Weld), Left · Back · Bottom 뷰에서도 그 평면에 그리기, 스플라인 Extrude · Shell의 **Axis**(Auto = 그린 뷰 방향), **Boolean 나누기** — 두께 없는 면으로 물체를, 열린 스플라인으로 닫힌 스플라인을 나누기, Smart Loop Ctrl+Alt, 늘 보이는 **Edit Pivot** 축, 각진 모양을 지키는 Projection Spline, 삼각형 크기를 바꿔도 모양을 이어 가고 오목한 외곽도 그대로, 겹친 천은 두께만큼 띄우는 **Cloth**, 표준 척도의 **도면 용지** A4–A0. 전체 목록: [릴리스 노트](https://github.com/xxxxskyxxx/SMART-3D/releases/latest).
 
