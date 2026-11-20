@@ -13,8 +13,8 @@ Free to use as a **Windows program (SMART3D.exe)** that runs without installatio
 
 | File | Description |
 |---|---|
-| `SMART3D_v1.6.2.exe` | Windows executable — double-click to run (no installation) · all languages in one file |
-| `SMART-3D_v1.6.2_html.zip` | HTML version for Chrome / Edge + picture help (English · Korean) |
+| `SMART3D_v1.6.3.exe` | Windows executable — double-click to run (no installation) · all languages in one file |
+| `SMART-3D_v1.6.3_html.zip` | HTML version for Chrome / Edge + picture help (English · Korean) |
 
 Both contain all five languages — 한국어 · English · 日本語 · 简体中文 · Español — switch from the 🌐 button at the right of the menu bar (the exe starts in your Windows language the first time). From 1.6 the program checks for new versions by itself (Help ▸ Check for Updates…).
 
@@ -22,7 +22,9 @@ Both contain all five languages — 한국어 · English · 日本語 · 简体�
 
 ## Features
 
-**What’s new in 1.6.2** — **Shapes ▸ Text** with the fonts installed on your PC (size · tracking · leading · left / centre / right, multi-line, spline outlines ready for Extrude, tube thickness that keeps its shape through corners), **Modify ▸ Bend** (axis · angle · direction · center · limits, a movable Gizmo center, with smart slices that cut just enough faces along the axis for a smooth bend), **Modify Poly ▸ Repoly** (no faces outside the shape when outlines overlap), and **Sun ▸ Match HDRI**: turns the Sun light to the sun of the HDRI loaded in GI Render, and keeps it there while you turn the HDRI Rotation (shadows always match the sky).
+**What’s new in 1.6.3** — a **Clay colour** box next to the viewport Clay button, **Sharp Edges**: crisp Show Edges · Wireframe lines with your own thickness and colours (Edge Settings…), and a **◉ Capture right-click menu**: view captured videos, open / change the capture folder — the exe saves every capture automatically.
+
+**What’s new in 1.6.2** — **Shapes ▸ Text** with the fonts installed on your PC (size · tracking · leading · left / centre / right, multi-line, spline outlines ready for Extrude, tube thickness that keeps its shape through corners), **Modify ▸ Bend** (axis · angle · direction · center · limits, a movable Gizmo center, with smart slices that cut just enough faces along the axis for a smooth bend), **Modify Poly ▸ Repoly** (no faces outside the shape when outlines overlap), an A–Z modifier list with **My Set** buttons, and **Sun ▸ Match HDRI**: turns the Sun light to the sun of the HDRI loaded in GI Render, and keeps it there while you turn the HDRI Rotation (shadows always match the sky).
 
 **What’s new in 1.6.1** — a simpler **editing UI** (Modify Poly · Spline commands as buttons, options next to the mouse, Edit Geometry inside each level, spline Dot Select · Weld), lines drawn in the Left · Back · Bottom views on their own plane, an **Axis** for Extrude · Shell on splines (Auto = the view it was drawn in), **Boolean split** — subtract a zero-thickness surface from a solid or an open spline from a closed spline, Smart Loop Ctrl+Alt, an always-visible **Edit Pivot** tripod, Projection Spline that keeps hard edges, **Cloth** that keeps its shape when the triangle size changes, keeps concave outlines and keeps layers a thickness apart, and **drawing paper** A4–A0 at standard scales. Full list: [release notes](https://github.com/xxxxskyxxx/SMART-3D/releases/latest).
 
